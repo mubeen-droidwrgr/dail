@@ -1,4 +1,4 @@
-/* NetCom SDR Toolkit — Industries */
+/* NetCom SDR — Industries */
 window.SDR_INDUSTRIES = {
   tech: {
     key: 'tech',
@@ -66,8 +66,8 @@ window.SDR_INDUSTRIES = {
     ],
     objection: {
       q: 'Government budgets are locked — no room for training.',
-      reframe: 'Funds exist — COOL, DoD education, ESI, ECIF — if the program is credentialed and on-vehicle. The objection is usually process, not money.',
-      resp: 'Understood — and that’s why we deliver through existing vehicles and authorized funds: Army/Air Force COOL, DoD programs, Microsoft ESI/ECIF, and state credentialing dollars. If I can show you the funding path first, does the budget question mostly go away?',
+      reframe: 'Funds exist — COOL, DoD education dollars — if the program is credentialed and on-vehicle. The objection is usually process, not money.',
+      resp: 'Understood — and that’s why we deliver through existing vehicles and authorized funds: Army/Air Force COOL, DoD programs, and state credentialing dollars. If I can show you the funding path first, does the budget question mostly go away?',
       follow: 'I’ll bring one clean funding-path one-pager to the call.'
     },
     vmHook: 'I know mission readiness and tight fiscal windows go hand in hand,'

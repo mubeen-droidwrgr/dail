@@ -1,4 +1,4 @@
-/* NetCom SDR Toolkit — Objection responses for Individual Contributor (ic) and
+/* NetCom SDR — Objection responses for Individual Contributor (ic) and
    Procurement / L&D Ops (ldo). Matched to SDR_OBJECTIONS by array index and
    merged in SDR.init(). */
 window.SDR_OBJ_EXTRA = [
@@ -12,7 +12,7 @@ window.SDR_OBJ_EXTRA = [
   },
   { /* 2 — no budget */
     ic: 'Totally fair. Do you have a tuition or learning benefit through work that goes unused? Most people do — and that’s how most of our learners pay without touching their own money.',
-    ldo: 'Understood — is the line hard-locked, or could a pilot ride an existing vehicle or contract (ESI, Learning Passport, grant funds)? Most pilots we run cost less than the evidence scramble they prevent.'
+    ldo: 'Understood — is the line hard-locked, or could a pilot ride an existing vehicle or contract (Learning Passport, grant funds)? Most pilots we run cost less than the evidence scramble they prevent.'
   },
   { /* 3 — already have a training vendor */
     ic: 'Makes sense to be covered. Is there a cert you want that your current vendor doesn’t offer — or one you’d wait months for? That’s usually the exact gap we fill.',

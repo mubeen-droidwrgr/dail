@@ -1,4 +1,4 @@
-/* NetCom SDR Toolkit — Objection library (played by decision-maker level) */
+/* NetCom SDR — Objection library (played by decision-maker level) */
 window.SDR_OBJECTIONS = [
   {
     q: 'We’re not interested / happy with the status quo',
@@ -72,7 +72,7 @@ window.SDR_OBJECTIONS = [
     resp: {
       cx: 'Fair question. Against a course list it looks like cost; against one unfilled senior cloud role it’s about one-tenth of that hire. Can I show you the per-learner math with certified passes included?',
       vp: 'Let me put it in your language — a full cert track for your team costs roughly one mid-level salary, and returns certified heads that don’t churn. Want the one-page ROI on a real cohort size?',
-      dir: 'I’ll get you the range today. Just note the invoices are usually 30–40% lower via Learning Passport credits or funding programs (ESI/ECIF, COOL). Worth letting me run your actual number?',
+      dir: 'I’ll get you the range today. Just note the invoices are usually 30–40% lower via Learning Passport credits or funding programs (COOL, EdAssist). Worth letting me run your actual number?',
       mgr: 'Totally — and per head it’s usually under the price of a conference ticket, with a cert and exam included. What size group are we talking — I’ll compute the exact pilot price.'
     },
     follow: 'Always give a range + the cheapest legitimate entry (e-Learning/self-paced) even when the deal is bigger.'

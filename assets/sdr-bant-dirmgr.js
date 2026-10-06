@@ -1,10 +1,10 @@
-/* NetCom SDR Toolkit — BANT sets for Director and Manager levels (10 industries each) */
+/* NetCom SDR — BANT sets for Director and Manager levels (10 industries each) */
 window.SDR_BANT = window.SDR_BANT || {};
 
 SDR_BANT.dir = {
   tech: {
     B: ['Does engineering learning sit under L&D, department, or per-project budget — and how flexible is it mid-quarter?',
-        'If vendor credits (ESI, ECIF) or program benefits offset the cost, does that expand your ceiling?'],
+        'If vendor credits or program benefits offset the cost, does that expand your ceiling?'],
     A: ['If I map paths to the certs your VP cares about, how far can you take it without another signature?',
         'Who at finance signs off, and what makes an approval fast for you?'],
     N: ['Which role has the widest skill gap against project needs, and is a cert the driver?',

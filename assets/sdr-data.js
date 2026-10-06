@@ -1,4 +1,4 @@
-/* NetCom SDR Toolkit — aggregator */
+/* NetCom SDR — aggregator */
 window.SDR = {
   levels: window.SDR_LEVELS,
   industries: window.SDR_INDUSTRIES,

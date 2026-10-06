@@ -1,4 +1,4 @@
-/* NetCom SDR Toolkit — Customer stories for calls, 5 per decision-maker level */
+/* NetCom SDR — Customer stories for calls, 5 per decision-maker level */
 window.SDR_STORIES = {
   cx: [
     {
@@ -88,7 +88,7 @@ window.SDR_STORIES = {
     {
       tag: 'Story 04 · The cohort-window story',
       title: 'The seats that almost didn’t exist',
-      story: 'A Director nearly missed a cohort window because of procurement timing — which cost the team a whole quarter of cert progress. The fix wasn’t magic; it was planning around the window: cohort dates booked early, funding structured through existing vehicles — ESI, Learning Passport, COOL — dashboards spun up before the first class. When the quarter rolled, the program ran itself. Timing is the silent half of a successful program.',
+      story: 'A Director nearly missed a cohort window because of procurement timing — which cost the team a whole quarter of cert progress. The fix wasn’t magic; it was planning around the window: cohort dates booked early, funding structured through existing vehicles — Learning Passport, COOL — dashboards spun up before the first class. When the quarter rolled, the program ran itself. Timing is the silent half of a successful program.',
       when: 'When cohort windows, fiscal quarters, or planning cycles are top of mind.'
     },
     {

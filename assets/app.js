@@ -1,4 +1,4 @@
-/* NetCom SDR Toolkit — app logic */
+/* NetCom SDR — app logic */
 (function () {
   'use strict';
 

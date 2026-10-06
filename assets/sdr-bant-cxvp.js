@@ -1,4 +1,4 @@
-/* NetCom SDR Toolkit — BANT sets, one per industry, for C-Level and VP.
+/* NetCom SDR — BANT sets, one per industry, for C-Level and VP.
    Each set: B×2, A×2, N×2, T×2 = 8 questions, tuned to role level + industry. */
 window.SDR_BANT = window.SDR_BANT || {};
 

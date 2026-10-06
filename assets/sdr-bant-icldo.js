@@ -1,9 +1,9 @@
-/* NetCom SDR Toolkit — BANT sets for Individual Contributor and Procurement/L&D Ops levels */
+/* NetCom SDR — BANT sets for Individual Contributor and Procurement/L&D Ops levels */
 window.SDR_BANT = window.SDR_BANT || {};
 
 SDR_BANT.ic = {
   tech: {
-    B: ['Do you have a tuition benefit or employer credits (ESI, ECIF) you can use for certifications?',
+    B: ['Do you have a tuition benefit or employer learning credits you can use for certifications?',
         'If a cert costs less than a month of one project reticket, is paying out of pocket still a blocker?'],
     A: ['Is anyone holding you back from picking a cert — or would your manager sign off if the path was mapped?',
         'Do you need manager or HR approval for training, or is this your call to make?'],

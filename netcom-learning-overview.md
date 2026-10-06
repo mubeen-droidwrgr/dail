@@ -51,7 +51,7 @@ NetCom Learning is an **enterprise IT and professional training company** — an
 5. **Learning management / administration platforms** — NetCom365 (LMS), learner/customer/trainer portals, proposal & registration tools, learner app.
 6. **AI readiness & adoption** — AI fluency assessments, Adoptify AI (AI adoption consulting), Microsoft 365 Copilot Adoption Journey, AI CERTs certifications, N+ AI-native eLearning.
 7. **Career & talent services** — Career Services (resume/LinkedIn/interview coaching, job search), **Amazon Career Services** (Amazon Career Choice program), **Talents for Hire** (freelance trainers / L&D staff augmentation), **NetCom Learning Academy** (cohort learning).
-8. **Education funding / benefits programs** — Learning Passport (prepaid training credits), **EdAssist** (tuition-assistance / benefit management partner), Microsoft ESI / ECIF funding, Cisco Learning Credits (CLCs), exam vouchers & continuing-education credits (CompTIA, Cisco, Microsoft CIE, PMI PDUs).
+8. **Education funding / benefits programs** — Learning Passport (prepaid training credits), **EdAssist** (tuition-assistance / benefit management partner), Cisco Learning Credits (CLCs), exam vouchers & continuing-education credits (CompTIA, Cisco, Microsoft CIE, PMI PDUs).
 9. **Government & military programs** — Federal/State-Local government training (Zero Trust, FedRAMP cloud, AI per EO 14110), **Army COOL**, **Air Force COOL**, DoD, special pricing.
 10. **Free & community resources** — free/webinar training, assessments, e-books, articles, case studies, media channels.
 
@@ -109,7 +109,7 @@ NetCom Learning is an **enterprise IT and professional training company** — an
 | **Managed Learning Services** | Outsourced full L&D lifecycle: consulting, content, delivery, administration, technology. |
 | **Talents for Hire (T4H)** | Freelance trainer / L&D talent marketplace — certified trainers, speakers, instructional designers, eLearning developers, LMS admins for staff augmentation. |
 | **Education & Benefits** | **EdAssist** (partner program for employer tuition-assistance) · **Amazon Career Services** (Amazon Career Choice; partnered with Manpower) · **Career Services** (resume builder, LinkedIn, interview prep, job search, coaching) · veteran/military funding (Army & Air Force COOL, DoD). |
-| **Vendor-funding programs** | Microsoft ESI (Enterprise Skills Initiative), ECIF (End-Customer Investment Funds), Microsoft quickstarts, AWS Skill Builder / Learning Needs Analysis, Cisco Learning Credits & continuing-education, CompTIA CE program. |
+| **Vendor-funding programs** | Microsoft quickstarts, AWS Skill Builder / Learning Needs Analysis, Cisco Learning Credits & continuing-education, CompTIA CE program. |
 | **Free resources & community** | Free webinars & training events, cybersecurity-awareness training, assessments, e-books, articles, case studies, YouTube/Twitter/LinkedIn/SarderTV channels. |
 
 ---

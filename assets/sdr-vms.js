@@ -1,4 +1,4 @@
-/* NetCom SDR Toolkit — Voicemail scripts, 10 per decision-maker level */
+/* NetCom SDR — Voicemail scripts, 10 per decision-maker level */
 window.SDR_VMS = {
   cx: [
     {

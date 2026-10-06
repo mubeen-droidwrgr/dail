@@ -1,4 +1,4 @@
-/* NetCom SDR Toolkit — Email templates, 10 per decision-maker level */
+/* NetCom SDR — Email templates, 10 per decision-maker level */
 window.SDR_EMAILS = {
   cx: [
     {
@@ -155,7 +155,7 @@ window.SDR_EMAILS = {
     {
       tag: 'Email 10 · Funding / credits angle',
       subject: 'Before you price it — the funding that usually applies',
-      body: 'Hi {Name},\n\nBefore you price a program, one thing worth knowing: a meaningful share of the cost at orgs like {Company} is already covered by funding they were eligible for.\n\nLearning Passport credits, Microsoft ESI/ECIF, Cisco Learning Credits, Army/Air Force COOL, EdAssist — we structure programs through them so the budget conversation gets easier at finance.\n\nWant me to check what {Company} is eligible for? One email back, I’ll do the legwork.\n\n{Your Name}'
+      body: 'Hi {Name},\n\nBefore you price a program, one thing worth knowing: a meaningful share of the cost at orgs like {Company} is already covered by funding they were eligible for.\n\nLearning Passport credits, Cisco Learning Credits, Army/Air Force COOL, EdAssist — we structure programs through them so the budget conversation gets easier at finance.\n\nWant me to check what {Company} is eligible for? One email back, I’ll do the legwork.\n\n{Your Name}'
     }
   ],
 

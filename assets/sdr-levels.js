@@ -1,4 +1,4 @@
-/* NetCom SDR Toolkit — Decision-maker levels (personas, BANT, meetings) */
+/* NetCom SDR — Decision-maker levels (personas, BANT, meetings) */
 window.SDR_LEVELS = {
   cx: {
     key: 'cx',
@@ -16,7 +16,7 @@ window.SDR_LEVELS = {
       B: [
         'When you look at workforce upskilling this fiscal year, is there a committed line item — or is it still a proposal finance is willing to debate before approving?',
         'If we framed a 90-day enablement pilot as risk reduction (audit exposure, stalled AI rollouts) instead of “training,” does that change how the dollars are seen at budget review?',
-        'Do funding vehicles you already carry — Microsoft ESI/ECIF credits, EdAssist, or Defense COOL — change how much real cash leaves the P&L for this?'
+        'Do funding vehicles you already carry — EdAssist, tuition benefits, or Defense COOL — change how much real cash leaves the P&L for this?'
       ],
       A: [
         'Who formally signs the PO on a company-wide learning initiative, and how far does your endorsement carry a proposal before it needs a second signature?',
@@ -91,7 +91,7 @@ window.SDR_LEVELS = {
     bant: {
       B: [
         'Which budget line does learning sit under — L&D, departmental, or per-project headcount — and how flexible is it mid-quarter?',
-        'If Learning Passport credits or vendor funding (ESI/ECIF, COOL, EdAssist) covered part of the cost, does that change what you can approve?',
+        'If Learning Passport credits or vendor funding (COOL, EdAssist) covered part of the cost, does that change what you can approve?',
         'Is there a per-cohort spend ceiling you work within, or are programs priced on value per head for you?'
       ],
       A: [
@@ -131,7 +131,7 @@ window.SDR_LEVELS = {
       B: [
         'For a team this size, is the per-head training budget enough for a small pilot, or does a pilot need above-the-line approval?',
         'If we price a certification track with the exam included, how does that compare to what you’d normally spend per team member?',
-        'Is there vendor credit or a subsidy your team can already draw on — ESI, Learning Passport, a company tuition benefit?'
+        'Is there vendor credit or a subsidy your team can already draw on — Learning Passport, a company tuition benefit?'
       ],
       A: [
         'Who approves a pilot — you, your manager, or procurement — and would you be the one pitching it?',
