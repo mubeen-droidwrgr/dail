@@ -194,6 +194,7 @@
     var cHook = sub ? sub.hook : (progOn ? prog.hook : '');
     var cBridge = sub ? sub.bridge : (progOn ? prog.bridge : '');
     var cStake = sub ? sub.stake : (progOn ? prog.stake : '');
+    var cOpener = progOn ? (sub ? sub.opener : prog.opener) : '';
     var cTitle = progOn ? (prog.label + (sub ? ' · ' + sub.label : '')) : '';
     var cLevelLine = sub && sub.byLevel && sub.byLevel[lk] ? sub.byLevel[lk] : '';
 
@@ -206,6 +207,8 @@
           '<div class="script-block" id="pb-opener">' + nl(vmOpener(lv, ind)) + '</div>' +
           '<button type="button" class="btn copy small" data-copy-target="pb-opener">Copy opener</button>' +
           '<p class="small-note" style="margin-top:10px">Delivery: 0–15s = hook with <i>' + esc(ind.angle.slice(0, 60)) + '…</i>, then the credibility line, then the small, hard-to-refuse meeting ask.</p>' +
+          (cOpener ? '<div class="script-block" style="margin-top:12px" id="pb-opener-track"><span class="who">The opener · pivot to ' + esc(cTitle) + '</span>' + esc(fillField(cOpener, ind)) + '</div>' +
+            '<button type="button" class="btn copy small" data-copy-target="pb-opener-track">Copy the pivot</button>' : '') +
         '</div>' +
       '</div>' +
 
@@ -243,7 +246,7 @@
           '<div class="script-block" style="margin-top:12px" id="pb-prog-stake"><span class="who">The stakes · cost of waiting</span>' + esc(cStake) + '</div>' +
           '<button type="button" class="btn copy small" data-copy-target="pb-prog-stake">Copy the stakes</button>' +
           (cLevelLine ? '<div class="resp" style="border-left-color:#22d3ee;margin-top:12px" id="pb-prog-level"><b>How to play it for ' + esc(lv.label) + ':</b> ' + esc(cLevelLine) + '</div><button type="button" class="btn copy small" data-copy-target="pb-prog-level">Copy the ' + esc(lv.label) + ' angle</button>' : '') +
-          '<p class="small-note" style="margin-top:12px">Order for the call: hook → relationship drop → bridge → pick the letter of BANT it opens → ask. The relationship line lands hardest in the first 60 seconds for ' + esc(lv.label) + (sub ? ', and the subtopic angle above tunes it to exactly who you are speaking to.' : '') + '</p>' +
+          '<p class="small-note" style="margin-top:12px">Order for the call: track opener → relationship drop → hook → bridge → pick the letter of BANT it opens → ask. The relationship line lands hardest in the first 60 seconds for ' + esc(lv.label) + (sub ? ', and the track opener plus the subtopic angle above tune it to exactly who you are speaking to.' : (progOn ? ', and the track opener above tunes it to the exact lane.' : '')) + '</p>' +
         '</div>' +
       '</div>' : '') +
 
@@ -280,6 +283,7 @@
       parts.push(lv.vos[0] ? lv.vos[0].text(ind) : vmOpener(lv, ind));
       if (progOn) {
         parts.push(''); parts.push('PROGRAM — ' + (sub ? prog.label + ' · ' + sub.label : prog.label));
+        parts.push('OPENER PIVOT: ' + fillField(cOpener, ind));
         parts.push('PAST RELATIONSHIP: ' + prog.relation);
         parts.push('HOOK: ' + cHook);
         parts.push('BRIDGE: ' + cBridge);
@@ -595,7 +599,7 @@
       '<div class="pb-section open">' +
         '<div class="pb-head" data-toggle><h3>The gate script · seven seconds, then you’re routed</h3><span class="chev">▾</span></div>' +
         '<div class="pb-body">' +
-          '<div class="script-block" id="gk-intro">' + esc(gk.intro(ind)) + '</div>' +
+          '<div class="script-block" id="gk-intro">' + esc(gk.intro(ind) + (progOn ? ' It’s the ' + prog.label + (sub ? ' · ' + sub.label : '') + ' lane.' : '')) + '</div>' +
           '<button type="button" class="btn copy small" data-copy-target="gk-intro">Copy the gate script</button>' +
           '<p class="small-note" style="margin-top:10px">Route it like a colleague: your name, their name, the deliverable you’re carrying — under eight seconds. The AI forwards your opening line to {Name}’s team as the call summary, so that first sentence is your subject line.</p>' +
         '</div>' +
