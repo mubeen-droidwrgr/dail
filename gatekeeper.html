@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Gatekeeper | NetCom Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@400;500;600;700&family=Inter:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">N</span>
+      <span>NetCom Learning<small>Overview · Playbooks</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Company Overview</a>
+      <a href="sdr-qualifier.html">SDR Qualifier</a>
+      <a href="voicemail-scripts.html">Voicemail Scripts</a>
+      <a href="emails.html">Email Templates</a>
+      <a href="stories.html">Stories</a>
+      <a href="linkedin.html">LinkedIn</a>
+      <a href="gatekeeper.html" class="active">Gatekeeper</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:44px">
+  <div class="container">
+    <h1>The AI at the front desk asks your name and <em>reason for calling</em> — this page gets you through.</h1>
+    <p class="lede">Switchboards run on screening AI now: it listens, scores your words, and decides whether you reach the decision-maker or the queue. Pick the <b class="hl">decision-maker level</b>, the <b class="hl">industry</b>, and the <b class="hl">program or vendor</b> the call is about, get the exact answers for “who’s calling, and why” — then the <b class="hl">BANT sets</b> you need queued before the human picks up, including the relationship NetCom already holds with that vendor.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- controls -->
+  <section style="padding-top:8px" class="reveal">
+    <div class="control-panel">
+      <div class="cp-label">① Whose front door are you calling?</div>
+      <div class="pill-row" id="sel-gk-level"></div>
+
+      <div class="cp-label">② What industry?</div>
+      <div class="pill-row" id="sel-gk-industry"></div>
+
+      <div class="cp-label">③ What program / vendor is the call about?</div>
+      <div class="pill-row" id="sel-gk-program"></div>
+
+      <div class="cp-label">④ Your gate script · below</div>
+    </div>
+
+    <div id="gk-output"></div>
+  </section>
+
+  <!-- how the gate reads -->
+  <section class="dark-black reveal">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><b>01</b> — Know the gate</div>
+        <h2>The AI listens for four things — <em>give it the right four</em></h2>
+        <p>Screening AI is not a person and not a wall. It is a router with four fields to fill: name, company, reason, intent. Fill the fields the way the DM's office fills them, and the router sends you where a human would.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card"><span class="badge grad">01</span><h3 style="margin-top:12px">The name</h3><p class="small-note">"Who's calling? Who are you asking for?" No decision-maker name means the general queue. Say your name and theirs inside the first six words.</p></div>
+        <div class="card"><span class="badge grad">02</span><h3 style="margin-top:12px">The reason</h3><p class="small-note">It scores your reason and routes on keywords. "Training" lands in the vendor queue; "readiness," "capacity," "evidence" route to the department. Your first sentence is the routing map.</p></div>
+        <div class="card"><span class="badge grad">03</span><h3 style="margin-top:12px">The escape routes</h3><p class="small-note">It offers voicemail, message-taking and call-backs. Each is a deflection with one recoverable move: hand it a deliverable with a name and a number, not a vague hope.</p></div>
+        <div class="card"><span class="badge grad">04</span><h3 style="margin-top:12px">The summary</h3><p class="small-note">The AI forwards a transcript line to the DM's team when it routes. Your opening sentence is your first impression — write it like a subject line, not a monologue.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- deflections -->
+  <section class="bone reveal">
+    <div class="container">
+      <div class="section-head center">
+        <div class="eyebrow"><b>02</b> — Recovery</div>
+        <h2>When the gate deflects, <em>recover with a deliverable</em></h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card"><h3>The voicemail offer</h3><p class="small-note">Take it — but on your terms: a callback date and the deliverable named. "Have {Name} call me this week; the note makes the reason obvious in one line." A voicemail with a file behind it gets returned.</p></div>
+        <div class="card"><h3>The message trap</h3><p class="small-note">"I'll take a message" dead-ends unless the message is a file. "The sample is ready to send — {Name} can judge it from the data." Turn the trap into a hand-off of evidence, not a promise of a future call.</p></div>
+        <div class="card"><h3>The meeting block</h3><p class="small-note">"They're in a meeting" can last forever. Pivot the recipient instead of waiting: "Then 15 minutes with the chief-of-staff or the L&D lead is equally useful." A second route beats a calendar wait.</p></div>
+      </div>
+      <div class="callout" style="margin-top:24px">
+        <b>The recovery rule inside every script above:</b> name the decision-maker, name the deliverable you are carrying, and give a number. Those three give the gate something concrete to route — everything else is what gets screened out.
+      </div>
+    </div>
+  </section>
+
+  <!-- placeholders -->
+  <section class="dark-black reveal no-print">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><b>03</b> — Personalize</div>
+        <h2>Swap the placeholders before you dial</h2>
+      </div>
+      <div class="wrap-tbl">
+        <table class="tbl">
+          <thead><tr><th>Token</th><th>Replace with</th></tr></thead>
+          <tbody id="placeholder-table"></tbody>
+        </table>
+      </div>
+      <div class="callout" style="margin-top:18px">
+        <b>One word on honesty:</b> nothing in these scripts needs a lie. "Readiness file," "capacity math," "reporting sample" are all true descriptions of what you're carrying — they just happen to be the words the DM's office uses, so the router sends you where a human would.
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-mark">N</span><span>NetCom Learning<small>Overview · Playbooks</small></span></a>
+      </div>
+      <div>
+        <h4>Playbooks</h4>
+        <a href="sdr-qualifier.html">SDR Qualifier</a>
+        <a href="voicemail-scripts.html">Voicemail Scripts</a>
+        <a href="emails.html">Email Templates</a>
+        <a href="stories.html">Stories</a>
+        <a href="linkedin.html">LinkedIn</a>
+        <a href="gatekeeper.html">Gatekeeper</a>
+        <a href="index.html">Company Overview</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="assets/sdr-industries.js"></script>
+<script src="assets/sdr-levels.js"></script>
+<script src="assets/sdr-vms.js"></script>
+<script src="assets/sdr-emails.js"></script>
+<script src="assets/sdr-stories.js"></script>
+<script src="assets/sdr-story-ind.js"></script>
+<script src="assets/sdr-li.js"></script>
+<script src="assets/sdr-gatekeeper.js"></script>
+<script src="assets/sdr-programs.js"></script>
+<script src="assets/sdr-objections.js"></script>
+<script src="assets/sdr-bant-cxvp.js"></script>
+<script src="assets/sdr-bant-dirmgr.js"></script>
+<script src="assets/sdr-bant-icldo.js"></script>
+<script src="assets/sdr-objections-extra.js"></script>
+<script src="assets/sdr-data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

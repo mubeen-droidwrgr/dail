@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SDR Qualifier — Call Playbooks | NetCom Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@400;500;600;700&family=Inter:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">N</span>
+      <span>NetCom Learning<small>Overview · Playbooks</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Company Overview</a>
+      <a href="sdr-qualifier.html" class="active">SDR Qualifier</a>
+      <a href="voicemail-scripts.html">Voicemail Scripts</a>
+      <a href="emails.html">Email Templates</a>
+      <a href="stories.html">Stories</a>
+      <a href="linkedin.html">LinkedIn</a>
+      <a href="gatekeeper.html">Gatekeeper</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:44px">
+  <div class="container">
+    <h1>The <em>SDR Qualifier</em> — build the right call, before you dial.</h1>
+    <p class="lede">Pick the decision-maker level, the industry, and the program or vendor the call is about — and get a ready-to-use playbook: the opener, BANT qualifying questions, objection handling and the meeting ask — all tuned to how that buyer actually buys. Six levels from <b class="hl">C-Level</b> to <b class="hl">individual contributor</b> and <b class="hl">procurement / L&amp;D ops</b>, across ten industries from tech and healthcare to government, energy and education, with eight vendor programs (Microsoft, AWS, Cisco, Google Cloud, AI CERTs™, ISC2, PMI, CompTIA) that lean on the standing relationship NetCom already has with each. Rules of the game: qualify early, handle objections like a consultant, and leave every call one step closer to the room.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- controls -->
+  <section style="padding-top:8px" class="reveal">
+    <div class="control-panel">
+      <div class="cp-label">① Who is the decision-maker?</div>
+      <div class="pill-row" id="sel-level"></div>
+
+      <div class="cp-label">② What industry are they in?</div>
+      <div class="pill-row" id="sel-industry"></div>
+
+      <div class="cp-label">③ What program / vendor is the topic of the call?</div>
+      <div class="pill-row" id="sel-program"></div>
+
+      <div class="cp-label">④ They're qualified · your playbook below</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button type="button" id="copy-playbook" class="btn">Copy the full playbook</button>
+        <button type="button" id="print-playbook" class="btn ghost">Print this playbook</button>
+      </div>
+    </div>
+
+    <div id="playbook" class="playbook"></div>
+
+    <div class="drill-box" id="drill-box">
+      <div class="cp-label">⑤ Drill mode — deal a random scenario and quiz yourself</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <button type="button" id="drill-deal" class="btn">Deal me a practice round</button>
+        <span class="drill-hint">Random level × industry. You get the opener and the scenario; the BANT, objections and meeting ask are hidden behind flip-to-reveal until you’ve thought through your answer.</span>
+      </div>
+      <div id="drill"></div>
+    </div>
+  </section>
+
+  <!-- personas -->
+  <section id="personas-sec" class="dark-black reveal">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><b>01</b> — Read the room</div>
+        <h2>How each level buys — <em>speak their language</em></h2>
+        <p>Same product, six different conversations. The C-Level wants outcomes; the Manager wants schedules; the practitioner wants the cert; procurement wants the evidence. Adapt the emphasis, never the honesty.</p>
+      </div>
+      <div class="grid grid-3" id="personas"></div>
+    </div>
+  </section>
+
+  <!-- BANT explainer -->
+  <section id="bant" class="bone reveal">
+    <div class="container">
+      <div class="section-head center">
+        <div class="eyebrow"><b>02</b> — Qualification framework</div>
+        <h2>BANT — but asked like a consultant, not a checklist</h2>
+      </div>
+      <div class="grid grid-4">
+        <div class="card"><span class="badge b">B</span><h3 style="margin-top:12px">Budget</h3><p class="small-note">Is there money, who owns it, what line does it sit under, does funding (COOL, EdAssist) change the math?</p></div>
+        <div class="card"><span class="badge a">A</span><h3 style="margin-top:12px">Authority</h3><p class="small-note">Can this person approve, or are they a champion who sells it upward? Get the approver's name in the room.</p></div>
+        <div class="card"><span class="badge n">N</span><h3 style="margin-top:12px">Need</h3><p class="small-note">What is the skill gap costing them — cert deadlines, stalled AI, compliance, attrition? Problem before product.</p></div>
+        <div class="card"><span class="badge t">T</span><h3 style="margin-top:12px">Timeline</h3><p class="small-note">Quarters, audits, launches, cert-expiry cycles. Urgency is what turns interest into a calendar invite.</p></div>
+      </div>
+      <div class="callout" style="margin-top:24px">
+        <b>Pre-call qualification (before you even dial):</b> check firmographics (revenue, size, industry), their <b>tech stack signals</b> (Azure vs AWS vs GCP vs on-prem — read their job posts &amp; vendor pages), <b>recent hires</b> (did they just hire an AI/cloud lead?), <b>certifications they advertise</b>, and <b>news/intent</b> (funding rounds, audits, new HQ). The opener lands harder when the first line references something specific about them.
+      </div>
+    </div>
+  </section>
+
+  <!-- full objection library -->
+  <section id="objections" class="reveal">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><b>03</b> — Objection playbook</div>
+        <h2>The full library — <em>12 objections × 6 levels</em></h2>
+        <p>Every objection has a mindset shift (how to think about it), a response per decision-maker level, and a recovery step. Click to expand.</p>
+      </div>
+      <div id="objection-library"></div>
+    </div>
+  </section>
+
+  <!-- placeholders -->
+  <section class="dark-black reveal no-print">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><b>04</b> — Before you deliver</div>
+        <h2>Swap the placeholders</h2>
+      </div>
+      <div class="wrap-tbl">
+        <table class="tbl">
+          <thead><tr><th>Token</th><th>Replace with</th></tr></thead>
+          <tbody id="placeholder-table"></tbody>
+        </table>
+      </div>
+      <div class="callout" style="margin-top:18px">
+        <b>Know the funding angles cold:</b> Learning Passport (pre-paid credits), AWS Skill Builder, Cisco Learning Credits, CompTIA CE, EdAssist tuition benefits, Army/Air Force COOL &amp; DoD for government. These turn "no budget" into "there's a funding path." Keep the one-pagers handy.
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-mark">N</span><span>NetCom Learning<small>Overview · Playbooks</small></span></a>
+      </div>
+      <div>
+        <h4>Playbooks</h4>
+        <a href="sdr-qualifier.html">SDR Qualifier</a>
+        <a href="voicemail-scripts.html">Voicemail Scripts</a>
+        <a href="emails.html">Email Templates</a>
+        <a href="stories.html">Stories</a>
+        <a href="linkedin.html">LinkedIn</a>
+        <a href="gatekeeper.html">Gatekeeper</a>
+        <a href="index.html">Company Overview</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="assets/sdr-industries.js"></script>
+<script src="assets/sdr-levels.js"></script>
+<script src="assets/sdr-vms.js"></script>
+<script src="assets/sdr-emails.js"></script>
+<script src="assets/sdr-objections.js"></script>
+<script src="assets/sdr-bant-cxvp.js"></script>
+<script src="assets/sdr-bant-dirmgr.js"></script>
+<script src="assets/sdr-bant-icldo.js"></script>
+<script src="assets/sdr-programs.js"></script>
+<script src="assets/sdr-objections-extra.js"></script>
+<script src="assets/sdr-data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
