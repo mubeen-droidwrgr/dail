@@ -151,5 +151,41 @@ window.SDR_LEVELS = {
       return 'Mind if we do a quick 15-minute call this week so you can see how it fits your team’s schedule — no big demo, no catalog dump, just the two or three paths that fit you?';
     },
     followup: 'Send a ready-to-pitch one-pager (their boss can approve from it) + a sample weekly schedule with zero coverage loss.'
+  },
+
+  ic: {
+    key: 'ic',
+    label: 'Individual Contributor / Practitioner',
+    sub: 'Engineers · Analysts · IT Pros · Learners · Security Staff',
+    rank: 'Hands-on — driven by career growth, cert value and schedule friendliness',
+    focus: ['Certifications that move pay and roles', 'Learning that fits around the work week', 'Visible progress they can prove'],
+    pain: ['A skill gap holding back their next role', 'Certs lapsing or out of date', 'Training that eats personal time'],
+    authority: 'Usually no PO — but strong influence. They trigger requests, hold the ground truth on needs, and often draw on tuition benefits or employer credits.',
+    statLines: ['Cert-prep paths across 80+ vendors', 'Self-paced + virtual formats', 'Role-based career maps'],
+    opener: function (ind) {
+      return 'Hi {Name}, {Your Name} from NetCom Learning. Quick one — I help IT professionals get certified on ' + ind.tools + ' without burning their evenings: instructor-led, virtual, or self-paced modules that fit around the work week.\\n\\nMost people in your seat are exam-ready in a few weeks and the cert moves pay or promotions. Can I show you the path that fits your schedule? 15 minutes?';
+    },
+    meeting: function () {
+      return 'Mind a quick 15-minute call this week? I’ll bring the cert-prep path that fits your current level and the fastest realistic timeline to exam-ready.';
+    },
+    followup: 'Send the cert-prep path + per-head pricing with the exam included within 24h. Reference their tuition benefit or employer credits if relevant.'
+  },
+
+  ldo: {
+    key: 'ldo',
+    label: 'Procurement / L&D Ops',
+    sub: 'L&D Specialists · Training Coordinators · Procurement Buyers',
+    rank: 'Process-driver — cares about contracts, compliance, dashboards and approved-vendor lists',
+    focus: ['Compliant, audit-proof vendors', 'Clean pricing and contract terms', 'Adoption and completion reporting'],
+    pain: ['RFPs and approved-vendor lists eating time', 'Programs with weak evidence of impact', 'Vendor claims vs delivered reality'],
+    authority: 'Builds and runs the vendor process; can green-light pilots within mandate, but needs L&D or IT sign-off for larger spend.',
+    statLines: ['Audit-ready training reporting', 'Flexible contract models', 'Hosted LMS + analytics'],
+    opener: function (ind) {
+      return 'Hi {Name}, {Your Name} with NetCom Learning. I’m the vendor who makes your job easier: authorized curricula, audit-ready reporting, one POC, and contract terms that don’t fight finance.\\n\\nFor ' + ind.label + ' orgs we handle the RFP evidence, the dashboards and the renewals. Worth 15 minutes to see the reporting pack before your next vendor decision?';
+    },
+    meeting: function () {
+      return 'Could I show you the reporting pack and same-page contract model this week — 15 minutes — so your next RFP shortlist has one less unknown?';
+    },
+    followup: 'Send the reporting sample + contract model within 24h. Keep it procurement-friendly: pricing tables, compliance mapping, renewal terms.'
   }
 };

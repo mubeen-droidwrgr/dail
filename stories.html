@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Stories — SDR Toolkit | NetCom Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@400;500;600;700&family=Inter:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">N</span>
+      <span>NetCom Learning<small>Overview · SDR Toolkit</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Company Overview</a>
+      <a href="sdr-qualifier.html">SDR Qualifier</a>
+      <a href="voicemail-scripts.html">Voicemail Scripts</a>
+      <a href="emails.html">Email Templates</a>
+      <a href="stories.html" class="active">Stories</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:44px">
+  <div class="container">
+    <h1>Stories that open <em>the conversation</em> — a peer your customer recognises.</h1>
+    <p class="lede">Pick the decision-maker level and get five customer stories tuned to how that buyer thinks — a peer who had the same problem, made the same call and got the outcome they want. Stories do what stats can't: they let the prospect see themselves in the result. Tell one in 45–90 seconds, then hand them the question.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section style="padding-top:8px" class="reveal">
+    <div class="control-panel">
+      <div class="cp-label">① Who are you telling the story to?</div>
+      <div class="pill-row" id="sel-story"></div>
+
+      <div class="cp-label">② Their stories · five below</div>
+    </div>
+    <div id="story-output"></div>
+  </section>
+
+  <!-- structure -->
+  <section class="dark-black reveal">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><b>01</b> — Anatomy of a sales story</div>
+        <h2>Four beats, <em>one ask</em></h2>
+        <p>Every story in this page follows the same spine. Keep the beats tight and the ask soft — the story does the persuading.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card"><span class="badge grad">01</span><h3 style="margin-top:12px">Situation</h3><p class="small-note">Set the scene in one sentence. Name the peer's world: "A {industry} org your size..." Not their name, not their company.</p></div>
+        <div class="card"><span class="badge grad">02</span><h3 style="margin-top:12px">Struggle</h3><p class="small-note">The honest problem — the one that mirrors theirs. Struggle is what creates the listener's "that's me" moment.</p></div>
+        <div class="card"><span class="badge grad">03</span><h3 style="margin-top:12px">Shift</h3><p class="small-note">What changed. One action, one tool, one decision. Avoid a feature list — describe the before/after, not the packaging.</p></div>
+        <div class="card"><span class="badge grad">04</span><h3 style="margin-top:12px">Success + Ask</h3><p class="small-note">The measured outcome, then a question that hands the story to them: "Sound familiar? What's that costing you now?"</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- delivery rules -->
+  <section class="bone reveal">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><b>02</b> — Delivery</div>
+        <h2>How to tell it <em>without turning it into a pitch</em></h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card"><h3>45–90 seconds</h3><p class="small-note">Long enough to land, short enough to leave them wanting the detail. If it runs longer, cut the middle, keep the before/after.</p></div>
+        <div class="card"><h3>One concrete number</h3><p class="small-note">Completion climbed, attrition dropped, the launch shipped — one number beats five adjectives. Stats support the story; they don't replace it.</p></div>
+        <div class="card"><h3>End with their mirror</h3><p class="small-note">The last line is never about us. It's a question that pulls their version of the story out. Then listen — the next objection or need is usually inside their answer.</p></div>
+      </div>
+      <div class="callout" style="margin-top:24px">
+        <b>Confidentiality rule:</b> anonymize always — "a {industry} org," "a CTO we worked with," "a peer of yours." If you can name a client with permission, the story gets stronger; without it, the anonymized version is the only version that exists.
+      </div>
+    </div>
+  </section>
+
+  <!-- placeholders -->
+  <section class="reveal">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><b>03</b> — Personalize</div>
+        <h2>Swap the placeholders before you tell it</h2>
+      </div>
+      <div class="wrap-tbl">
+        <table class="tbl">
+          <thead><tr><th>Token</th><th>Replace with</th></tr></thead>
+          <tbody id="placeholder-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-mark">N</span><span>NetCom Learning<small>Overview · SDR Toolkit</small></span></a>
+      </div>
+      <div>
+        <h4>Toolkit</h4>
+        <a href="sdr-qualifier.html">SDR Qualifier</a>
+        <a href="voicemail-scripts.html">Voicemail Scripts</a>
+        <a href="emails.html">Email Templates</a>
+        <a href="stories.html">Stories</a>
+        <a href="index.html">Company Overview</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="assets/sdr-industries.js"></script>
+<script src="assets/sdr-levels.js"></script>
+<script src="assets/sdr-vms.js"></script>
+<script src="assets/sdr-emails.js"></script>
+<script src="assets/sdr-stories.js"></script>
+<script src="assets/sdr-objections.js"></script>
+<script src="assets/sdr-bant-cxvp.js"></script>
+<script src="assets/sdr-bant-dirmgr.js"></script>
+<script src="assets/sdr-bant-icldo.js"></script>
+<script src="assets/sdr-objections-extra.js"></script>
+<script src="assets/sdr-data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -170,5 +170,91 @@ window.SDR_VMS = {
       tag: 'VM 10 · Windshield / keep the door open',
       text: function () { return 'Hi {Name}, {Your Name} closing the loop. When the team needs certs without the chaos, we’re a twenty-second call away at {Phone}.\n\nTake care.'; }
     }
+  ],
+
+  ic: [
+    {
+      tag: 'VM 01 · First contact — career angle',
+      text: function () { return 'Hi {Name}, {Your Name} from NetCom Learning. Quick one — I help IT professionals get certified on {Tool} in a few weeks without burning their evenings, and the cert usually moves pay or the next role.\n\n15 minutes to see the path that fits your schedule? My number is {Phone}.'; }
+    },
+    {
+      tag: 'VM 02 · The exam-window push',
+      text: function () { return 'Hi {Name}, {Your Name}. If you’re aiming at {CertName}, the exam window matters more than study time — most people never book the date. I can set you on a prep path that ends exam-ready and actually fits your week.\n\nIf that helps, {Phone}.'; }
+    },
+    {
+      tag: 'VM 03 · Referral / warm intro',
+      text: function () { return 'Hi {Name}, {Your Name} at NetCom Learning — {Referrer} mentioned you were thinking about {CertName}. I put a few people through that exact cert every week.\n\nWorth 15 minutes to map your timeline? Call {Phone}.'; }
+    },
+    {
+      tag: 'VM 04 · Tuition benefit trigger',
+      text: function () { return 'Hi {Name}, {Your Name}. Before your employer benefit dollars roll over — most people leave tuition credits on the table because nobody plans the course. If you have learning or tuition credits, I can have {CertName} fit inside them.\n\nCurious? {Phone}.'; }
+    },
+    {
+      tag: 'VM 05 · Promotion timing',
+      text: function () { return 'Hi {Name}, {Your Name} with NetCom Learning. If your review cycle is coming up, a cert in hand answers the “what have you done lately” question for you.\n\nI can get you exam-ready before it lands. Fifteen minutes to check the dates? Call {Phone}.'; }
+    },
+    {
+      tag: 'VM 06 · The no-evenings guarantee',
+      text: function () { return 'Hi {Name}, {Your Name}. The reason people stall on {CertName} isn’t ability — it’s that classroom training eats evenings. Ours is virtual and self-paced, so it wraps around your work week, not instead of it.\n\nIf that’s the difference for you, {Phone}.'; }
+    },
+    {
+      tag: 'VM 07 · Re-engagement',
+      text: function () { return 'Hi {Name}, {Your Name} — we spoke a few weeks back about {CertName}. I know how easy it is to let it slide. The cert path is still here, and the exam window may be closer than you think.\n\nIf you want to pick it back up, {Phone}.'; }
+    },
+    {
+      tag: 'VM 08 · Peer proof',
+      text: function () { return 'Hi {Name}, {Your Name}. Someone in a very similar seat to yours just passed {CertName} in {Weeks} weeks, studying after work.\n\nIf you want the exact path they used, call {Phone} and it’s yours.'; }
+    },
+    {
+      tag: 'VM 09 · Breakup / last touch',
+      text: function () { return 'Hi {Name}, last voicemail — {Your Name}. If {CertName} isn’t on your radar this year, fair call. The path is saved if that changes.\n\nGood luck with the year. {Phone} if you want it.'; }
+    },
+    {
+      tag: 'VM 10 · Windshield / keep the door open',
+      text: function () { return 'Hi {Name}, {Your Name} closing the loop. When the cert conversation becomes a real plan, I’m one call away at {Phone}.\n\nTake care.'; }
+    }
+  ],
+
+  ldo: [
+    {
+      tag: 'VM 01 · First contact — vendor process',
+      text: function () { return 'Hi {Name}, {Your Name} with NetCom Learning. I’m the vendor who makes your job easier: authorized curriculums, audit-ready reporting, one POC, and contract terms that don’t fight finance.\n\n15 minutes to see the reporting pack before your next vendor review? {Phone}.'; }
+    },
+    {
+      tag: 'VM 02 · Renewal / RFP window',
+      text: function () { return 'Hi {Name}, {Your Name}. If you’ve got a training renewal or RFP cycle opening up, I can get you a comparison pack before the shortlist gets written — same spend, cleaner evidence.\n\nWorth a look? Call {Phone}.'; }
+    },
+    {
+      tag: 'VM 03 · Referral / warm intro',
+      text: function () { return 'Hi {Name}, {Your Name} with NetCom Learning. {Referrer} suggested you run vendor selection for training — and we’ve made that process painless for peers of yours: one contract, one dashboard, evidence that survives a review.\n\n15 minutes? {Phone}.'; }
+    },
+    {
+      tag: 'VM 04 · Audit-evidence trigger',
+      text: function () { return 'Hi {Name}, {Your Name}. Quick check — if an auditor or examiner asked for training evidence tomorrow, how fast could you produce it? Most coordinators tell me that question is the reason they switched vendors.\n\nIf you want to see what a 10-minute answer looks like, {Phone}.'; }
+    },
+    {
+      tag: 'VM 05 · Fiscal close',
+      text: function () { return 'Hi {Name}, {Your Name} from NetCom Learning. With the fiscal year closing, unused training budget evaporates. We can structure a compliant program that lands inside your current window — and reports on it cleanly.\n\n15 minutes to check the fit? {Phone}.'; }
+    },
+    {
+      tag: 'VM 06 · Adoption angle',
+      text: function () { return 'Hi {Name}, {Your Name}. The complaint I hear from L&D ops is never content — it’s adoption. Their vendors report completions nobody believes. We report engagement and exam readiness week one, so your stakeholders actually see movement.\n\nThat worth 15 minutes? Call {Phone}.'; }
+    },
+    {
+      tag: 'VM 07 · Re-engagement',
+      text: function () { return 'Hi {Name}, {Your Name} — we spoke a few weeks back about the training vendor review. If the RFP or renewal is still open, the comparison pack is ready.\n\nIf it moved, no problem — {Phone} whenever.'; }
+    },
+    {
+      tag: 'VM 08 · Approved-vendor angle',
+      text: function () { return 'Hi {Name}, {Your Name}. If you’re working with an approved-vendor list, we’re the provider that makes adding to it simple — the right credentials, contracts and data-handling ticks before you even ask.\n\nWorth a look? {Phone}.'; }
+    },
+    {
+      tag: 'VM 09 · Breakup / last touch',
+      text: function () { return 'Hi {Name}, last voicemail — {Your Name}. If the vendor list is settled for this cycle, I’ll stop calling. The comparison pack stays with you if anything changes.\n\nTake care. {Phone}.'; }
+    },
+    {
+      tag: 'VM 10 · Windshield / keep the door open',
+      text: function () { return 'Hi {Name}, {Your Name} closing the loop. When the next RFP or renewal opens, we’re a twenty-second call away at {Phone}.\n\nTake care.'; }
+    }
   ]
 };

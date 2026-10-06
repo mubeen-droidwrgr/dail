@@ -107,5 +107,77 @@ window.SDR_INDUSTRIES = {
       follow: 'Get me that date and I’ll hold a post-peak slot and price freeze.'
     },
     vmHook: 'I know peak season owns the calendar,'
+  },
+  insurance: {
+    key: 'insurance',
+    label: 'Insurance',
+    angle: 'modernizing underwriting and claims with data and AI while staying defensible with state regulators',
+    tools: 'data/AI tools, actuarial and claims platforms',
+    qualifiers: [
+      'How far along is AI use in underwriting and claims — and who owns its governance?',
+      'Which regulatory reviews or DOI filings are on the calendar this year?',
+      'Where could claims or service cycle time drop fast with better-trained staff?'
+    ],
+    objection: {
+      q: 'Underwriting and claims are heavily regulated — we train internally.',
+      reframe: 'Regulated doesn’t mean static. Regulators increasingly want demonstrable, auditable skill — certificates and completion evidence, not internal PowerPoint. Frame as regulator-proof evidence + capability, not HR training.',
+      resp: 'Totally fair — and regulated industries are exactly where audit-ready evidence wins. We deliver vendor-certified tracks with completion and pass-rate reporting that stands up in an exam or a DOI review, without touching your underwriting standards. If a regulator or an examiner asked today where your claims and underwriting skill depth sits, would you have the answer?',
+      follow: 'If that lands, I’ll map a claims-analytics and AI-governance track to your current filings cycle in one sitting.'
+    },
+    vmHook: 'I know insurance leaders balance AI efficiency with regulatory scrutiny,'
+  },
+  energy: {
+    key: 'energy',
+    label: 'Energy & Utilities',
+    angle: 'hardening OT/ICS and moving to more digital operations without risking uptime or compliance',
+    tools: 'ICS/SCADA security, NERC CIP and grid/plant systems',
+    qualifiers: [
+      'Which NERC CIP or OT security training requirements are on the calendar this year?',
+      'How deep is your OT security bench — operators, controls engineers, security staff?',
+      'Where are you moving to more digital operations, and who needs the skills first?'
+    ],
+    objection: {
+      q: 'We can’t risk uptime — operators can’t leave the plant or the grid to train.',
+      reframe: 'Exactly the point. This runs as audit-mapped, self-paced and shift-aligned training that slots around outages — zero uptime risk, full NERC CIP evidence.',
+      resp: 'Then let’s protect the uptime completely. The program is self-paced and virtual, scheduled around your outage and maintenance windows, and it maps cleanly to NERC CIP and OT security training requirements with exportable evidence. Operators stay at the panel; the compliance box gets checked. Which outage window should we build the schedule around?',
+      follow: 'Get me the outage calendar and I’ll lay the training across it — you’ll see zero uptime risk.'
+    },
+    vmHook: 'I know uptime and NERC CIP deadlines come first for energy teams,'
+  },
+  education: {
+    key: 'education',
+    label: 'Education & EdTech',
+    angle: 'getting faculty and staff AI-ready for instruction while protecting student data under FERPA',
+    tools: 'AI in instruction, FERPA security and LMS platforms',
+    qualifiers: [
+      'How ready are faculty for AI in instruction — and what would “ready” look like by next semester?',
+      'Who owns FERPA and research-security training for staff, and is coverage current?',
+      'Are you drawing on grant or state funds (WIOA, Perkins) that could cover workforce skilling?'
+    ],
+    objection: {
+      q: 'Our faculty train through the institution — and budgets run on grant cycles.',
+      reframe: 'Grant cycles are exactly the strength here: credentialed programs qualify for WIOA/Perkins and state workforce dollars. Position as grant-eligible AI and cyber readiness, not a discretionary line.',
+      resp: 'That works in your favor — credentialed programs like ours qualify under WIOA, Perkins, and state workforce funding, which is how institutions pay without touching general budgets. And we deliver faculty AI and FERPA security training in the inter-term and summer windows so the academic calendar never breaks. Which grant or funding cycle should we align the proposal to?',
+      follow: 'I’ll write the line-item grant mapping first — you can hand it to the grants office as-is.'
+    },
+    vmHook: 'I know schools need AI readiness without gambling on student data,'
+  },
+  profserv: {
+    key: 'profserv',
+    label: 'Professional Services',
+    angle: 'keeping consultant and client teams certifiably current in AI, cloud and data so your bench bills at a premium',
+    tools: 'AI/cloud/data tools and client-facing platforms',
+    qualifiers: [
+      'How much of your billable bench is certified in the AI and cloud skills clients now demand?',
+      'Where do pursuits stall — missing certified depth on the staffing plan or gaps in delivery?',
+      'Is the plan to hire scarce talent, or to certify and upskill the bench you already bill?'
+    ],
+    objection: {
+      q: 'We hire for skills — if the bench needs depth we bring people in.',
+      reframe: 'Hiring velocity rarely matches pipeline velocity. When a pursuit needs certified depth in weeks, upskilling the bench is the only schedule that works. Frame as bench readiness vs the talent market.',
+      resp: 'That works until the pursuit lands faster than the hire can clear. When we staff a large pursuit, the firm that can show certified depth on the bench wins the room — and certifying the team you already bill is usually weeks, not quarters. Which upcoming pursuit or pipeline season should we build the bench for first?',
+      follow: 'I’ll size a bench-certification track against your next big pursuit — one page, ready for the staffing review.'
+    },
+    vmHook: 'I know professional services bill on certified depth,'
   }
 };

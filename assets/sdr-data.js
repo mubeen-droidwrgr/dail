@@ -4,16 +4,25 @@ window.SDR = {
   industries: window.SDR_INDUSTRIES,
   objections: window.SDR_OBJECTIONS,
   emails: window.SDR_EMAILS,
-  levelOrder: ['cx', 'vp', 'dir', 'mgr'],
-  industryOrder: ['tech', 'healthcare', 'banking', 'gov', 'manufacturing', 'retail'],
+  stories: window.SDR_STORIES,
+  levelOrder: ['cx', 'vp', 'dir', 'mgr', 'ic', 'ldo'],
+  industryOrder: ['tech', 'healthcare', 'banking', 'gov', 'manufacturing', 'retail', 'insurance', 'energy', 'education', 'profserv'],
   bantOrder: ['B', 'A', 'N', 'T'],
 
-  /* attach the 10-script voicemail sets to each level */
+  /* attach voicemail sets, per-industry BANT and extra level responses to each level */
   init: function () {
     var vms = window.SDR_VMS || {};
     for (var k in vms) {
       if (window.SDR_LEVELS[k]) window.SDR_LEVELS[k].vos = vms[k];
     }
+    var bant = window.SDR_BANT || {};
+    for (var b in bant) {
+      if (window.SDR_LEVELS[b]) window.SDR_LEVELS[b].bant = bant[b];
+    }
+    var extra = window.SDR_OBJ_EXTRA || [];
+    (this.objections || []).forEach(function (o, i) {
+      if (extra[i]) { o.resp.ic = extra[i].ic; o.resp.ldo = extra[i].ldo; }
+    });
   },
 
   /* pick top objections for a playbook: industry objection + 2 high-frequency global ones */

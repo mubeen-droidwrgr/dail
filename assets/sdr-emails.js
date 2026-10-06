@@ -210,5 +210,111 @@ window.SDR_EMAILS = {
       subject: 'A 10-minute team readiness check',
       body: 'Hi {Name},\n\nLow-effort idea: a short self-assessment your team fills out whenever they have 10 minutes — skill level per tool, cert readiness, confidence gaps.\n\nThe output is a one-page scorecard you can take to your manager for approval or use to schedule training where it’s actually needed.\n\nWant me to send the template? Reply and it’s yours today.\n\n{Your Name}'
     }
+  ],
+
+  ic: [
+    {
+      tag: 'Email 01 · First contact — career angle',
+      subject: '{CertName} — faster than you think',
+      body: 'Hi {Name},\n\nQuick one: I help IT professionals get certified on {CertName} without burning their evenings — virtual and self-paced modules that wrap around the work week.\n\nThe cert typically lands a raise, a promotion, or the next role. Most people like you are exam-ready within {Weeks} weeks.\n\nCan I send the path that fits your exact schedule? Fifteen-minute read, no follow-up spam.\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 02 · The exam-window push',
+      subject: 're: {CertName} — have you booked the date?',
+      body: 'Hi {Name},\n\nFollowing up on the voicemail. The thing that stalls most people on {CertName} isn’t study time — it’s that the exam date never gets booked.\n\nWe set a prep path that ends exactly when you’re ready for the window: study plan, practice exams, and the instructor who keeps you honest.\n\nDo you have a target exam month yet?\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 03 · Referral intro',
+      subject: '{Referrer} mentioned you’re eyeing {CertName}',
+      body: 'Hi {Name},\n\n{Referrer} said you’ve been thinking about {CertName}. I put a few people through that exact cert every week.\n\nIt’s a straightforward path if you know the order — labs, practice exams, then the real thing. Happy to send the exact roadmap that works for your timeline.\n\nWorth a look?\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 04 · Tuition benefit trigger',
+      subject: 'Don’t leave tuition credits on the table',
+      body: 'Hi {Name},\n\nBefore employer learning benefits roll over: most people leave tuition or training credits unused because nobody plans the course in time.\n\nIf you have a learning allowance, I can fit {CertName} inside it — often before the fiscal year closes.\n\nWant me to check what your benefit would cover? Reply with your provider and I’ll map it.\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 05 · Promotion timing',
+      subject: 'Your review is coming — a cert lands first',
+      body: 'Hi {Name},\n\nIf your review or promotion cycle is coming up, a cert in hand answers the “what have you done lately” question for you.\n\nWe run prep paths that finish before review season, so you walk in with {CertName} — not a plan to get it.\n\nWant the timeline that lands before yours?\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 06 · The no-evenings guarantee',
+      subject: 'Study without the evenings',
+      body: 'Hi {Name},\n\nMost people stall on {CertName} because classroom training eats evenings and weekends.\n\nOurs is instructor-led, virtual, and self-paced — so it slots around your work week instead of replacing it.\n\nWhich format fits your week better: live classes or fully self-paced?\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 07 · Re-engagement',
+      subject: 'That {CertName} conversation',
+      body: 'Hi {Name},\n\nWe spoke a few weeks back about {CertName} — and I know exactly how easy it is to let it slide.\n\nThe path still exists, and the exam window is probably closer than you think. If you want to pick it back up, I’ll re-send the roadmap; if not, no further emails.\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 08 · Peer proof',
+      subject: 'They passed in {Weeks} weeks',
+      body: 'Hi {Name},\n\nSomeone in a very similar seat to yours passed {CertName} in {Weeks} weeks, studying around their schedule.\n\nHere’s the exact path they used — same labs, same practice-exam order, same pacing.\n\nIt’s an honest read. If it looks doable, we book your window next.\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 09 · Breakup / last touch',
+      subject: 'Closing the loop',
+      body: 'Hi {Name},\n\nLast email from me.\n\nIf {CertName} isn’t on your radar this year, that’s a fair call — no hard feelings. The path is saved.\n\nGood luck with the year. If that changes, I’m one reply away.\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 10 · Cert decision helper',
+      subject: 'Not sure which cert? Send me your role',
+      body: 'Hi {Name},\n\nIf you’re not sure which cert actually moves your career, don’t pick based on hype.\n\nReply with your role and the tool you work with most — I’ll send back the two or three certs that pay off fastest for someone in that seat, with a realistic timeline for each.\n\nTakes one line from you.\n\n{Your Name}'
+    }
+  ],
+
+  ldo: [
+    {
+      tag: 'Email 01 · First contact — vendor process',
+      subject: 'The vendor that makes your RFP easy',
+      body: 'Hi {Name},\n\nI’m the training vendor who makes your job simpler: authorized curriculums, audit-ready reporting, one POC, and contract terms that don’t fight finance.\n\nAttached is the reporting pack your peers compare us against — completion, pass rates and cert status in one export.\n\nIf it looks like shortlist material, 15 minutes and I’ll tailor the pricing table to your contract model.\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 02 · Renewal / RFP window',
+      subject: 'Before the shortlist gets written',
+      body: 'Hi {Name},\n\nIf a training renewal or RFP cycle is opening, here’s a comparison pack before the shortlist gets written: same spend, cleaner evidence, one contract model.\n\nIt’s a two-page read. If it holds up, we can structure the response to fit your exact procurement milestones.\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 03 · Referral intro',
+      subject: '{Referrer} said you run vendor selection',
+      body: 'Hi {Name},\n\n{Referrer} mentioned you oversee vendor selection for training. Peers in that seat use us because we remove the two things they hate: messy contracts and reporting nobody believes.\n\nOne POC. One dashboard. Evidence that survives a review.\n\nCan I send the sample dashboard?\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 04 · Audit-evidence trigger',
+      subject: 'If an auditor asked today — how fast?',
+      body: 'Hi {Name},\n\nQuick check: if an auditor or examiner asked for training evidence tomorrow, how fast could you produce it?\n\nMost coordinators tell us that exact question is why they switched vendors. Our reporting exports in minutes — who trained, on what, pass or fail, cert status.\n\nWant a sample of that export?\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 05 · Fiscal close',
+      subject: 'Training budget evaporates at close',
+      body: 'Hi {Name},\n\nAs the fiscal year closes, unused training budget evaporates — and rejustifying it next year is its own project.\n\nWe can structure a compliant program inside your current window, with reporting that shows exactly what the budget bought.\n\nShould I price a version that fits what’s left in the line?\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 06 · Adoption angle',
+      subject: 'Completions your stakeholders will believe',
+      body: 'Hi {Name},\n\nThe complaint from L&D ops is never content — it’s adoption. Vendors report completions nobody believes.\n\nWe report engagement and exam readiness from week one, so your stakeholders see movement before anyone has to ask.\n\nThat’s the dashboard most coordinators end up forwarding upstairs. Want to see it?\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 07 · Re-engagement',
+      subject: 'Still in the vendor review?',
+      body: 'Hi {Name},\n\nWe spoke a few weeks back about the training vendor review. If the RFP or renewal is still open, the comparison pack is ready to go.\n\nIf the decision moved, no problem — I’ll leave you to it. One reply either way and I’ll stay off your inbox.\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 08 · Approved-vendor angle',
+      subject: 'Adding a vendor without the runaround',
+      body: 'Hi {Name},\n\nIf you work with an approved-vendor list, we’re the provider that makes adding to it straightforward: the right credentials, contract language, and data-handling ticks before you even ask.\n\nI can send the exact add-on materials our coordinators use — W-9, SOC-type reporting, curriculum catalog, the works.\n\nWant them?\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 09 · Breakup / last touch',
+      subject: 'Closing the loop',
+      body: 'Hi {Name},\n\nLast email from me.\n\nIf the vendor list is settled for this cycle, I’ll stop reaching out. The comparison pack stays with you if anything changes.\n\nThanks for the time.\n\n{Your Name}'
+    },
+    {
+      tag: 'Email 10 · Evidence-first pitch',
+      subject: 'The evidence pack, before the pitch',
+      body: 'Hi {Name},\n\nInstead of a pitch, here’s the evidence first: a sample completion dashboard, a cert-coverage export, and a one-page contract model.\n\nEverything your review process asks about is in those three documents. If they hold up, we talk. If they don’t, you’ve lost ten minutes.\n\nFair?\n\n{Your Name}'
+    }
   ]
 };

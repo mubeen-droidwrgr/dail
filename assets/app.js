@@ -106,7 +106,7 @@
 
     function bantItems() {
       return SDR.bantOrder.map(function (letter) {
-        var qs = lv.bant[letter] || [];
+        var qs = (lv.bant[ik] && lv.bant[ik][letter]) || [];
         return qs.map(function (q) {
           return '<div class="q-item"><span class="badge ' + letter.toLowerCase() + '">' + letter + '</span><div><span class="q-txt">' + esc(q) + '</span></div></div>';
         }).join('');
@@ -117,8 +117,8 @@
         return '<div class="q-item"><span class="badge grad">Industry</span><div><span class="q-txt">' + esc(q) + '</span></div></div>';
       }).join('');
     }
-    function countBant(lv) {
-      var n = 0; SDR.bantOrder.forEach(function (L) { n += (lv.bant[L] || []).length; }); return n;
+    function countBant(lv, ik) {
+      var n = 0; SDR.bantOrder.forEach(function (L) { n += ((lv.bant[ik] && lv.bant[ik][L]) || []).length; }); return n;
     }
 
     var vmText = lv.vos && lv.vos[0] ? lv.vos[0].text(ind) : '';
@@ -147,7 +147,7 @@
       '</div>' +
 
       '<div class="pb-section open">' +
-        '<div class="pb-head" data-toggle><h3>Qualify with BANT · ' + countBant(lv) + ' questions tuned to ' + esc(lv.label) + '</h3><span class="chev">▾</span></div>' +
+        '<div class="pb-head" data-toggle><h3>Qualify with BANT · ' + countBant(lv, ik) + ' questions tuned to ' + esc(lv.label) + ' in ' + esc(ind.label) + '</h3><span class="chev">▾</span></div>' +
         '<div class="pb-body">' +
           bantItems() +
           (ind.qualifiers && ind.qualifiers.length ? '<div style="margin-top:14px"><span class="badge grad" style="margin-bottom:8px">' + esc(ind.label) + ' · must-ask</span>' + indItems() + '</div>' : '') +
@@ -186,8 +186,8 @@
       var parts = [];
       parts.push('OPENING CALL — ' + lv.label + ' / ' + ind.label);
       parts.push(lv.vos[0] ? lv.vos[0].text(ind) : vmOpener(lv, ind));
-      parts.push(''); parts.push('QUALIFYING (BANT — ' + countBant(lv) + ')');
-      SDR.bantOrder.forEach(function (L) { (lv.bant[L] || []).forEach(function (q) { parts.push(L + ': ' + q); }); });
+      parts.push(''); parts.push('QUALIFYING (BANT — ' + countBant(lv, ik) + ')');
+      SDR.bantOrder.forEach(function (L) { ((lv.bant[ik] && lv.bant[ik][L]) || []).forEach(function (q) { parts.push(L + ': ' + q); }); });
       (ind.qualifiers || []).forEach(function (q) { parts.push('IND: ' + q); });
       parts.push(''); parts.push('OBJECTIONS');
       SDR.playbookObjections(ind, lk).forEach(function (o) { parts.push(o.label + ' → ' + o.resp); });
@@ -287,6 +287,27 @@
   }
 
   /* =========================================================
+     Stories page (stories.html) — customer stories per level
+     ========================================================= */
+  function renderStories() {
+    var lk = activePill('sel-story');
+    var set = SDR.stories[lk];
+    if (!set) return;
+    var out = el('story-output'); if (!out) return;
+    var cards = set.map(function (st, idx) {
+      var rid = 'story-src-' + idx;
+      return '<div class="story-tile">' +
+        '<div class="story-tag">' + esc(st.tag) + '</div>' +
+        '<h3>' + esc(st.title) + '</h3>' +
+        '<div class="script-block" id="' + rid + '">' + nl(st.story) + '</div>' +
+        '<div class="story-when"><span class="story-when-label">When to tell it</span>' + esc(st.when) + '</div>' +
+        '<button type="button" class="btn copy small" data-copy-target="' + rid + '">Copy story</button>' +
+      '</div>';
+    }).join('');
+    out.innerHTML = '<div class="grid grid-2">' + cards + '</div>';
+  }
+
+  /* =========================================================
      Full objection library (reference)
      ========================================================= */
   function renderObjections() {
@@ -343,6 +364,10 @@
     if (el('sel-email')) {
       initPills('sel-email', levelPillItems(), renderEmails);
       renderEmails();
+    }
+    if (el('sel-story')) {
+      initPills('sel-story', levelPillItems(), renderStories);
+      renderStories();
     }
     renderObjections();
     renderPlaceholders();

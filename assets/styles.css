@@ -338,6 +338,14 @@ nav{
 .email-body{font-size:14.5px;line-height:1.8;color:rgba(255,255,255,.88);white-space:pre-line}
 .email-body a{color:var(--emerald)}
 
+/* ---------- stories page ---------- */
+.story-tile{border:1px solid var(--stroke);border-radius:var(--radius-organic);background:rgba(255,255,255,.03);padding:26px;position:relative;display:flex;flex-direction:column}
+.story-tile .story-tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--emerald);font-weight:700;margin-bottom:10px}
+.story-tile h3{font-family:var(--font-display);font-size:1.5rem;line-height:1.2;margin-bottom:4px}
+.story-tile .script-block{flex:1}
+.story-when{font-size:13px;color:var(--muted);border-left:3px solid var(--emerald-deep);padding:4px 0 4px 14px;margin:14px 0 2px}
+.story-when-label{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:4px}
+
 /* ---------- callouts / misc ---------- */
 .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);margin:0}
 .callout{
