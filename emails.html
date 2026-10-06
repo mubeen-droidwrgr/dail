@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Templates — SDR Toolkit | NetCom Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@400;500;600;700&family=Inter:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">N</span>
+      <span>NetCom Learning<small>Overview · SDR Toolkit</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Company Overview</a>
+      <a href="sdr-qualifier.html">SDR Qualifier</a>
+      <a href="voicemail-scripts.html">Voicemail Scripts</a>
+      <a href="emails.html" class="active">Email Templates</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:44px">
+  <div class="container">
+    <div class="eyebrow">SDR enablement toolkit</div>
+    <h1>Emails that earn <em>the reply</em> — ten templates per level, no filler.</h1>
+    <p class="lede">Pick the decision-maker level and get ten non-generic templates each — cold outreach, voicemail replay, referrals, news triggers, quarter-end, re-engagement and the graceful exit. Every one has a subject line tuned to how that buyer's inbox works and a single, easy-to-act-on call to action. Swap the <b class="hl">{placeholders}</b> below the set and they're ready to send.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section style="padding-top:8px" class="reveal">
+    <div class="control-panel">
+      <div class="cp-label">① Who is the recipient?</div>
+      <div class="pill-row" id="sel-email"></div>
+
+      <div class="cp-label">② Their templates · ten below</div>
+    </div>
+    <div id="email-output"></div>
+  </section>
+
+  <!-- etiquette -->
+  <section class="dark-black reveal">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><b>01</b> — Before you send</div>
+        <h2>Email etiquette that <em>protects your reply rate</em></h2>
+        <p>These templates do the heavy lifting, but sender behavior decides deliverability. Keep the list short and honest.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card"><span class="badge grad">01</span><h3 style="margin-top:12px">Speed over volume</h3><p class="small-note">Send inside 24h of the touch that triggers the email — the voicemail is still warm. A perfect email tomorrow loses to a good one today.</p></div>
+        <div class="card"><span class="badge grad">02</span><h3 style="margin-top:12px">One ask per email</h3><p class="small-note">From addresses that sound like a human, a signature with a real phone number. "Reply and I'll take it from there" beats "visit our site."</p></div>
+        <div class="card"><span class="badge grad">03</span><h3 style="margin-top:12px">Send like a peer</h3><p class="small-note">Tuesday–Thursday, early morning or early afternoon, local time. Avoid Monday 9am inbox floods and Friday pre-weekend graveyards.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- subject line craft -->
+  <section class="bone reveal">
+    <div class="container">
+      <div class="section-head center">
+        <div class="eyebrow"><b>02</b> — Subject lines that survive the inbox</div>
+        <h2>Write like you're texting — <em>not announcing</em></h2>
+      </div>
+      <div class="grid grid-4">
+        <div class="card"><h3>≤ 8 words</h3><p class="small-note">Mobile and preview panes truncate around 30–50 characters. Lead with their interest, not your company name.</p></div>
+        <div class="card"><h3>One concrete thing</h3><p class="small-note">A number, a deadline, their news. "On {Company}'s AI rollout" beats "Training solutions intro."</p></div>
+        <div class="card"><h3>No spam words</h3><p class="small-note">Free, guarantee, 50% off, urgent — they poison deliverability and get skimmed as noise.</p></div>
+        <div class="card"><h3>Lowercase energy</h3><p class="small-note">Sentence case reads human. ALL CAPS reads invoice; "FW: FW: RE:" reads someone who never leaves.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- placeholders -->
+  <section class="reveal">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow"><b>03</b> — Personalize</div>
+        <h2>Swap the placeholders before you send</h2>
+      </div>
+      <div class="wrap-tbl">
+        <table class="tbl">
+          <thead><tr><th>Token</th><th>Replace with</th></tr></thead>
+          <tbody id="placeholder-table"></tbody>
+        </table>
+      </div>
+      <div class="callout" style="margin-top:18px">
+        <b>Personalization is evidence, not decoration.</b> Reference something real — their recent post, a mutual connection, a live initiative — inside the first two lines. Templates open doors; specifics make the recipient feel seen enough to reply.
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-mark">N</span><span>NetCom Learning<small>Overview · SDR Toolkit</small></span></a>
+      </div>
+      <div>
+        <h4>Toolkit</h4>
+        <a href="sdr-qualifier.html">SDR Qualifier</a>
+        <a href="voicemail-scripts.html">Voicemail Scripts</a>
+        <a href="emails.html">Email Templates</a>
+        <a href="index.html">Company Overview</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="assets/sdr-industries.js"></script>
+<script src="assets/sdr-levels.js"></script>
+<script src="assets/sdr-vms.js"></script>
+<script src="assets/sdr-emails.js"></script>
+<script src="assets/sdr-objections.js"></script>
+<script src="assets/sdr-data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
