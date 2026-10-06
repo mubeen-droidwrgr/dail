@@ -65,6 +65,31 @@
   function programPillItems() {
     return SDR.programOrder.map(function (k) { return { key: k, label: SDR.programs[k].label }; });
   }
+  function subtopicPillItems(pk) {
+    var prog = SDR.programs[pk];
+    if (!prog || pk === 'any' || !prog.subs) return [];
+    var items = [{ key: 'general', label: prog.label + ' · whole suite' }];
+    (prog.subsOrder || []).forEach(function (k) {
+      if (prog.subs[k]) items.push({ key: k, label: prog.subs[k].label });
+    });
+    return items;
+  }
+  /* subtopic row repopulates whenever the program changes; hidden for 'any' */
+  function populateSubtopics(progRowId, subRowId, onChange) {
+    var box = el(subRowId); if (!box) return;
+    var pk = activePill(progRowId);
+    var items = subtopicPillItems(pk);
+    if (!items.length) { box.style.display = 'none'; box.innerHTML = ''; return; }
+    box.style.display = '';
+    initPills(subRowId, items, onChange);
+  }
+  function bindProgramRow(progRowId, subRowId, render) {
+    initPills(progRowId, programPillItems(), function () {
+      populateSubtopics(progRowId, subRowId, render);
+      render();
+    });
+    populateSubtopics(progRowId, subRowId, render);
+  }
   function storyIndPillItems() {
     return SDR.industryOrder.filter(function (k) { return SDR.storyInd[k]; })
       .map(function (k) { return { key: k, label: SDR.industries[k].label }; });
@@ -106,6 +131,8 @@
     var lv = SDR.levels[lk], ind = SDR.industries[ik];
     var prog = SDR.programs[pk];
     var progOn = prog && pk !== 'any';
+    var sk = activePill('sel-subtopic');
+    var sub = progOn && sk && sk !== 'general' && prog.subs ? prog.subs[sk] : null;
     if (!lv || !ind) return;
 
     var pb = el('playbook'); if (!pb) return;
@@ -133,10 +160,12 @@
       }).join('');
     }
     function progItems() {
+      var src = sub ? sub.bant : prog.bant;
+      var label = sub ? sub.label : prog.label;
       return SDR.bantOrder.map(function (letter) {
-        var qs = (prog.bant && prog.bant[letter]) || [];
+        var qs = (src && src[letter]) || [];
         return qs.map(function (q) {
-          return '<div class="q-item"><span class="badge ' + letter.toLowerCase() + '">' + letter + ' · ' + esc(prog.label) + '</span><div><span class="q-txt">' + esc(q) + '</span></div></div>';
+          return '<div class="q-item"><span class="badge ' + letter.toLowerCase() + '">' + letter + ' · ' + esc(label) + '</span><div><span class="q-txt">' + esc(q) + '</span></div></div>';
         }).join('');
       }).join('');
     }
@@ -144,6 +173,12 @@
       var n = 0; SDR.bantOrder.forEach(function (L) { n += ((lv.bant[ik] && lv.bant[ik][L]) || []).length; }); return n;
     }
     var totalBant = countBant(lv, ik) + (progOn ? 4 : 0);
+    var progTierLabel = sub ? sub.label : (progOn ? prog.label : '');
+    var cHook = sub ? sub.hook : (progOn ? prog.hook : '');
+    var cBridge = sub ? sub.bridge : (progOn ? prog.bridge : '');
+    var cStake = sub ? sub.stake : (progOn ? prog.stake : '');
+    var cTitle = progOn ? (prog.label + (sub ? ' · ' + sub.label : '')) : '';
+    var cLevelLine = sub && sub.byLevel && sub.byLevel[lk] ? sub.byLevel[lk] : '';
 
     var vmText = lv.vos && lv.vos[0] ? lv.vos[0].text(ind) : '';
 
@@ -171,26 +206,27 @@
       '</div>' +
 
       '<div class="pb-section open">' +
-        '<div class="pb-head" data-toggle><h3>Qualify with BANT · ' + totalBant + ' questions tuned to ' + esc(lv.label) + ' in ' + esc(ind.label) + (progOn ? ' · ' + esc(prog.label) : '') + '</h3><span class="chev">▾</span></div>' +
+        '<div class="pb-head" data-toggle><h3>Qualify with BANT · ' + totalBant + ' questions tuned to ' + esc(lv.label) + ' in ' + esc(ind.label) + (progOn ? ' · ' + esc(prog.label) + (sub ? ' · ' + esc(sub.label) : '') : '') + '</h3><span class="chev">▾</span></div>' +
         '<div class="pb-body">' +
           bantItems() +
           (ind.qualifiers && ind.qualifiers.length ? '<div style="margin-top:14px"><span class="badge grad" style="margin-bottom:8px">' + esc(ind.label) + ' · must-ask</span>' + indItems() + '</div>' : '') +
-          (progOn ? '<div style="margin-top:14px"><span class="badge grad" style="margin-bottom:8px">' + esc(prog.label) + ' · program must-ask</span>' + progItems() + '</div>' : '') +
-          '<p class="small-note" style="margin-top:12px">Rule: ask 3–4, never all in a row. Confirm need &amp; timeline first; save budget/authority for after you’ve built value. The ' + (progOn ? esc(prog.label) : 'program') + ' must-asks pin the conversation to the vendor lane.</p>' +
+          (progOn ? '<div style="margin-top:14px"><span class="badge grad" style="margin-bottom:8px">' + esc(progTierLabel) + ' · must-ask</span>' + progItems() + '</div>' : '') +
+          '<p class="small-note" style="margin-top:12px">Rule: ask 3–4, never all in a row. Confirm need &amp; timeline first; save budget/authority for after you’ve built value. The ' + (progOn ? esc(progTierLabel) : 'program') + ' must-asks pin the conversation to the vendor lane.</p>' +
         '</div>' +
       '</div>' +
 
       (progOn ? '<div class="pb-section open">' +
-        '<div class="pb-head" data-toggle><h3>The ' + esc(prog.label) + ' conversation · leverage what NetCom already has with the vendor</h3><span class="chev">▾</span></div>' +
+        '<div class="pb-head" data-toggle><h3>The ' + esc(cTitle) + ' conversation · leverage what NetCom already has with the vendor</h3><span class="chev">▾</span></div>' +
         '<div class="pb-body">' +
           '<div class="resp" style="border-left-color:var(--emerald)"><b>Given our past relationship:</b> ' + esc(prog.relation) + '</div>' +
-          '<div class="script-block" style="margin-top:12px" id="pb-prog-hook"><span class="who">The hook · why now</span>' + esc(prog.hook) + '</div>' +
+          '<div class="script-block" style="margin-top:12px" id="pb-prog-hook"><span class="who">The hook · why now</span>' + esc(cHook) + '</div>' +
           '<button type="button" class="btn copy small" data-copy-target="pb-prog-hook">Copy the hook</button>' +
-          '<div class="script-block" style="margin-top:12px" id="pb-prog-bridge"><span class="who">The bridge · first discovery question</span>' + esc(prog.bridge) + '</div>' +
+          '<div class="script-block" style="margin-top:12px" id="pb-prog-bridge"><span class="who">The bridge · first discovery question</span>' + esc(cBridge) + '</div>' +
           '<button type="button" class="btn copy small" data-copy-target="pb-prog-bridge">Copy the bridge</button>' +
-          '<div class="script-block" style="margin-top:12px" id="pb-prog-stake"><span class="who">The stakes · cost of waiting</span>' + esc(prog.stake) + '</div>' +
+          '<div class="script-block" style="margin-top:12px" id="pb-prog-stake"><span class="who">The stakes · cost of waiting</span>' + esc(cStake) + '</div>' +
           '<button type="button" class="btn copy small" data-copy-target="pb-prog-stake">Copy the stakes</button>' +
-          '<p class="small-note" style="margin-top:12px">Order for the call: hook → relationship drop → bridge → pick the letter of BANT it opens → ask. The relationship line lands hardest in the first 60 seconds for ' + esc(lv.label) + '.</p>' +
+          (cLevelLine ? '<div class="resp" style="border-left-color:#22d3ee;margin-top:12px" id="pb-prog-level"><b>How to play it for ' + esc(lv.label) + ':</b> ' + esc(cLevelLine) + '</div><button type="button" class="btn copy small" data-copy-target="pb-prog-level">Copy the ' + esc(lv.label) + ' angle</button>' : '') +
+          '<p class="small-note" style="margin-top:12px">Order for the call: hook → relationship drop → bridge → pick the letter of BANT it opens → ask. The relationship line lands hardest in the first 60 seconds for ' + esc(lv.label) + (sub ? ', and the subtopic angle above tunes it to exactly who you are speaking to.' : '') + '</p>' +
         '</div>' +
       '</div>' : '') +
 
@@ -223,19 +259,24 @@
     var fullBtn = el('copy-playbook');
     if (fullBtn) {
       var parts = [];
-      parts.push('OPENING CALL — ' + lv.label + ' / ' + ind.label + (progOn ? ' / ' + prog.label : ''));
+      parts.push('OPENING CALL — ' + lv.label + ' / ' + ind.label + (progOn ? ' / ' + prog.label + (sub ? ' / ' + sub.label : '') : ''));
       parts.push(lv.vos[0] ? lv.vos[0].text(ind) : vmOpener(lv, ind));
       if (progOn) {
-        parts.push(''); parts.push('PROGRAM — ' + prog.label);
+        parts.push(''); parts.push('PROGRAM — ' + (sub ? prog.label + ' · ' + sub.label : prog.label));
         parts.push('PAST RELATIONSHIP: ' + prog.relation);
-        parts.push('HOOK: ' + prog.hook);
-        parts.push('BRIDGE: ' + prog.bridge);
-        parts.push('STAKES: ' + prog.stake);
+        parts.push('HOOK: ' + cHook);
+        parts.push('BRIDGE: ' + cBridge);
+        parts.push('STAKES: ' + cStake);
+        if (cLevelLine) parts.push('ANGLE FOR ' + lv.label.toUpperCase() + ': ' + cLevelLine);
       }
       parts.push(''); parts.push('QUALIFYING (BANT — ' + totalBant + ')');
       SDR.bantOrder.forEach(function (L) { ((lv.bant[ik] && lv.bant[ik][L]) || []).forEach(function (q) { parts.push(L + ': ' + q); }); });
       (ind.qualifiers || []).forEach(function (q) { parts.push('IND: ' + q); });
-      if (progOn) SDR.bantOrder.forEach(function (L) { (prog.bant[L] || []).forEach(function (q) { parts.push(L + ' (' + prog.label + '): ' + q); }); });
+      if (progOn) {
+        var bsrc = sub ? sub.bant : prog.bant;
+        var ll = sub ? sub.label : prog.label;
+        SDR.bantOrder.forEach(function (L) { (bsrc[L] || []).forEach(function (q) { parts.push(L + ' (' + ll + '): ' + q); }); });
+      }
       parts.push(''); parts.push('OBJECTIONS');
       SDR.playbookObjections(ind, lk).forEach(function (o) { parts.push(o.label + ' → ' + o.resp); });
       parts.push(''); parts.push('MEETING ASK');
@@ -473,6 +514,8 @@
     var lv = SDR.levels[lk], ind = SDR.industries[ik], gk = SDR.gk[lk];
     var prog = SDR.programs[pk];
     var progOn = prog && pk !== 'any';
+    var sk = activePill('sel-gk-subtopic');
+    var sub = progOn && sk && sk !== 'general' && prog.subs ? prog.subs[sk] : null;
     if (!lv || !ind || !gk) return;
     var out = el('gk-output'); if (!out) return;
 
@@ -490,16 +533,21 @@
       }).join('');
     }
     function progItems() {
+      var src = sub ? sub.bant : prog.bant;
+      var label = sub ? sub.label : prog.label;
       return SDR.bantOrder.map(function (letter) {
-        var qs = (prog.bant && prog.bant[letter]) || [];
+        var qs = (src && src[letter]) || [];
         return qs.map(function (q) {
-          return '<div class="q-item"><span class="badge ' + letter.toLowerCase() + '">' + letter + ' · ' + esc(prog.label) + '</span><div><span class="q-txt">' + esc(q) + '</span></div></div>';
+          return '<div class="q-item"><span class="badge ' + letter.toLowerCase() + '">' + letter + ' · ' + esc(label) + '</span><div><span class="q-txt">' + esc(q) + '</span></div></div>';
         }).join('');
       }).join('');
     }
     var bantCount = 0;
     SDR.bantOrder.forEach(function (L) { bantCount += ((lv.bant[ik] && lv.bant[ik][L]) || []).length; });
     if (progOn) bantCount += 4;
+    var progTierLabel = sub ? sub.label : (progOn ? prog.label : '');
+    var progTierFull = progOn ? (prog.label + (sub ? ' · ' + sub.label : '')) : '';
+    var cLevelLine = sub && sub.byLevel && sub.byLevel[lk] ? sub.byLevel[lk] : '';
 
     function qa(items) {
       return items.map(function (x) {
@@ -512,7 +560,7 @@
     var screening = qa([
       ['“Who’s calling?”', gk.name],
       ['“What company are you with?”', gk.company],
-      ['“What’s the reason for your call?”', gk.reason(ind) + (progOn ? ' This one is specifically the ' + prog.label + ' track.' : '')],
+      ['“What’s the reason for your call?”', gk.reason(ind) + (progOn ? ' This one is the ' + prog.label + (sub ? ' track — specifically the ' + sub.label + ' lane' : '') + '.' : '')],
       ['“Is this a sales call?”', gk.sales]
     ]);
 
@@ -560,13 +608,14 @@
       '</div>' +
 
       '<div class="pb-section open">' +
-        '<div class="pb-head" data-toggle><h3>Pre-call BANT · ' + bantCount + ' questions queued for the human' + (progOn ? ' · ' + esc(prog.label) : '') + '</h3><span class="chev">▾</span></div>' +
+        '<div class="pb-head" data-toggle><h3>Pre-call BANT · ' + bantCount + ' questions queued for the human' + (progOn ? ' · ' + esc(progTierFull) : '') + '</h3><span class="chev">▾</span></div>' +
         '<div class="pb-body">' +
-          '<p class="small-note">The gate gets you through; then you qualify. These are the questions to run the moment the decision-maker says hello — tuned to ' + esc(lv.label) + ' in ' + esc(ind.label) + (progOn ? ', on the ' + esc(prog.label) + ' track' : '') + '.</p>' +
+          '<p class="small-note">The gate gets you through; then you qualify. These are the questions to run the moment the decision-maker says hello — tuned to ' + esc(lv.label) + ' in ' + esc(ind.label) + (progOn ? ', on the ' + esc(progTierFull) + ' track' : '') + '.</p>' +
           bantItems() +
           (ind.qualifiers && ind.qualifiers.length ? '<div style="margin-top:14px"><span class="badge grad" style="margin-bottom:8px">' + esc(ind.label) + ' · must-ask</span>' + indItems() + '</div>' : '') +
           (progOn ? '<div style="margin-top:14px"><div class="resp" style="border-left-color:#22d3ee"><b>Relationship to drop:</b> ' + esc(prog.relation) + '</div>' +
-            '<div style="margin-top:12px"><span class="badge grad" style="margin-bottom:8px">' + esc(prog.label) + ' · program must-ask</span>' + progItems() + '</div></div>' : '') +
+            (cLevelLine ? '<div class="resp" style="border-left-color:#22d3ee;margin-top:10px"><b>How to play it for ' + esc(lv.label) + ':</b> ' + esc(cLevelLine) + '</div>' : '') +
+            '<div style="margin-top:12px"><span class="badge grad" style="margin-bottom:8px">' + esc(progTierLabel) + ' · must-ask</span>' + progItems() + '</div></div>' : '') +
           '<div class="script-block" style="margin-top:14px" id="gk-ask"><span class="who">The ask</span>' + nl(lv.meeting()) + '</div>' +
           '<button type="button" class="btn copy small" data-copy-target="gk-ask">Copy the ask</button>' +
         '</div>' +
@@ -619,7 +668,7 @@
     if (el('sel-level')) {
       initPills('sel-level', levelPillItems(), renderPlaybook);
       initPills('sel-industry', industryPillItems(), renderPlaybook);
-      if (el('sel-program')) initPills('sel-program', programPillItems(), renderPlaybook);
+      if (el('sel-program')) bindProgramRow('sel-program', 'sel-subtopic', renderPlaybook);
       renderPlaybook();
       renderPersonas();
     }
@@ -647,7 +696,7 @@
     if (el('sel-gk-level')) {
       initPills('sel-gk-level', levelPillItems(), renderGatekeeper);
       initPills('sel-gk-industry', industryPillItems(), renderGatekeeper);
-      if (el('sel-gk-program')) initPills('sel-gk-program', programPillItems(), renderGatekeeper);
+      if (el('sel-gk-program')) bindProgramRow('sel-gk-program', 'sel-gk-subtopic', renderGatekeeper);
       renderGatekeeper();
     }
     var deal = el('drill-deal');

@@ -33,7 +33,7 @@
 <header class="hero" style="padding-bottom:44px">
   <div class="container">
     <h1>The <em>SDR Qualifier</em> — build the right call, before you dial.</h1>
-    <p class="lede">Pick the decision-maker level, the industry, and the program or vendor the call is about — and get a ready-to-use playbook: the opener, BANT qualifying questions, objection handling and the meeting ask — all tuned to how that buyer actually buys. Six levels from <b class="hl">C-Level</b> to <b class="hl">individual contributor</b> and <b class="hl">procurement / L&amp;D ops</b>, across ten industries from tech and healthcare to government, energy and education, with eight vendor programs (Microsoft, AWS, Cisco, Google Cloud, AI CERTs™, ISC2, PMI, CompTIA) that lean on the standing relationship NetCom already has with each. Rules of the game: qualify early, handle objections like a consultant, and leave every call one step closer to the room.</p>
+    <p class="lede">Pick the decision-maker level, the industry, and the program or vendor the call is about — then drill into the subtopic (Microsoft → Power BI or Azure, for example) — and get a ready-to-use playbook: the opener, BANT qualifying questions, objection handling and the meeting ask — all tuned to how that buyer actually buys. Six levels from <b class="hl">C-Level</b> to <b class="hl">individual contributor</b> and <b class="hl">procurement / L&amp;D ops</b>, across ten industries from tech and healthcare to government, energy and education, with eight vendor programs (Microsoft, AWS, Cisco, Google Cloud, AI CERTs™, ISC2, PMI, CompTIA) that lean on the standing relationship NetCom already has with each. Rules of the game: qualify early, handle objections like a consultant, and leave every call one step closer to the room.</p>
   </div>
 </header>
 
@@ -51,7 +51,10 @@
       <div class="cp-label">③ What program / vendor is the topic of the call?</div>
       <div class="pill-row" id="sel-program"></div>
 
-      <div class="cp-label">④ They're qualified · your playbook below</div>
+      <div class="cp-label">④ Which subtopic within the program?</div>
+      <div class="pill-row" id="sel-subtopic"></div>
+
+      <div class="cp-label">⑤ They're qualified · your playbook below</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
         <button type="button" id="copy-playbook" class="btn">Copy the full playbook</button>
         <button type="button" id="print-playbook" class="btn ghost">Print this playbook</button>
@@ -61,7 +64,7 @@
     <div id="playbook" class="playbook"></div>
 
     <div class="drill-box" id="drill-box">
-      <div class="cp-label">⑤ Drill mode — deal a random scenario and quiz yourself</div>
+      <div class="cp-label">⑥ Drill mode — deal a random scenario and quiz yourself</div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
         <button type="button" id="drill-deal" class="btn">Deal me a practice round</button>
         <span class="drill-hint">Random level × industry. You get the opener and the scenario; the BANT, objections and meeting ask are hidden behind flip-to-reveal until you’ve thought through your answer.</span>
