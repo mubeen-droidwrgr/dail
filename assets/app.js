@@ -31,6 +31,23 @@
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function nl(t) { return esc(String(t)).replace(/\n/g, '<br>'); }
 
+  /* Program-tier BANT resolution: a letter may be a plain string (same for every
+     level), an array of strings, or an object keyed by level with 'all' fallback
+     — so the vendor/subtopic must-asks adapt to the selected decision-maker. */
+  function tierQs(src, letter, lk) {
+    var item = src && src[letter];
+    if (!item) return [];
+    if (typeof item === 'string') return [item];
+    if (Array.isArray(item)) return item.slice();
+    var q = item[lk] || item.all;
+    return q ? [q] : [];
+  }
+  /* {field} auto-fills with the selected industry's workforce noun so the
+     program-tier questions read custom for the chosen industry too. */
+  function fillField(q, ind) {
+    return ind && q ? q.split('{field}').join(ind.field || '{field}') : q;
+  }
+
   /* =========================================================
      Pill groups
      ========================================================= */
@@ -163,8 +180,8 @@
       var src = sub ? sub.bant : prog.bant;
       var label = sub ? sub.label : prog.label;
       return SDR.bantOrder.map(function (letter) {
-        var qs = (src && src[letter]) || [];
-        return qs.map(function (q) {
+        return tierQs(src, letter, lk).map(function (q) {
+          q = fillField(q, ind);
           return '<div class="q-item"><span class="badge ' + letter.toLowerCase() + '">' + letter + ' · ' + esc(label) + '</span><div><span class="q-txt">' + esc(q) + '</span></div></div>';
         }).join('');
       }).join('');
@@ -275,7 +292,7 @@
       if (progOn) {
         var bsrc = sub ? sub.bant : prog.bant;
         var ll = sub ? sub.label : prog.label;
-        SDR.bantOrder.forEach(function (L) { (bsrc[L] || []).forEach(function (q) { parts.push(L + ' (' + ll + '): ' + q); }); });
+        SDR.bantOrder.forEach(function (L) { tierQs(bsrc, L, lk).forEach(function (q) { parts.push(L + ' (' + ll + '): ' + fillField(q, ind)); }); });
       }
       parts.push(''); parts.push('OBJECTIONS');
       SDR.playbookObjections(ind, lk).forEach(function (o) { parts.push(o.label + ' → ' + o.resp); });
@@ -536,8 +553,8 @@
       var src = sub ? sub.bant : prog.bant;
       var label = sub ? sub.label : prog.label;
       return SDR.bantOrder.map(function (letter) {
-        var qs = (src && src[letter]) || [];
-        return qs.map(function (q) {
+        return tierQs(src, letter, lk).map(function (q) {
+          q = fillField(q, ind);
           return '<div class="q-item"><span class="badge ' + letter.toLowerCase() + '">' + letter + ' · ' + esc(label) + '</span><div><span class="q-txt">' + esc(q) + '</span></div></div>';
         }).join('');
       }).join('');

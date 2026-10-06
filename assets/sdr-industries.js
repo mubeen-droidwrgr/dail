@@ -3,6 +3,7 @@ window.SDR_INDUSTRIES = {
   tech: {
     key: 'tech',
     label: 'Technology / SaaS',
+    field: 'engineering and cloud teams',
     angle: 'scaling your engineering and cloud teams fast enough to ship — certification deadlines chasing you every quarter',
     tools: 'AWS, Azure and Kubernetes',
     qualifiers: [
@@ -21,6 +22,7 @@ window.SDR_INDUSTRIES = {
   healthcare: {
     key: 'healthcare',
     label: 'Healthcare',
+    field: 'clinical and IT staff',
     angle: 'HIPAA-grade security posture and using AI to take administrative burden off clinicians',
     tools: 'EHR systems, HIPAA security and clinical AI tools',
     qualifiers: [
@@ -39,6 +41,7 @@ window.SDR_INDUSTRIES = {
   banking: {
     key: 'banking',
     label: 'Banking & Financial Services',
+    field: 'risk, compliance and technology teams',
     angle: 'Zero Trust security posture, audit readiness and trusted AI adoption across the bank',
     tools: 'Zero Trust architecture, ISC2/security certs and Microsoft security stack',
     qualifiers: [
@@ -57,6 +60,7 @@ window.SDR_INDUSTRIES = {
   gov: {
     key: 'gov',
     label: 'Government & Public Sector',
+    field: 'mission and workforce teams',
     angle: 'Zero Trust adoption, FedRAMP-aware cloud migration and Responsible AI per EO 14110',
     tools: 'Zero Trust architecture and FedRAMP cloud platforms',
     qualifiers: [
@@ -75,6 +79,7 @@ window.SDR_INDUSTRIES = {
   manufacturing: {
     key: 'manufacturing',
     label: 'Manufacturing & Industrial',
+    field: 'plant-floor and OT teams',
     angle: 'OT/ICS security, digital-twin and CAD/PLM skills keeping plants competitive',
     tools: 'OT/ICS systems, Autodesk and PTC CAD/PLM',
     qualifiers: [
@@ -93,6 +98,7 @@ window.SDR_INDUSTRIES = {
   retail: {
     key: 'retail',
     label: 'Retail & Consumer',
+    field: 'storefront and HQ teams',
     angle: 'data-driven customer experience, e-commerce platforms and seasonal readiness',
     tools: 'analytics dashboards, CRM and e-commerce platforms',
     qualifiers: [
@@ -111,6 +117,7 @@ window.SDR_INDUSTRIES = {
   insurance: {
     key: 'insurance',
     label: 'Insurance',
+    field: 'underwriting and claims teams',
     angle: 'modernizing underwriting and claims with data and AI while staying defensible with state regulators',
     tools: 'data/AI tools, actuarial and claims platforms',
     qualifiers: [
@@ -129,6 +136,7 @@ window.SDR_INDUSTRIES = {
   energy: {
     key: 'energy',
     label: 'Energy & Utilities',
+    field: 'plant, grid and OT teams',
     angle: 'hardening OT/ICS and moving to more digital operations without risking uptime or compliance',
     tools: 'ICS/SCADA security, NERC CIP and grid/plant systems',
     qualifiers: [
@@ -147,6 +155,7 @@ window.SDR_INDUSTRIES = {
   education: {
     key: 'education',
     label: 'Education & EdTech',
+    field: 'faculty and staff',
     angle: 'getting faculty and staff AI-ready for instruction while protecting student data under FERPA',
     tools: 'AI in instruction, FERPA security and LMS platforms',
     qualifiers: [
@@ -165,6 +174,7 @@ window.SDR_INDUSTRIES = {
   profserv: {
     key: 'profserv',
     label: 'Professional Services',
+    field: 'client-facing practice teams',
     angle: 'keeping consultant and client teams certifiably current in AI, cloud and data so your bench bills at a premium',
     tools: 'AI/cloud/data tools and client-facing platforms',
     qualifiers: [

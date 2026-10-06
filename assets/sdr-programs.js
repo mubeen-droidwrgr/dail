@@ -1,11 +1,15 @@
 /* NetCom SDR — Programs / vendor filter with subtopics.
    The user flow is: decision-maker level → industry → program (vendor)
    → subtopic (e.g., Microsoft → Power BI or Azure).
-   Each vendor carries the standing relationship NetCom already has with it
-   (the credibility to drop on the call), plus its general hook / bridge /
-   stake / BANT. Each subtopic under the vendor carries its own angle,
-   hook, bridge, stake, BANT must-asks, and a byLevel map: how to play it
-   for each of the six decision-maker levels. 'any' = no vendor filter. */
+   Every BANT question here is custom to the current selection:
+   each letter is keyed by level (cx / vp / all=Director,Manager / ic / ldo),
+   so the must-asks change with the decision-maker, and {field} is auto-filled
+   with the selected industry's workforce noun at render time.
+   Each vendor also carries the standing relationship NetCom already has with it
+   (the credibility to drop on the call) + its general hook / bridge / stake.
+   Each subtopic carries its own angle, hook, bridge, stake, BANT and a byLevel
+   map: how to play it for each of the six decision-maker levels.
+   'any' = no vendor filter. */
 window.SDR_PROGRAMS = {
   any: {
     label: 'Any program · broad',
@@ -27,10 +31,34 @@ window.SDR_PROGRAMS = {
     bridge: 'Before the budget math — which Microsoft workload is moving fastest for you right now: Azure, Microsoft 365, Copilot, or Power BI?',
     stake: 'If the Enterprise Agreement renews without a certification lane in it, you keep the discount and lose the readiness.',
     bant: {
-      B: ['Where does Microsoft training budget sit — IT, L&D, or an Enterprise Agreement line item — and does the EA already include credits?'],
-      A: ['Who owns sign-off for Microsoft skills — IT leadership, the Copilot champion, or procurement through the EA?'],
-      N: ['Which Microsoft workload is the gap — Azure, Microsoft 365, Copilot, or Power BI — and what is it costing to not be certified there?'],
-      T: ['Is there an EA renewal, a Copilot rollout date, or a certification deadline that pins the timeline?']
+      B: {
+        cx: 'Is Microsoft skilling for {field} a committed line inside the EA discussion this fiscal year, or still a proposal finance debates at review — and do credits already sit on the contract?',
+        vp: 'Is Microsoft upskilling for {field} a committed line this year, or still something you have to run past finance — and can existing EA credits absorb part of it?',
+        all: 'Where does Microsoft training money sit for {field} — L&D, IT, or per project — and are EA credits already earmarked?',
+        ic: 'Do you have tuition or certification reimbursement available for a Microsoft cert, and is one already on your manager’s roadmap?',
+        ldo: 'Where does Microsoft spend flow — the Enterprise Agreement, the L&D line, or per-vendor POs — and do Learning Credits or EA balances expire on a date?'
+      },
+      A: {
+        cx: 'Who signs a Microsoft-wide learning investment at your level — you, the CIO, or the CHRO — and how far does your endorsement carry it?',
+        vp: 'Whose sign-off sits above you on a Microsoft training PO — and can a one-page EA-linked plan carry it through review?',
+        all: 'Who owns Microsoft skilling decisions for your program — you, the IT lead, or the business owner of the workload?',
+        ic: 'Who approves the cert you want — your manager, the team lead, or the L&D team — and is the ask already queued?',
+        ldo: 'Who issues the PO for Microsoft training and who approves capacity — procurement or IT, and does it need a second signature for the EA?'
+      },
+      N: {
+        cx: 'Which Microsoft bet is most at risk from a skill gap — Azure, Copilot, or Power BI — and what is that gap costing the roadmap?',
+        vp: 'Which Microsoft workload is your team a version behind on — Azure, M365, Copilot, or Power BI — and what is that costing delivery?',
+        all: 'Between Azure, M365, Copilot and Power BI, which track is your team thinnest on right now?',
+        ic: 'Which Microsoft skill is holding you back from the role or project you want — and is the cert path clear?',
+        ldo: 'Which Microsoft track has no certified coverage on the books — and which one does an audit or review actually check?'
+      },
+      T: {
+        cx: 'Is there an EA renewal, a board review, or a Copilot rollout date that makes Microsoft readiness a dated problem?',
+        vp: 'What deadline would a certified Microsoft team unblock — an EA renewal, a rollout, or a launch — and how far off is it?',
+        all: 'Is there a rollout, a renewal, or a quarter-end window that pins when your Microsoft team has to be ready?',
+        ic: 'Is there an exam window or a project deadline that sets when you need the cert?',
+        ldo: 'Does the EA or credit expiry date — not the quarter — set when this spend has to land?'
+      }
     },
     subsOrder: ['azure', 'powerbi', 'm365', 'copilot'],
     subs: {
@@ -41,10 +69,34 @@ window.SDR_PROGRAMS = {
         bridge: 'If you looked at your Azure certified coverage today — compute, data, or identity — which lane is thinnest?',
         stake: 'Every month a migration waits on certified hands, the bill grows faster than the team can control it.',
         bant: {
-          B: ['Is Azure learning funded through the EA, the cloud budget, or a separate line — and are credits already on the contract?'],
-          A: ['Who owns the Azure skill plan — cloud architecture leads, IT engineering, or procurement on the EA line?'],
-          N: ['Which Azure workload is the gap — compute, data, or identity — and where is it holding delivery hostage?'],
-          T: ['Is there an EA renewal, a migration milestone, or a certification deadline pinning the window?']
+          B: {
+            cx: 'Is Azure skills investment for {field} a committed line in the cloud budget, or still debated against the migration plan — and are EA credits already on the contract?',
+            vp: 'Is the Azure bench line committed for this year, or a proposal finance still needs to bless — and do existing EA credits cover part of it?',
+            all: 'Where does Azure training money sit for {field} — the cloud budget, IT, or migration project lines — and are credits earmarked?',
+            ic: 'Is there tuition or Azure certification funding available to you through the EA or your team, and is the ask already queued?',
+            ldo: 'Where does Azure spend flow — the EA, the cloud line, or per-project — and do Learning Credits or Azure credits expire on a date?'
+          },
+          A: {
+            cx: 'Who signs the Azure skilling investment — you, the CTO/CIO, or the cloud steering committee — and how far does your endorsement carry it?',
+            vp: 'Whose signature sits above yours on an Azure training PO, and can a one-page migration-linked plan carry it through?',
+            all: 'Who owns Azure skill decisions for your program — the cloud lead, the platform owner, or you?',
+            ic: 'Who approves your Azure certification path — your manager or the cloud lead — and is the lane clear?',
+            ldo: 'Who issues the Azure training PO and who holds the cloud budget — procurement or IT — and is one signature enough?'
+          },
+          N: {
+            cx: 'Which Azure bet is most exposed — compute, data, identity — and what is the gap costing the cloud strategy?',
+            vp: 'Which Azure lane is your team thinnest on — compute, data, or identity — and what is delivery waiting on?',
+            all: 'Which Azure lane is your team thinnest on — compute, data, or identity — and where does the migration stall?',
+            ic: 'Which Azure skill — compute, data, or identity — does your team lack, and which cert fixes it for you?',
+            ldo: 'Which Azure track has no certified coverage on the books, and which one does the cloud review actually check?'
+          },
+          T: {
+            cx: 'Is there an EA renewal, a board review, or a migration milestone that makes Azure readiness date-stamped?',
+            vp: 'What deadline would a certified Azure team unblock — a migration, a renewal, or a launch — and how near is it?',
+            all: 'Is there a migration window, a renewal, or a quarter-end that pins when the Azure team has to be ready?',
+            ic: 'Is there an exam window or a migration milestone that sets when you need the cert?',
+            ldo: 'Does the EA or credit expiry date set when this Azure spend has to land?'
+          }
         },
         byLevel: {
           cx: 'The board reads Azure spend; certified depth is the line that survives the quarterly review.',
@@ -62,10 +114,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Who owns the trusted Power BI workspace today — and how many people could rebuild it if that owner left?',
         stake: 'Power BI skills do not scale with headcount; without certified depth, the trusted report is a bus-factor of one.',
         bant: {
-          B: ['Is Power BI training budgeted inside the analytics line, IT, or the business units that want the reports?'],
-          A: ['Who owns the analytics capability — the data platform lead, IT, or the business-line champions?'],
-          N: ['Which gap hurts — model design, DAX, or governance of the shared datasets — and what waits on it?'],
-          T: ['Is there a reporting cycle, a quarterly business review, or a licensing milestone that sets the timing?']
+          B: {
+            cx: 'Is analytics skilling for {field} a committed line in the data budget this year, or still a proposal finance debates — do licensing dollars already cover it?',
+            vp: 'Is the Power BI bench line committed, or in review — and can existing license spend absorb the training?',
+            all: 'Where does Power BI training sit for {field} — the analytics line, IT, or the business units that want the reports?',
+            ic: 'Do you have access to analytics training or certification funding through your team, and is the ask queued?',
+            ldo: 'Where does Power BI spend flow — per-seat licensing, the data line, or unit budgets — and does the license renewal set the window?'
+          },
+          A: {
+            cx: 'Who owns analytics capability at your level — the data lead, IT, or the business units — and who signs the investment?',
+            vp: 'Whose sign-off sits above you on an analytics training PO, and can a one-page report-governance plan carry it?',
+            all: 'Who owns the Power BI capability decision for your program — the data platform lead, IT, or you?',
+            ic: 'Who approves your Power BI learning path — your manager or the analytics lead — and is the lane clear?',
+            ldo: 'Who issues the analytics training PO — procurement, IT, or the business units — and does it need a joint signature?'
+          },
+          N: {
+            cx: 'Which analytics gap is costing the deck — model design, DAX, or governance — and how much of decision speed depends on it?',
+            vp: 'Which reporting gap is your team living with — model design, DAX, or governance — and who is the bus-factor on it?',
+            all: 'Which Power BI gap — model design, DAX, or governance — is the one stalling your reporting?',
+            ic: 'Which Power BI skill — DAX, model design, or governance — is the one that gets you the trusted-builder role?',
+            ldo: 'Which analytics track has no certified coverage on the books, and which one does the review actually check?'
+          },
+          T: {
+            cx: 'Is there a reporting cycle, a business review, or a licensing milestone that makes analytics readiness date-stamped?',
+            vp: 'What deadline would a certified report bench unblock — the Q{Qtr} business review or a model migration — and how near?',
+            all: 'Is there a reporting cycle or a quarterly review that pins when the report bench has to be ready?',
+            ic: 'Is there an exam window or a reporting season that sets when you need the cert?',
+            ldo: 'Does the license renewal or reporting-cycle date set when this analytics spend lands?'
+          }
         },
         byLevel: {
           cx: 'The exec deck runs on a handful of reports; governance of who builds them is the line to fix.',
@@ -83,10 +159,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Between Exchange, Teams, and SharePoint — where is the workforce still working the old way?',
         stake: 'An unused M365 license is a sunk cost; an uncertified workforce doubles it in lost productivity.',
         bant: {
-          B: ['Is M365 skilling part of the license budget, the IT training line, or scattered per team?'],
-          A: ['Who owns M365 adoption — IT operations, the digital workplace lead, or the business change team?'],
-          N: ['Which M365 capability is underused — Teams, SharePoint, or Exchange — and what does that cost in workflow?'],
-          T: ['Is there a tenant change, a licensing renewal, or an adoption initiative already on the calendar?']
+          B: {
+            cx: 'Is M365 adoption skilling for {field} a committed line beside the license, or still a proposal — and is the training budget real or leftover?',
+            vp: 'Is the M365 change line committed for the year, or is it waiting on the license renewal to be approved?',
+            all: 'Where does M365 training money sit for {field} — the IT line, the workplace program, or per department — and is any of it carved out yet?',
+            ic: 'Does your team have M365 learning access or certification funding, and is the request already made?',
+            ldo: 'Where does M365 spend flow — the license contract, IT, or per seat — and does the renewal set the window?'
+          },
+          A: {
+            cx: 'Who owns M365 adoption at your level — IT, the digital workplace lead, or the business — and who signs the change investment?',
+            vp: 'Whose sign-off sits above you on an M365 adoption plan, and can a one-page usage-gap plan carry it?',
+            all: 'Who owns the M365 adoption decision for your program — the workplace lead, IT ops, or you?',
+            ic: 'Who approves your M365 learning path — your manager or the workplace lead — and is the lane clear?',
+            ldo: 'Who issues the M365 training PO — procurement through the license contract, IT, or the business — and is one signature enough?'
+          },
+          N: {
+            cx: 'Which M365 capability is underused — Teams, SharePoint, or Exchange — and what is that costing workflow company-wide?',
+            vp: 'Where is the workforce still working the old way — Teams, SharePoint, or Exchange — and what is that costing your org?',
+            all: 'Between Teams, SharePoint and Exchange, which one is your team still working around the old way?',
+            ic: 'Which M365 skill — Teams, SharePoint, or Exchange — would fix your daily workflow most?',
+            ldo: 'Which M365 capability is underutilized against the license you pay for, and which one does the review check?'
+          },
+          T: {
+            cx: 'Is there a tenant change, a license renewal, or an adoption initiative that makes M365 readiness date-stamped?',
+            vp: 'What deadline would a trained M365 base unblock — a tenant change, a renewal, or a rollout — and how near is it?',
+            all: 'Is there a tenant change, a renewal, or a rollout window that pins when the workforce has to be ready?',
+            ic: 'Is there an exam window or a workplace initiative that sets when the cert lands?',
+            ldo: 'Does the license renewal date set when this adoption spend lands, and do unused seats change the math?'
+          }
         },
         byLevel: {
           cx: 'The M365 license is bought; the question is whether the workforce ever changed how it works.',
@@ -104,10 +204,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Who can use Copilot on your sensitive data today — and does anyone in the room know the governance rules?',
         stake: 'An untrained Copilot workforce is a data-exposure and a sunk license at the same time.',
         bant: {
-          B: ['Are Copilot seats already purchased, and is there any training budget left attached to the rollout?'],
-          A: ['Who owns the Copilot rollout — IT, the AI governance lead, or the business sponsor?'],
-          N: ['Which gap is real — prompting skill, data-access rules, or governance of what Copilot touches?'],
-          T: ['Is there a Copilot go-live date, a security review, or an adoption milestone pinning the timeline?']
+          B: {
+            cx: 'Is the Copilot rollout for {field} funded end to end — seats plus training — or is the training line still an afterthought finance has not blessed?',
+            vp: 'Is Copilot training budget attached to the seat rollout, or is it still somewhere vague — and who owns the line?',
+            all: 'Is Copilot training budget attached to your rollout for {field}, or does it sit nowhere yet — and can seats already purchased cover it?',
+            ic: 'Does your org offer Copilot learning or certification access, and is the request already made?',
+            ldo: 'Where does Copilot spend flow — the Microsoft contract, per seat, or the AI line — and is training a line item or an afterthought?'
+          },
+          A: {
+            cx: 'Who owns the Copilot rollout and its training — you, the CIO, or the AI governance lead — and who signs the enablement?',
+            vp: 'Whose sign-off sits above you on the Copilot enablement plan, and can a one-page adoption plan carry it?',
+            all: 'Who owns Copilot enablement for your program — IT, the AI lead, or the business sponsor — and is that the person I should align with?',
+            ic: 'Who decides whether you get Copilot and its training — your manager or the AI team — and is the ask queued?',
+            ldo: 'Who issues the Copilot training PO — the AI line owner or IT — and does seat procurement already have a vendor?'
+          },
+          N: {
+            cx: 'Which Copilot gap is live at your level — prompting discipline, data access rules, or governance — and what is the exposure?',
+            vp: 'Which Copilot gap is real on your team — skill, data rules, or governance — and what is the rollout risk?',
+            all: 'Between prompting skill, data-access rules and governance — which one is your team actually missing?',
+            ic: 'Which Copilot skill — prompting, data handling, or governance — is the one that makes you the safe power user?',
+            ldo: 'Which Copilot risk does the review check — trained users, data boundaries, or governance — and which has no coverage?'
+          },
+          T: {
+            cx: 'Is there a go-live date, a security review, or a board AI review that makes Copilot readiness date-stamped?',
+            vp: 'What deadline would a trained Copilot base unblock — go-live, an adoption milestone, or a security review — and how near is it?',
+            all: 'Is there a go-live date or adoption milestone that pins when users have to be trained?',
+            ic: 'Is there a rollout wave or an exam window that sets when you get trained?',
+            ldo: 'Does the seat contract or go-live date set when the training spend lands?'
+          }
         },
         byLevel: {
           cx: 'The board asked who is accountable for the AI spend; official Copilot training is the answer that holds.',
@@ -130,10 +254,34 @@ window.SDR_PROGRAMS = {
     bridge: 'Which AWS lane is the pressure point first — Solutions Architect, DevOps, or security?',
     stake: 'Every month a cert gap waits, the account spend grows faster than the team’s ability to control it.',
     bant: {
-      B: ['Is AWS upskilling funded from the AWS account budget, training credits, or a separate L&D line?'],
-      A: ['Who decides AWS cert coverage — the cloud team lead, engineering leadership, or finance through Skill Builder credits?'],
-      N: ['Which AWS cert gap is the pain — Solutions Architect, DevOps, or Security — and where does it stall delivery?'],
-      T: ['Is there a migration, a re:Invent follow-on, or an account-renewal date that sets the timeline?']
+      B: {
+        cx: 'Is AWS upskilling for {field} a committed line in the cloud budget this year, or still debated — and do Skill Builder credits or account training funds cover part of it?',
+        vp: 'Is AWS upskilling for {field} a committed line this year, or a proposal finance still needs to bless — and do account credits absorb part of it?',
+        all: 'Where does AWS training money sit for {field} — the account, engineering, or a separate L&D line — and are credits already earmarked?',
+        ic: 'Do you have access to AWS training or certification funding through your account, and is the ask queued?',
+        ldo: 'Where does AWS spend flow — the account budget, Skill Builder credits, or per-project — and do credits expire on a date?'
+      },
+      A: {
+        cx: 'Who signs AWS skilling at your level — you, the CTO/CIO, or the cloud leadership — and how far does your endorsement carry it?',
+        vp: 'Whose sign-off sits above you on an AWS training PO, and can a one-page account-linked plan carry it?',
+        all: 'Who owns AWS skill decisions for your program — the cloud lead, engineering, or you?',
+        ic: 'Who approves your AWS certification path — your manager or the cloud lead — and is the lane clear?',
+        ldo: 'Who issues the AWS training PO and who holds the account budget — procurement or engineering — and is one signature enough?'
+      },
+      N: {
+        cx: 'Which AWS bet is most exposed — architecture, DevOps, or security — and what is the gap costing the cloud strategy?',
+        vp: 'Which AWS lane is your team a version behind on — Solutions Architect, DevOps, or security — and what is delivery waiting on?',
+        all: 'Between Solutions Architect, DevOps and security tracks, which is your team thinnest on right now?',
+        ic: 'Which AWS skill does your team lack — architecture, pipeline, or security — and which cert fixes it for you?',
+        ldo: 'Which AWS track has no certified coverage on the books, and which one does the review actually check?'
+      },
+      T: {
+        cx: 'Is there a migration, a re:Invent follow-on, or an account renewal that makes AWS readiness date-stamped?',
+        vp: 'What deadline would a certified AWS team unblock — a migration, a renewal, or a launch — and how near is it?',
+        all: 'Is there a migration window or an account cycle that pins when the AWS team has to be ready?',
+        ic: 'Is there an exam window or a migration milestone that sets when you need the cert?',
+        ldo: 'Do the account credits — not the quarter — expire, and does that set the spend date?'
+      }
     },
     subsOrder: ['solarch', 'devops', 'security'],
     subs: {
@@ -144,10 +292,34 @@ window.SDR_PROGRAMS = {
         bridge: 'If the next architecture review happened today, which pattern is your team weakest on — compute, networking, or data?',
         stake: 'Uncertified architecture means paying for bad designs twice: once to build, again to rebuild.',
         bant: {
-          B: ['Is architect training funded from the AWS account, training credits, or the engineering budget?'],
-          A: ['Who leads cloud architecture — the platform lead, engineering, or a review board?'],
-          N: ['Which design area is the gap — Well-Architected pillars, cost, or security patterns — and where does it bite?'],
-          T: ['Is there an architecture review, a migration milestone, or a re:Invent follow-on setting the window?']
+          B: {
+            cx: 'Is architecture skilling for {field} a committed line in the cloud budget, or still debated against the migration plan — do account credits cover part of it?',
+            vp: 'Is the architecture bench line committed, or a proposal finance needs to bless — and do existing training credits absorb some of it?',
+            all: 'Where does architect training money sit for {field} — the account, engineering, or per project — and are credits earmarked?',
+            ic: 'Do you have access to architect certification funding through your account, and is the ask queued?',
+            ldo: 'Where does architecture spend flow — the account, credits, or project budgets — and do the credits expire on a date?'
+          },
+          A: {
+            cx: 'Who signs the architecture skilling investment — you, the CTO/CIO, or the architecture review board — and how far does your endorsement carry?',
+            vp: 'Whose sign-off sits above you on an architecture training PO, and can a one-page design plan carry it?',
+            all: 'Who owns architecture skill decisions for your program — the platform lead, the review board, or you?',
+            ic: 'Who approves your Solutions Architect path — your manager or the platform lead — and is the lane clear?',
+            ldo: 'Who issues the architecture training PO and who holds the cloud budget — procurement or engineering — and is one signature enough?'
+          },
+          N: {
+            cx: 'Which architecture pattern is the exposure — compute, networking, or data — and what is the redesign cost of getting it wrong?',
+            vp: 'Which design area is your team weakest on — compute, networking, or data — and what is the rework cost?',
+            all: 'Which architecture lane is the review weakest on — compute, networking, or data — and where do bad designs repeat?',
+            ic: 'Which architecture skill — Well-Architected, cost, or security patterns — is the gap on your next build?',
+            ldo: 'Which architecture track has no certified coverage on the books, and which one does the review check?'
+          },
+          T: {
+            cx: 'Is there a migration milestone, an architecture review, or a re:Invent follow-on that makes readiness date-stamped?',
+            vp: 'What deadline would certified architects unblock — a migration, a review, or a rebuild — and how near is it?',
+            all: 'Is there a design review or migration window that pins when the architects have to be certified?',
+            ic: 'Is there an exam window or a design deadline that sets when you need the cert?',
+            ldo: 'Do the account credits or the review calendar set when the architecture spend lands?'
+          }
         },
         byLevel: {
           cx: 'Every dollar of cloud spend is approved against architecture; certified design is the due-diligence line.',
@@ -165,10 +337,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Where is your delivery slowed — build pipelines, release automation, or the reliability layer?',
         stake: 'Every slow pipeline is a compounded delay: fixes are slower, so the backlog grows, so velocity drops further.',
         bant: {
-          B: ['Is DevOps training in the engineering L&D line or tied to tooling spend — CI/CD and observability?'],
-          A: ['Who owns delivery tooling and the team skills — the platform lead, the DevOps manager, or engineering leadership?'],
-          N: ['Which stage is the bottleneck — build, release, or operations — and what is the deploy latency costing?'],
-          T: ['Is there a pipeline migration, an incident review, or a velocity target pinning the window?']
+          B: {
+            cx: 'Is DevOps skilling for {field} a committed engineering line this year, or still a proposal finance debates — do account training credits cover part?',
+            vp: 'Is the DevOps line committed, or a proposal finance needs to bless — and do account credits absorb part of the cost?',
+            all: 'Where does DevOps training money sit for {field} — the tooling budget, engineering, or L&D — and are credits earmarked?',
+            ic: 'Do you have access to pipeline or DevOps certification funding through your team, and is the ask queued?',
+            ldo: 'Where does DevOps spend flow — tooling contracts, the account, or L&D — and do credits expire on a date?'
+          },
+          A: {
+            cx: 'Who signs delivery-tooling skilling at your level — you, engineering leadership, or the platform head — and how far does your endorsement carry?',
+            vp: 'Whose sign-off sits above you on a DevOps training PO, and can a one-page velocity plan carry it?',
+            all: 'Who owns delivery skill decisions for your program — the platform lead, the DevOps manager, or you?',
+            ic: 'Who approves your DevOps certification path — your manager or the platform lead — and is the lane clear?',
+            ldo: 'Who issues the DevOps training PO — procurement through tooling, engineering, or L&D — and is one signature enough?'
+          },
+          N: {
+            cx: 'Which delivery stage is the bottleneck — build, release, or operations — and what is deploy latency costing the roadmap?',
+            vp: 'Which stage is your team a version behind on — build, release, or operations — and what is that costing delivery?',
+            all: 'Between build, release and operations, which stage is your team actually bottlenecked on?',
+            ic: 'Which pipeline skill — CI/CD, release automation, or SRE — is the gap your team keeps hitting?',
+            ldo: 'Which delivery track has no certified coverage on the books, and which one does the review check?'
+          },
+          T: {
+            cx: 'Is there a pipeline migration, a velocity target, or an incident review that makes DevOps readiness date-stamped?',
+            vp: 'What deadline would a certified delivery team unblock — a migration, a release, or a velocity target — and how near is it?',
+            all: 'Is there a tooling migration or a release window that pins when the team has to be ready?',
+            ic: 'Is there a migration or exam window that sets when you need the cert?',
+            ldo: 'Do the tooling contracts or credits expire on a date — and does that set the spend?'
+          }
         },
         byLevel: {
           cx: 'Delivery speed is the metric the board watches; certified pipeline skills are what moves it.',
@@ -186,10 +382,34 @@ window.SDR_PROGRAMS = {
         bridge: 'If an auditor asked for least-privilege proof today, which piece — IAM, GuardDuty detections, or logging — is thinnest?',
         stake: 'An IAM sprawl is a breach-in-waiting that a single certified engineer can start unwinding.',
         bant: {
-          B: ['Is AWS security training funded from the security budget, the account, or compliance?'],
-          A: ['Who owns cloud security — the cloud team, the security ops lead, or compliance?'],
-          N: ['Which AWS control is the gap — IAM hygiene, threat detection, or audit logging — and what is the exposure?'],
-          T: ['Is there an audit, an access review, or a compliance deadline that pins the timeline?']
+          B: {
+            cx: 'Is cloud-security skilling for {field} a committed line in the security budget, or still debated against compliance — do account training funds cover part?',
+            vp: 'Is the AWS security line committed, or in review — and do existing training credits absorb part of the cost?',
+            all: 'Where does AWS security training money sit for {field} — the security budget, the account, or compliance — and are credits earmarked?',
+            ic: 'Do you have access to AWS security certification funding through your team, and is the ask queued?',
+            ldo: 'Where does AWS security spend flow — the security budget, compliance, or the account — and does the audit cycle set it?'
+          },
+          A: {
+            cx: 'Who signs cloud-security skilling — you, the CISO, or the cloud leadership — and how far does your endorsement carry it?',
+            vp: 'Whose sign-off sits above you on a cloud-security training PO, and can a one-page audit-map plan carry it?',
+            all: 'Who owns AWS security skill decisions — the security lead, the cloud team, or you — and is that the person to align with?',
+            ic: 'Who approves your AWS security path — your manager or the security lead — and is the lane clear?',
+            ldo: 'Who issues the security training PO — procurement under compliance, or IT — and does it need review?'
+          },
+          N: {
+            cx: 'Which AWS control is the exposure — IAM hygiene, threat detection, or logging — and what does audit exposure cost?',
+            vp: 'Which AWS control is your team thinnest on — IAM, GuardDuty, or logging — and what is the posture risk?',
+            all: 'Between IAM, GuardDuty and logging, which control is the one your team is weakest on?',
+            ic: 'Which AWS security skill — IAM, detection, or logging — is the gap in your daily work?',
+            ldo: 'Which security track has no certified coverage on the books, and which one does the audit check?'
+          },
+          T: {
+            cx: 'Is there an audit, an access review, or a compliance deadline that makes AWS security readiness date-stamped?',
+            vp: 'What deadline would a certified security team unblock — an audit, a review, or an access cleanup — and how near is it?',
+            all: 'Is there an audit or access-review window that pins when the team has to be ready?',
+            ic: 'Is there an exam window or an audit that sets when you need the cert?',
+            ldo: 'Does the audit calendar or compliance cycle — not the quarter — set the spend date?'
+          }
         },
         byLevel: {
           cx: 'Audit readiness is a board conversation; certified IAM depth is the defensible answer.',
@@ -212,10 +432,34 @@ window.SDR_PROGRAMS = {
     bridge: 'If you looked at your certified coverage on CCNA to CCNP today, which level is thinnest?',
     stake: 'Learning Credits expire against the contract — the budget is already there, it just needs a track scheduled before the renewal.',
     bant: {
-      B: ['How many Cisco Learning Credits are on the contract, and do they expire with the renewal?'],
-      A: ['Who tracks Cisco certification coverage — the network team lead, or the security officer for the CCNA and CCNP lines?'],
-      N: ['Which Cisco track is behind — routing and switching, security, or collaboration — and what breaks because of it?'],
-      T: ['Does the Cisco contract or Smartnet renewal set the window for spending the Learning Credits?']
+      B: {
+        cx: 'Is network skilling for {field} funded in the IT budget this year — and do the Cisco Learning Credits already on the contract cover the whole track or just part?',
+        vp: 'Is Cisco upskilling for {field} a committed line this year, or a proposal finance still needs to bless — and can Learning Credits absorb part of it?',
+        all: 'Where does Cisco training money sit for {field} — the network budget, L&D, or the contract — and are Learning Credits earmarked?',
+        ic: 'Do you use tuition or certification benefits for a Cisco cert — and is the request already in front of your manager?',
+        ldo: 'How many Cisco Learning Credits are on the contract, when do they expire, and is a track scheduled against them?'
+      },
+      A: {
+        cx: 'Who signs network skilling at your level — you, the CIO, or the infrastructure leadership — and how far does your endorsement carry?',
+        vp: 'Whose sign-off sits above you on a Cisco training PO, and can a one-page Learning-Credits plan carry it?',
+        all: 'Who owns Cisco certification coverage for your program — the network lead, the security officer, or you?',
+        ic: 'Who approves your Cisco certification path — your manager or the network lead — and is the lane clear?',
+        ldo: 'Who issues the Cisco training PO — procurement through the contract, or IT — and does the credit balance need approval?'
+      },
+      N: {
+        cx: 'Which network bet is most exposed — routing, security, or collaboration — and what does the coverage gap cost the business?',
+        vp: 'Which Cisco lane is your team thinnest on — routing and switching, security, or collaboration — and what is that costing ops?',
+        all: 'Between routing and switching, security and collaboration, which track is your team behind on?',
+        ic: 'Which Cisco skill — CCNA, security, or collaboration — is the gap in your day-to-day?',
+        ldo: 'Which Cisco track has unused certificate coverage and which one does a rollout or audit actually check?'
+      },
+      T: {
+        cx: 'Is there a network refresh, an audit, or a contract renewal that makes Cisco readiness date-stamped?',
+        vp: 'What deadline would a certified network team unblock — a refresh, a rollout, or an audit — and how near is it?',
+        all: 'Is there a refresh, a rollout, or an audit window that pins when the team has to be ready?',
+        ic: 'Is there an exam window or a rollout that sets when you need the cert?',
+        ldo: 'Do the Learning Credits expire with the contract renewal — and does that date set the spend?'
+      }
     },
     subsOrder: ['rsw', 'sec', 'collab'],
     subs: {
@@ -226,10 +470,34 @@ window.SDR_PROGRAMS = {
         bridge: 'If a senior engineer left next week, how many people could rebuild the core switch config without the cert to back it?',
         stake: 'The outage that a certified engineer would have prevented costs more than the whole training contract.',
         bant: {
-          B: ['Are Cisco Learning Credits on the contract, and do they expire with the renewal?'],
-          A: ['Who owns network certification coverage — the network lead or the infrastructure manager?'],
-          N: ['Which gap — CCNA fundamentals or CCNP depth — and where does the network currently break?'],
-          T: ['Does the contract or Smartnet renewal window set the spend deadline?']
+          B: {
+            cx: 'Is routing and switching skilling for {field} funded in the IT budget — and do the Cisco Learning Credits on the contract already cover the CCNA-to-CCNP track?',
+            vp: 'Is the routing and switching line committed — and can Learning Credits already on the contract absorb the whole track?',
+            all: 'Where does CCNA/CCNP training money sit for {field} — the network budget, L&D, or the contract — and are credits earmarked?',
+            ic: 'Do you have certification benefits you can use toward a CCNA or CCNP — and is the ask already with your manager?',
+            ldo: 'How many Learning Credits are on the contract, do they expire at renewal, and is the CCNA-to-CCNP track scheduled?'
+          },
+          A: {
+            cx: 'Who signs the routing and switching investment — you, the CIO, or infrastructure leadership — and how far does your endorsement carry?',
+            vp: 'Whose sign-off sits above you on the CCNA/CCNP PO, and can a one-page coverage plan carry it?',
+            all: 'Who owns CCNA/CCNP coverage for your program — the network lead or the infrastructure manager — and is that the person to align with?',
+            ic: 'Who approves your CCNA or CCNP path — your manager or the network lead — and is the lane clear?',
+            ldo: 'Who issues the PO against the Learning Credits — procurement or IT — and does the balance need a sign-off?'
+          },
+          N: {
+            cx: 'Which network risk is most exposed — a thin senior bench or outdated core configs — and what does the last outage teach?',
+            vp: 'Is the gap CCNA fundamentals or CCNP depth — and which one is the outage risk your team carries?',
+            all: 'Between CCNA fundamentals and CCNP depth, which one is your team actually behind on?',
+            ic: 'Which network skill — routing, switching, or core design — is the one holding your team back?',
+            ldo: 'Which network track has no certified coverage on the books, and which one does the rollout check?'
+          },
+          T: {
+            cx: 'Is there a network refresh, a rollout, or an audit that makes CCNA/CCNP readiness date-stamped?',
+            vp: 'What deadline would a certified network team unblock — a refresh, a rollout, or an audit — and how near is it?',
+            all: 'Is there a rollout or refresh window that pins when the team has to be certified?',
+            ic: 'Is there an exam window or a refresh that sets when you need the cert?',
+            ldo: 'Do the Learning Credits expire at the contract renewal — and does that date set the spend?'
+          }
         },
         byLevel: {
           cx: 'Network uptime is revenue uptime; certified depth is the line the ops review checks.',
@@ -247,10 +515,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Between firewall rules, VPN and remote access, and zero trust posture — which is the line your security team flags?',
         stake: 'An outdated firewall config is the classic first step of both the audit finding and the breach.',
         bant: {
-          B: ['Is firewall and security training on the security budget or the network contract?'],
-          A: ['Who owns the security perimeter — the network team, the security ops lead, or the CISO’s office?'],
-          N: ['Which gap — firewall config, remote access, or zero trust — and what is the exposure today?'],
-          T: ['Is there an audit, a firewall refresh, or a zero-trust mandate setting the window?']
+          B: {
+            cx: 'Is network-security skilling for {field} a committed line in the security budget — and do Learning Credits on the contract already cover the firewall track?',
+            vp: 'Is the firewall-skills line committed — and can Learning Credits on the contract absorb the track without new cash?',
+            all: 'Where does firewall training money sit for {field} — the security budget, the network contract, or IT — and are credits earmarked?',
+            ic: 'Do you have certification benefits you can use toward a security track — and is the ask already with your manager?',
+            ldo: 'Do the Learning Credits that expire at renewal cover a firewall and zero-trust track, and is it scheduled?'
+          },
+          A: {
+            cx: 'Who signs network-security skilling — you, the CISO, or the security leadership — and how far does your endorsement carry?',
+            vp: 'Whose sign-off sits above you on the security PO, and can a one-page audit-map plan carry it?',
+            all: 'Who owns the security perimeter decision — the security lead, the network team, or you — and is that the person to align with?',
+            ic: 'Who approves your security certification path — your manager or the security lead — and is the lane clear?',
+            ldo: 'Who issues the firewall training PO — procurement through the contract, or the security office — and does it need review?'
+          },
+          N: {
+            cx: 'Which perimeter gap is the exposure — firewall rules, remote access, or zero trust — and what does the audit list say?',
+            vp: 'Which perimeter line is your team thinnest on — firewall, remote access, or zero trust — and what is the posture risk?',
+            all: 'Between firewall config, remote access and zero trust, which one is your team weakest on?',
+            ic: 'Which security skill — firewall, VPN, or zero trust — is the gap in your daily work?',
+            ldo: 'Which security track has no certified coverage, and which one does the audit actually check?'
+          },
+          T: {
+            cx: 'Is there an audit, a firewall refresh, or a zero-trust mandate that makes readiness date-stamped?',
+            vp: 'What deadline would a certified security team unblock — an audit, a refresh, or a mandate — and how near is it?',
+            all: 'Is there an audit or refresh window that pins when the team has to be ready?',
+            ic: 'Is there an exam window or an audit that sets when you need the cert?',
+            ldo: 'Does the audit calendar or the credit expiry set the spend date?'
+          }
         },
         byLevel: {
           cx: 'The perimeter is the audit line; certified firewall depth is how the finding list stays short.',
@@ -268,10 +560,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Between calling, meetings, and messaging — where is the team still working the pre-hybrid way?',
         stake: 'A collaboration platform is only as good as the certified habits around it.',
         bant: {
-          B: ['Is collaboration training part of the UC contract or a separate learning line?'],
-          A: ['Who owns the collaboration platform — IT ops, the digital workplace lead, or the business itself?'],
-          N: ['Which capability is underused — calling, meetings, or messaging — and what does that cost in workflow?'],
-          T: ['Is there a platform upgrade, a license renewal, or a return-to-office date setting the timing?']
+          B: {
+            cx: 'Is collaboration skilling for {field} funded beside the UC contract — and do Learning Credits already on it cover the track?',
+            vp: 'Is the collaboration line committed — and can Learning Credits or the UC contract absorb the cost?',
+            all: 'Where does collaboration training money sit for {field} — the UC contract, IT, or L&D — and are credits earmarked?',
+            ic: 'Do you have benefits you can use toward a collaboration cert — and is the ask already with your manager?',
+            ldo: 'Does the UC contract or Learning Credit balance cover the collaboration track, and when does it renew?'
+          },
+          A: {
+            cx: 'Who signs the collaboration investment — you, the CIO, or the workplace leadership — and how far does your endorsement carry?',
+            vp: 'Whose sign-off sits above you on the collaboration PO, and can a one-page adoption plan carry it?',
+            all: 'Who owns the collaboration platform decision — IT ops, the workplace lead, or the business — and is that the person to align with?',
+            ic: 'Who approves your collaboration certification path — your manager or IT — and is the lane clear?',
+            ldo: 'Who issues the collaboration training PO — procurement through the UC contract, or IT — and is one signature enough?'
+          },
+          N: {
+            cx: 'Which collaboration gap is the exposure — calling, meetings, or messaging — and what is hybrid friction costing?',
+            vp: 'Which platform capability is your team underusing — calling, meetings, or messaging — and what is that costing?',
+            all: 'Between calling, meetings and messaging, which one is your team still working the old way?',
+            ic: 'Which collaboration skill — calling, meetings, or messaging — is the one your team keeps fumbling?',
+            ldo: 'Which platform capability is underutilized against the contract you pay for, and which one does the review check?'
+          },
+          T: {
+            cx: 'Is there a platform upgrade, a license renewal, or a return-to-office date that makes readiness date-stamped?',
+            vp: 'What deadline would a trained base unblock — an upgrade, a renewal, or a return-to-office — and how near is it?',
+            all: 'Is there a platform upgrade or license renewal window that pins when the team has to be ready?',
+            ic: 'Is there an exam window or a platform upgrade that sets when you get certified?',
+            ldo: 'Does the UC renewal or credit-expiry date set when the spend lands?'
+          }
         },
         byLevel: {
           cx: 'Hybrid work ran on the platform through the transition; certified adoption protects the investment.',
@@ -294,10 +610,34 @@ window.SDR_PROGRAMS = {
     bridge: 'Between cloud engineering, data, and AI/ML — which GCP lane is the project currently waiting on?',
     stake: 'A stalled GCP build costs more in idle capacity than the training that would unblock it.',
     bant: {
-      B: ['Is Google Cloud training funded through the cloud budget or a separate learning line?'],
-      A: ['Who owns GCP skills — the platform team lead, the data and AI lead, or engineering leadership?'],
-      N: ['Which GCP area is the gap — Associate Cloud Engineer, Professional Data Engineer, or AI/ML — and what is waiting on it?'],
-      T: ['Is there a GCP migration, an ML launch, or a certification window that anchors the timing?']
+      B: {
+        cx: 'Is Google Cloud upskilling for {field} a committed line in the cloud budget this year — and do compute-commitment credits or training funds cover part?',
+        vp: 'Is Google Cloud upskilling for {field} a committed line this year, or a proposal finance still needs to bless — and do compute-commitment credits absorb part of it?',
+        all: 'Where does GCP training money sit for {field} — the cloud budget, data, or L&D — and are credits earmarked?',
+        ic: 'Do you have access to GCP certification funding through your account, and is the ask queued?',
+        ldo: 'Where does GCP spend flow — compute commitments, the cloud line, or per project — and do credits expire on a date?'
+      },
+      A: {
+        cx: 'Who signs Google Cloud skilling — you, the CTO/CIO, or the platform leadership — and how far does your endorsement carry?',
+        vp: 'Whose sign-off sits above you on a GCP training PO, and can a one-page platform plan carry it?',
+        all: 'Who owns GCP skill decisions for your program — the platform lead, the data lead, or you?',
+        ic: 'Who approves your GCP certification path — your manager or the platform lead — and is the lane clear?',
+        ldo: 'Who issues the GCP training PO — procurement through the cloud contract, or engineering — and is one signature enough?'
+      },
+      N: {
+        cx: 'Which GCP bet is most exposed — engineering, data, or AI/ML — and what is the gap costing the platform strategy?',
+        vp: 'Which GCP lane is your team a version behind on — engineering, data, or AI/ML — and what is delivery waiting on?',
+        all: 'Between cloud engineering, data and AI/ML, which GCP lane is your team thinnest on?',
+        ic: 'Which GCP skill — engineering, data, or ML — is the gap in your next project?',
+        ldo: 'Which GCP track has no certified coverage on the books, and which one does the review check?'
+      },
+      T: {
+        cx: 'Is there a GCP migration, an ML launch, or a commitment renewal that makes readiness date-stamped?',
+        vp: 'What deadline would a certified GCP team unblock — a migration, a launch, or a renewal — and how near is it?',
+        all: 'Is there a migration or launch window that pins when the GCP team has to be ready?',
+        ic: 'Is there an exam window or a project deadline that sets when you need the cert?',
+        ldo: 'Do the compute-commitment credits expire on a date — and does that set the spend?'
+      }
     },
     subsOrder: ['cloudeng', 'data', 'aiml'],
     subs: {
@@ -308,10 +648,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Between compute, networking, and storage — which GCP lane is the current project waiting on?',
         stake: 'A GCP platform gap shows up as project delays that idle more capacity than the training would cost.',
         bant: {
-          B: ['Is GCP training funded through the cloud budget or the learning line?'],
-          A: ['Who owns the GCP platform — the cloud team lead or engineering leadership?'],
-          N: ['Which lane is the gap — Associate Cloud Engineer depth or the Professional track — and what waits on it?'],
-          T: ['Is there a migration, a project launch, or a certification window anchoring the timeline?']
+          B: {
+            cx: 'Is platform engineering skilling for {field} a committed line beside the GCP commitment, or still a proposal finance debates?',
+            vp: 'Is the platform line committed — and do the compute-commitment credits absorb part of the training?',
+            all: 'Where does platform training money sit for {field} — the cloud budget, engineering, or per project — and are credits earmarked?',
+            ic: 'Do you have access to platform certification funding through your account, and is the ask queued?',
+            ldo: 'Where does platform spend flow — compute commitments, the cloud line, or per project — and do credits expire?'
+          },
+          A: {
+            cx: 'Who signs the platform investment — you, the CTO/CIO, or engineering leadership — and how far does your endorsement carry?',
+            vp: 'Whose sign-off sits above you on a platform PO, and can a one-page delivery plan carry it?',
+            all: 'Who owns platform skill decisions — the cloud lead, engineering, or you — and is that the person to align with?',
+            ic: 'Who approves your platform certification path — your manager or the cloud lead — and is the lane clear?',
+            ldo: 'Who issues the platform training PO — procurement or engineering — and is one signature enough?'
+          },
+          N: {
+            cx: 'Which platform gap is the exposure — compute, networking, or storage — and what does the delay cost the roadmap?',
+            vp: 'Which platform lane is your team thinnest on — compute, networking, or storage — and what is delivery waiting on?',
+            all: 'Between compute, networking and storage, which lane is your team actually behind on?',
+            ic: 'Which platform skill — compute, networking, or storage — is the gap in your next build?',
+            ldo: 'Which platform track has no certified coverage, and which one does the review check?'
+          },
+          T: {
+            cx: 'Is there a migration, a project launch, or a commitment renewal that makes platform readiness date-stamped?',
+            vp: 'What deadline would a certified platform team unblock — a migration or a launch — and how near is it?',
+            all: 'Is there a migration or launch window that pins when the platform team has to be ready?',
+            ic: 'Is there an exam window or a project date that sets when you need the cert?',
+            ldo: 'Do the commitments or credits expire on a date — and does that set the spend?'
+          }
         },
         byLevel: {
           cx: 'The cloud bet is made; certified platform depth is how the bet pays.',
@@ -329,10 +693,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Between warehouse, pipelines, and dashboards — which layer is currently the slowest on the data team?',
         stake: 'A slow data layer makes every downstream decision slower — the analyst hours it burns dwarf the training.',
         bant: {
-          B: ['Is data-engineering training on the data budget, the cloud account, or L&D?'],
-          A: ['Who owns the warehouse — the data lead, the platform team, or IT?'],
-          N: ['Which gap — BigQuery, pipelines, or reporting — and where do insights stall today?'],
-          T: ['Is there a warehouse migration, a reporting cycle, or a data compliance date pinning it?']
+          B: {
+            cx: 'Is data engineering skilling for {field} a committed line in the data budget — and do GCP commitments or credits cover part?',
+            vp: 'Is the data line committed — and do the account credits absorb part of the warehouse training?',
+            all: 'Where does data training money sit for {field} — the data budget, the cloud account, or L&D — and are credits earmarked?',
+            ic: 'Do you have access to BigQuery certification funding through your team, and is the ask queued?',
+            ldo: 'Where does data spend flow — the account, the data line, or per project — and do credits expire on a date?'
+          },
+          A: {
+            cx: 'Who signs the data investment — you, the CIO, or the data leadership — and how far does your endorsement carry?',
+            vp: 'Whose sign-off sits above you on a data training PO, and can a one-page warehouse plan carry it?',
+            all: 'Who owns the warehouse skill decision — the data lead, the platform team, or you?',
+            ic: 'Who approves your BigQuery certification path — your manager or the data lead — and is the lane clear?',
+            ldo: 'Who issues the data training PO — procurement through the account, or IT — and is one signature enough?'
+          },
+          N: {
+            cx: 'Which data gap is the exposure — warehouse, pipelines, or reporting — and what is insight latency costing decisions?',
+            vp: 'Which data layer is your team thinnest on — BigQuery, pipelines, or reporting — and what is stalling insights?',
+            all: 'Between warehouse, pipelines and dashboards, which layer is your team slowest on?',
+            ic: 'Which data skill — BigQuery, pipelines, or reporting — is the gap between you and the data engineer role?',
+            ldo: 'Which data track has no certified coverage on the books, and which one does the review check?'
+          },
+          T: {
+            cx: 'Is there a warehouse migration, a reporting cycle, or a compliance date that makes data readiness date-stamped?',
+            vp: 'What deadline would a certified data team unblock — a migration, a reporting push, or a compliance date — and how near is it?',
+            all: 'Is there a migration or reporting window that pins when the data team has to be ready?',
+            ic: 'Is there an exam window or a reporting season that sets when you need the cert?',
+            ldo: 'Do the account credits or a compliance cycle set the spend date?'
+          }
         },
         byLevel: {
           cx: 'Decisions run on the warehouse; certified data depth is the reliability behind the deck.',
@@ -350,10 +738,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Between model training, deployment, and MLOps — which stage is your AI project currently stuck at?',
         stake: 'An AI project stalled on ML talent burns more in idle compute and salaries than the training would cost.',
         bant: {
-          B: ['Is ML training funded from the AI budget, the cloud account, or the data line?'],
-          A: ['Who owns AI delivery — the data science lead, the ML platform team, or engineering?'],
-          N: ['Which gap — Vertex AI, MLOps, or model deployment — and at what cost to the roadmap?'],
-          T: ['Is there an AI launch date, a model go-live, or a funding cycle setting the window?']
+          B: {
+            cx: 'Is ML engineering skilling for {field} a committed line in the AI budget — and do the GCP commitments cover part of it?',
+            vp: 'Is the ML line committed — and do the account credits absorb part of the training cost?',
+            all: 'Where does ML training money sit for {field} — the AI budget, the cloud account, or the data line — and are credits earmarked?',
+            ic: 'Do you have access to ML certification funding through your team, and is the ask queued?',
+            ldo: 'Where does ML spend flow — the AI line, the account, or per project — and do credits expire on a date?'
+          },
+          A: {
+            cx: 'Who signs the AI delivery investment — you, the data science lead, or engineering — and how far does your endorsement carry?',
+            vp: 'Whose sign-off sits above you on an ML training PO, and can a one-page model-delivery plan carry it?',
+            all: 'Who owns AI delivery skill decisions — the data science lead, the ML platform team, or you?',
+            ic: 'Who approves your ML certification path — your manager or the data science lead — and is the lane clear?',
+            ldo: 'Who issues the ML training PO — procurement under the AI line, or engineering — and does it need review?'
+          },
+          N: {
+            cx: 'Which AI stage is the stall — model training, deployment, or MLOps — and what is idle compute costing the roadmap?',
+            vp: 'Which ML stage is your team stuck at — training, deployment, or MLOps — and what is the roadmap waiting on?',
+            all: 'Between Vertex AI, MLOps and deployment, which stage is your team actually stuck at?',
+            ic: 'Which ML skill — Vertex AI, MLOps, or deployment — is the one that gets you on the projects?',
+            ldo: 'Which AI track has no certified coverage on the books, and which one does the review check?'
+          },
+          T: {
+            cx: 'Is there an AI launch date, a funding cycle, or a go-live that makes ML readiness date-stamped?',
+            vp: 'What deadline would certified ML engineers unblock — a launch, a go-live, or a funding checkpoint — and how near is it?',
+            all: 'Is there a model launch or funding checkpoint that pins when the ML team has to be ready?',
+            ic: 'Is there an exam window or a project launch that sets when you need the cert?',
+            ldo: 'Does the funding cycle or credit expiry set when the ML spend lands?'
+          }
         },
         byLevel: {
           cx: 'The board funded the AI; certified ML capacity is how it delivers on schedule.',
@@ -376,10 +788,34 @@ window.SDR_PROGRAMS = {
     bridge: 'Is the AI readiness question being asked by your governance lead, your CTO, or the board itself?',
     stake: 'AI governance without certified depth is a position paper — the cert is what makes the readiness provable.',
     bant: {
-      B: ['Is there dedicated budget for AI readiness, or would this land inside the existing workforce-training line?'],
-      A: ['Who champions AI skills — the AI governance lead, the Chief AI Officer, or the board-mandated readiness owner?'],
-      N: ['Which AI capability is board-critical — governance, LLM engineering, or AI for the front line — and what is the readiness gap?'],
-      T: ['Is there an AI rollout, a governance deadline, or a funding cycle that sets when readiness has to be proven?']
+      B: {
+        cx: 'Is AI readiness skilling for {field} a committed line in the AI budget — or still an afterthought the board has not tied to the spend?',
+        vp: 'Is the AI readiness line committed, or still vague — and who owns the training dollars in the rollout?',
+        all: 'Where does AI readiness training money sit for {field} — the AI line, L&D, or compliance — and is any of it carved out yet?',
+        ic: 'Does your org fund AI literacy or governance certification — and is the request already made?',
+        ldo: 'Where does AI readiness spend flow — the AI budget, compliance, or L&D — and does a governance review set the window?'
+      },
+      A: {
+        cx: 'Who owns AI readiness at your level — you, the Chief AI Officer, or the board-mandated owner — and who signs the training?',
+        vp: 'Whose sign-off sits above you on an AI readiness plan, and can a one-page governance map carry it?',
+        all: 'Who owns the AI readiness decision — the AI lead, the governance owner, or you — and is that the person to align with?',
+        ic: 'Who approves your AI certification path — your manager or the AI lead — and is the lane clear?',
+        ldo: 'Who issues the AI readiness PO — the AI line owner, compliance, or L&D — and does it need review?'
+      },
+      N: {
+        cx: 'Which AI capability is board-critical — governance, engineering, or front-line use — and where is the readiness gap?',
+        vp: 'Which AI capability is your org thinnest on — governance, engineering, or front-line use — and what is the risk?',
+        all: 'Between governance, LLM engineering and front-line use, which one is your team missing?',
+        ic: 'Which AI skill — governance, engineering, or safe use — is the one that makes you the accountable person?',
+        ldo: 'Which AI track has no certifiable coverage on the books, and which one does the review actually check?'
+      },
+      T: {
+        cx: 'Is there an AI rollout, a governance deadline, or a funding review that makes readiness date-stamped?',
+        vp: 'What deadline would a certified AI base unblock — a rollout, a review, or a funding cycle — and how near is it?',
+        all: 'Is there a rollout wave or a governance review that pins when readiness has to be proven?',
+        ic: 'Is there an exam window or a rollout that sets when you get certified?',
+        ldo: 'Does the governance review or budget cycle set when the spend lands?'
+      }
     },
     subsOrder: ['governance', 'llm', 'frontline'],
     subs: {
@@ -390,10 +826,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Who owns your AI risk register today — and which role has the certified mandate to update it?',
         stake: 'AI governance without certified depth is a policy nobody can defend at the review.',
         bant: {
-          B: ['Is governance training a line item of the AI budget or the compliance budget?'],
-          A: ['Who owns AI governance — the AI lead, the risk office, or the board itself?'],
-          N: ['Which governance gap is live — policy, risk, or accountability — and what is the exposure?'],
-          T: ['Is there an AI review, a regulatory deadline, or a funding review pinning the timeline?']
+          B: {
+            cx: 'Is AI governance skilling for {field} a committed line in the risk or AI budget — or still a policy people cannot defend at review?',
+            vp: 'Is governance training budget attached to the AI rollout, or still a line nobody owns yet?',
+            all: 'Where does governance training money sit for {field} — the AI line, risk, or compliance — and is it mapped to the rollout?',
+            ic: 'Does your org fund governance certification, and is the request already with your manager?',
+            ldo: 'Where does governance spend flow — the risk budget, compliance, or the AI line — and does the review set the window?'
+          },
+          A: {
+            cx: 'Who owns AI governance at your level — you, the risk office, or the board — and who signs the mandate and the training?',
+            vp: 'Whose sign-off sits above you on a governance training plan, and can a one-page risk map carry it?',
+            all: 'Who owns the AI risk register and its training — the AI lead, risk, or you — and is that the person to align with?',
+            ic: 'Who approves your governance certification path — your manager or the risk lead — and is the lane clear?',
+            ldo: 'Who issues the governance PO — the risk office, compliance, or the AI line — and does it need review?'
+          },
+          N: {
+            cx: 'Which governance gap is live — policy, risk, or accountability — and what is the board exposure?',
+            vp: 'Which governance gap is real on your program — policy, risk, or accountability — and what is the review risk?',
+            all: 'Between policy, risk and accountability, which one is your team actually missing?',
+            ic: 'Which governance skill — policy, risk, or accountability — is the one that makes you the safe owner?',
+            ldo: 'Which governance track has no certifiable coverage, and which one does the review check?'
+          },
+          T: {
+            cx: 'Is there an AI review, a regulatory deadline, or a funding review that makes governance readiness date-stamped?',
+            vp: 'What deadline would a certified governance team unblock — a review, a filing, or a funding review — and how near is it?',
+            all: 'Is there a governance review or filing window that pins when coverage has to be provable?',
+            ic: 'Is there an exam window or a filing that sets when you get certified?',
+            ldo: 'Does the review calendar or budget cycle set when the spend lands?'
+          }
         },
         byLevel: {
           cx: 'The board wants a governance answer — certified depth is the answer that survives scrutiny.',
@@ -411,10 +871,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Between prompt engineering, RAG, and evaluation — which stage is your LLM project living in right now?',
         stake: 'An LLM in demo-forever costs more in missed releases than a certified engineer would.',
         bant: {
-          B: ['Is LLM engineering training funded from the AI line, the data budget, or engineering L&D?'],
-          A: ['Who owns LLM delivery — the ML team, the platform lead, or the AI governance office?'],
-          N: ['Which capability is the gap — RAG, evaluation, or deployment — and what is the roadmap waiting on?'],
-          T: ['Is there a model launch, a funding checkpoint, or a platform decision pinning the window?']
+          B: {
+            cx: 'Is LLM engineering skilling for {field} a committed line in the AI budget — or is the project living on demo budget and goodwill?',
+            vp: 'Is the LLM line committed — or is the team still on ad-hoc demo funding for engineering?',
+            all: 'Where does LLM engineering training money sit for {field} — the AI line, the data budget, or engineering L&D — and is it real?',
+            ic: 'Does your org fund LLM engineering certification, and is the request already with your manager?',
+            ldo: 'Where does LLM spend flow — the AI line, the data budget, or engineering — and does the funding cycle set it?'
+          },
+          A: {
+            cx: 'Who owns LLM delivery at your level — you, the ML lead, or the AI governance office — and who signs the training?',
+            vp: 'Whose sign-off sits above you on the LLM program, and can a one-page production plan carry the training?',
+            all: 'Who owns LLM delivery for your program — the ML team, the platform lead, or you — and is that the person to align with?',
+            ic: 'Who approves your LLM certification path — your manager or the ML lead — and is the lane clear?',
+            ldo: 'Who issues the LLM training PO — the AI line owner, data, or engineering — and does it need review?'
+          },
+          N: {
+            cx: 'Which LLM stage is the stall — RAG, evaluation, or deployment — and what is demo-forever costing the roadmap?',
+            vp: 'Which LLM capability is your team missing — RAG, evaluation, or deployment — and what is delivery waiting on?',
+            all: 'Between RAG, evaluation and deployment, which one is your project actually stuck at?',
+            ic: 'Which LLM skill — RAG, evaluation, or deployment — is the one that moves you past demos?',
+            ldo: 'Which LLM track has no certified coverage, and which one does the production review check?'
+          },
+          T: {
+            cx: 'Is there a model launch, a funding checkpoint, or a platform decision that makes LLM readiness date-stamped?',
+            vp: 'What deadline would certified LLM engineers unblock — a launch, a checkpoint, or a go-live — and how near is it?',
+            all: 'Is there a launch or checkpoint window that pins when the LLM team has to be ready?',
+            ic: 'Is there an exam window or a model launch that sets when you need the cert?',
+            ldo: 'Does the funding cycle or contract date set when the spend lands?'
+          }
         },
         byLevel: {
           cx: 'The AI investment needs production proof — certified LLM engineering is how you get there.',
@@ -432,10 +916,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Where does your front line actually touch AI today — chat tools, automation, or reporting?',
         stake: 'Untrained front-line AI use is a support and data-risk bill you pay quietly every month.',
         bant: {
-          B: ['Is front-line AI training funded from the AI rollout budget or the L&D line?'],
-          A: ['Who owns front-line AI enablement — HR, the AI lead, or the business units?'],
-          N: ['Which AI use is live — chat, automation, or reporting — and where are the mistakes happening?'],
-          T: ['Is there an AI rollout wave, a go-live date, or a support-cost review pinning the timing?']
+          B: {
+            cx: 'Is front-line AI training for {field} a committed line beside the AI rollout — or a support-cost problem nobody named yet?',
+            vp: 'Is front-line AI training budget attached to the rollout, or still a line nobody owns?',
+            all: 'Where does front-line AI training money sit for {field} — the rollout budget, L&D, or the business units — and is it real?',
+            ic: 'Does your org fund AI literacy training, and is the request already with your manager?',
+            ldo: 'Where does front-line AI spend flow — the rollout line, L&D, or per unit — and is it per-seat math?'
+          },
+          A: {
+            cx: 'Who owns front-line AI enablement — you, HR, or the AI lead — and who signs the training at scale?',
+            vp: 'Whose sign-off sits above you on the enablement plan, and can a one-page adoption map carry it?',
+            all: 'Who owns front-line enablement for your team — HR, the AI lead, or the business units — and is that the person to align with?',
+            ic: 'Who approves your AI literacy path — your manager or HR — and is the lane clear?',
+            ldo: 'Who issues the front-line training PO — HR, the AI lead, or the units — and is one signature enough?'
+          },
+          N: {
+            cx: 'Which front-line AI use is live — chat, automation, or reporting — and where are the mistakes costing support?',
+            vp: 'Where is front-line AI touching your team — chat, automation, or reporting — and what is the misuse risk?',
+            all: 'Between chat, automation and reporting, where is your team actually touching AI today?',
+            ic: 'Which AI skill — chat, automation, or reporting — is the one that makes you safe with the tools?',
+            ldo: 'Which front-line track has no certified coverage, and which one does the support review check?'
+          },
+          T: {
+            cx: 'Is there a rollout wave, a go-live, or a support-cost review that makes front-line readiness date-stamped?',
+            vp: 'What deadline would a trained front line unblock — a rollout wave or a go-live — and how near is it?',
+            all: 'Is there a rollout wave or go-live date that pins when the front line has to be trained?',
+            ic: 'Is there a training wave or an onboarding cycle that sets when you get it?',
+            ldo: 'Does the rollout or budget cycle — not the quarter — set when the spend lands?'
+          }
         },
         byLevel: {
           cx: 'The workforce is in AI tools already; training is the governance line that reaches the floor.',
@@ -458,10 +966,34 @@ window.SDR_PROGRAMS = {
     bridge: 'If an examiner asked today where your certified security depth sits, which certification line would be thinnest?',
     stake: 'Audit exposure is a date on the calendar; certified depth is the only hedge that holds.',
     bant: {
-      B: ['Where does security certification funding sit — compliance budget, IT security line, or the training budget?'],
-      A: ['Who owns security cert coverage — the CISO, the security ops manager, or compliance?'],
-      N: ['Which ISC2 gap is the risk — CISSP, Certified in Cybersecurity, or a specialty — and what does audit exposure cost?'],
-      T: ['Is there an audit, a compliance deadline, or a cert-expiry cycle that sets the timeline?']
+      B: {
+        cx: 'Is security certification skilling for {field} a committed line in the compliance or security budget — and is CISSP coverage part of the plan?',
+        vp: 'Is security certification upskilling for {field} a committed line this year — and does the compliance budget carry the track?',
+        all: 'Where does security certification money sit for {field} — the security budget, compliance, or L&D — and is it mapped?',
+        ic: 'Do you have certification benefits toward a CISSP or CC — and is the request already with your manager?',
+        ldo: 'Where does ISC2 spend flow — the compliance budget, the security line, or per head — and does the audit cycle set it?'
+      },
+      A: {
+        cx: 'Who owns security certification coverage — you, the CISO, or compliance — and who signs the program?',
+        vp: 'Whose sign-off sits above you on the certification plan, and can a one-page audit-map carry it?',
+        all: 'Who owns certification coverage for your team — the security manager, the CISO, or you?',
+        ic: 'Who approves your CISSP path — your manager, the security lead, or the CISO — and is the lane clear?',
+        ldo: 'Who issues the security certification PO — compliance, the security office, or procurement — and does it need review?'
+      },
+      N: {
+        cx: 'Which security gap is the exposure — CISSP density, entry coverage, or specialties — and what does audit risk cost?',
+        vp: 'Which certification lane is your team thinnest on — CISSP, entry, or specialties — and what is the posture risk?',
+        all: 'Between CISSP, entry certs and specialties, which one is your team actually missing?',
+        ic: 'Which ISC2 cert — CISSP, CC, or a specialty — is the one that fits your seat and your path?',
+        ldo: 'Which certification track has no coverage on the books, and which one does the audit check?'
+      },
+      T: {
+        cx: 'Is there an audit, a compliance deadline, or a cert-expiry cycle that makes security readiness date-stamped?',
+        vp: 'What deadline would a certified security team unblock — an audit or a certification window — and how near is it?',
+        all: 'Is there an audit or exam window that pins when the team has to be certified?',
+        ic: 'Is there an exam window or an audit that sets when you sit for it?',
+        ldo: 'Does the audit calendar or the CPE/CE cycle set when the spend lands?'
+      }
     },
     subsOrder: ['cissp', 'cc', 'spec'],
     subs: {
@@ -472,10 +1004,34 @@ window.SDR_PROGRAMS = {
         bridge: 'How many CISSPs are on the bench today, and how many seats are scheduled to sit for it this year?',
         stake: 'Every pursuit and audit that hinges on CISSP coverage gets harder the longer the bench waits.',
         bant: {
-          B: ['Is CISSP training on the security certification budget or the compliance line?'],
-          A: ['Who decides CISSP coverage — the CISO, the security manager, or the individual leads?'],
-          N: ['Which gap — number of certified staff or readiness for the next exam — is the live pain?'],
-          T: ['Is there an exam window, an audit, or a renewal cycle that sets the timing?']
+          B: {
+            cx: 'Is CISSP coverage for {field} a committed line in the security budget — or still dependent on who volunteers each year?',
+            vp: 'Is the CISSP line committed — and does the compliance budget carry the cohort?',
+            all: 'Where does CISSP training money sit for {field} — the security budget, compliance, or per head — and is the cohort planned?',
+            ic: 'Do you have certification benefits toward the CISSP — and is the request already with your manager?',
+            ldo: 'Where does CISSP spend flow — the compliance budget or the security line — and can the cohort be sized now?'
+          },
+          A: {
+            cx: 'Who owns CISSP coverage — you, the CISO, or compliance — and who signs the cohort?',
+            vp: 'Whose sign-off sits above you on the CISSP plan, and can a one-page bench map carry it?',
+            all: 'Who decides CISSP coverage — the security manager, the CISO, or you — and is that the person to align with?',
+            ic: 'Who approves your CISSP path — your manager, the security lead, or the CISO — and is the lane clear?',
+            ldo: 'Who issues the CISSP PO — compliance, the security office, or procurement — and does it need review?'
+          },
+          N: {
+            cx: 'Which bench gap is the exposure — too few CISSPs or readiness for the next exam — and what does the audit list say?',
+            vp: 'Is the gap CISSP count or exam readiness — and which one is the pursuit or audit risk?',
+            all: 'Between certified headcount and exam readiness, which one is your team behind on?',
+            ic: 'Which exam — the CISSP itself or a specialty — is the one that moves your security career?',
+            ldo: 'Which certification lane has no coverage on the books, and which one does the audit check?'
+          },
+          T: {
+            cx: 'Is there an exam window, an audit, or a renewal cycle that makes CISSP readiness date-stamped?',
+            vp: 'What deadline would more CISSPs unblock — an audit or a pursuit — and how near is the exam?',
+            all: 'Is there an exam window or an audit that pins when the bench has to be certified?',
+            ic: 'Is there an exam window that fits your schedule — and should we anchor the prep to it?',
+            ldo: 'Does the audit calendar or exam cycle set when the cohort spend lands?'
+          }
         },
         byLevel: {
           cx: 'CISSP density is the bench strength the board and auditors actually check.',
@@ -493,10 +1049,34 @@ window.SDR_PROGRAMS = {
         bridge: 'How many of your security-adjacent people — help desk, desktop, cloud — could sit for this in a quarter?',
         stake: 'Every month the junior bench stays uncertified is a month the senior team does the work.',
         bant: {
-          B: ['Is entry security training budgeted in the IT training line or per new hire?'],
-          A: ['Who decides the security career ladder — HR, the security manager, or the help-desk lead?'],
-          N: ['Which gap — number of entry-certified staff or the path to get them there — is the pain?'],
-          T: ['Is there a hiring push, a project need, or a year-end budget to attach this to?']
+          B: {
+            cx: 'Is entry security skilling for {field} a committed line in the IT training budget — or per-new-hire math nobody sized yet?',
+            vp: 'Is the entry cert line committed — and does the per-head math make the cohort an easy yes?',
+            all: 'Where does entry security training money sit for {field} — IT training, L&D, or per hire — and is it real?',
+            ic: 'Do you have access to entry cert funding — and is the request already with your manager?',
+            ldo: 'Where does entry cert spend flow — per head, IT training, or HR — and is it compact enough to approve?'
+          },
+          A: {
+            cx: 'Who owns the security career ladder — you, HR, or the security manager — and who signs the entry program?',
+            vp: 'Whose sign-off sits above you on the entry cohort, and can the per-head math carry it?',
+            all: 'Who decides the entry security path — HR, the security manager, or the help-desk lead — and is that the person?',
+            ic: 'Who approves your entry cert — your manager or the security team — and is the ask queued?',
+            ldo: 'Who issues the entry cert PO — HR, IT, or the security office — and is one signature enough?'
+          },
+          N: {
+            cx: 'Is the gap junior capacity or a missing talent ladder — and what does an overstretched senior team cost?',
+            vp: 'Is the bench short on juniors or on the ladder to get them there — and which one is the pain?',
+            all: 'Between junior capacity and the path to it, which one is your team actually missing?',
+            ic: 'Which entry cert — CC in Cybersecurity, A+, or another — is the fastest door into your security role?',
+            ldo: 'Which entry track has no coverage on the books, and which one does the staffing review check?'
+          },
+          T: {
+            cx: 'Is there a hiring push, a project need, or a budget cycle that makes entry readiness date-stamped?',
+            vp: 'What deadline would certified juniors unblock — a hiring push or a project wave — and how near is it?',
+            all: 'Is there a hiring push or project wave that pins when the juniors have to be certified?',
+            ic: 'Is there an exam window or a hiring cycle that sets when you sit for it?',
+            ldo: 'Does the budget year or hiring cycle set when the entry spend lands?'
+          }
         },
         byLevel: {
           cx: 'Security staffing is a pipeline problem; the entry cert is the fastest known input.',
@@ -514,10 +1094,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Between cloud security, forensics, and security management — which specialty is your team expected to own next?',
         stake: 'A specialty gap shows up precisely in the incident that the generalists cannot handle.',
         bant: {
-          B: ['Is specialty training on the security budget or tied to role requirements?'],
-          A: ['Who maps specialty coverage to roles — the security manager, HR, or the team leads?'],
-          N: ['Which specialty gap — cloud, forensic, or management — and what incident does it expose?'],
-          T: ['Is there a cloud migration, an incident review, or a role-opening pushing the timing?']
+          B: {
+            cx: 'Is specialty security skilling for {field} a committed line — cloud, forensic, or management — or still role-dependent year to year?',
+            vp: 'Is the specialty line committed — and which lane does the compliance budget carry?',
+            all: 'Where does specialty training money sit for {field} — the security budget, role budgets, or per head — and is it mapped to roles?',
+            ic: 'Do you have certification benefits toward a specialty — and is the request already with your manager?',
+            ldo: 'Where does specialty spend flow — the security line, per role, or compliance — and is it scoped to the org chart?'
+          },
+          A: {
+            cx: 'Who owns specialty coverage — you, the security manager, or HR for roles — and who signs the program?',
+            vp: 'Whose sign-off sits above you on the specialty plan, and can a role-map carry it?',
+            all: 'Who maps specialty coverage to roles — the security manager, HR, or the team leads — and is that the person?',
+            ic: 'Who approves your specialty path — your manager or the security lead — and is the lane clear?',
+            ldo: 'Who issues the specialty PO — the security office, HR, or procurement — and does it need review?'
+          },
+          N: {
+            cx: 'Which specialty gap is the exposure — cloud, forensic, or management — and what incident would it expose?',
+            vp: 'Which specialty lane is your team thinnest on — cloud, forensic, or management — and what is the incident risk?',
+            all: 'Between cloud, forensic and management, which specialty is your team expected to own next?',
+            ic: 'Which specialty — cloud, forensic, or management — is the one that differentiates your seat?',
+            ldo: 'Which specialty track has no coverage on the books, and which one does the incident review check?'
+          },
+          T: {
+            cx: 'Is there a cloud migration, an incident review, or a role-opening that makes specialty readiness date-stamped?',
+            vp: 'What deadline would certified specialists unblock — a migration or an incident review — and how near is it?',
+            all: 'Is there a migration or opening that pins when the specialty has to be filled?',
+            ic: 'Is there an exam window or a role move that sets when you specialize?',
+            ldo: 'Does the migration or role-planning cycle set when the spend lands?'
+          }
         },
         byLevel: {
           cx: 'Specialty depth is the differentiation the security program sells internally.',
@@ -540,10 +1144,34 @@ window.SDR_PROGRAMS = {
     bridge: 'Between certified PMs for pursuits and PDU renewals expiring on the bench — which is the pain right now?',
     stake: 'Each expired PDU is a certified lead the next pursuit cannot put on the staffing page.',
     bant: {
-      B: ['Is PMP and project training funded from project budgets, the PMO, or L&D?'],
-      A: ['Who owns project capability — the PMO director, delivery leadership, or the functional heads?'],
-      N: ['Which gap is real — certified PMs for pursuits, PDU renewals expiring, or delivery overruns from untrained leads?'],
-      T: ['Are there pursuit deadlines, PDU-expiry dates, or a Q{Qtr} delivery push that anchors timing?']
+      B: {
+        cx: 'Is project-capability skilling for {field} a committed line in the PMO or delivery budget — and do PDU renewals factor into it?',
+        vp: 'Is the delivery line committed — and does the PMO budget carry the PMP and PDU tracks?',
+        all: 'Where does project training money sit for {field} — the PMO, delivery budgets, or L&D — and is the cohort sized?',
+        ic: 'Do you have certification benefits toward the PMP — and is the request already with your manager?',
+        ldo: 'Where does PMI spend flow — the PMO line, per project, or L&D — and does the pursuit calendar set it?'
+      },
+      A: {
+        cx: 'Who owns delivery capability — you, the PMO director, or delivery leadership — and who signs the program?',
+        vp: 'Whose sign-off sits above you on the PMP plan, and can a pursuit-staffing map carry it?',
+        all: 'Who owns project capability for your program — the PMO director, delivery leadership, or you?',
+        ic: 'Who approves your PMP path — your manager or the PMO — and is the lane clear?',
+        ldo: 'Who issues the PMI PO — the PMO, procurement, or per project — and does it need review?'
+      },
+      N: {
+        cx: 'Which delivery gap is the exposure — certified PMs for pursuits, expiring PDUs, or overruns — and what does it cost win-rate?',
+        vp: 'Is the gap certified PMs for proposals or delivery overruns — and which one is the live pain?',
+        all: 'Between pursuit-certified PMs and delivery quality, which one is your team behind on?',
+        ic: 'Which project credential — PMP or CAPM — is the one that moves your project career?',
+        ldo: 'Which project track has no coverage on the books, and which one does the staffing review check?'
+      },
+      T: {
+        cx: 'Is there a pursuit deadline, a PDU-expiry cycle, or a delivery push that makes capability date-stamped?',
+        vp: 'What deadline would certified PMs unblock — a pursuit or a delivery push — and how near is it?',
+        all: 'Is there a pursuit season or a Q{Qtr} push that pins when the bench has to be certified?',
+        ic: 'Is there an exam window or a pursuit cycle that sets when you sit for it?',
+        ldo: 'Do the PDU expiries or the pursuit calendar set when the spend lands?'
+      }
     },
     subsOrder: ['pmp', 'capm', 'pdu'],
     subs: {
@@ -554,10 +1182,34 @@ window.SDR_PROGRAMS = {
         bridge: 'Between certified PMs for pursuits and delivery quality on current projects — which is the live gap?',
         stake: 'An uncertified bench loses pursuits on paper before the work even starts.',
         bant: {
-          B: ['Is PMP training funded from project budgets, the PMO, or L&D?'],
-          A: ['Who owns PM capability — the PMO director or delivery leadership?'],
-          N: ['Which gap — certified PMs for pursuits or delivery overruns — is the live pain?'],
-          T: ['Are there pursuit deadlines, PDU expiries, or a delivery push pinning the window?']
+          B: {
+            cx: 'Is PMP development for {field} a committed line in the PMO budget — or a pursuit-season scramble every year?',
+            vp: 'Is the PMP line committed — and does the PMO budget carry the full cohort?',
+            all: 'Where does PMP training money sit for {field} — the PMO, project budgets, or L&D — and is the cohort sized?',
+            ic: 'Do you have certification benefits toward the PMP — and is the request already with your manager?',
+            ldo: 'Where does PMP spend flow — the PMO line or per project — and can the cohort be booked before the push?'
+          },
+          A: {
+            cx: 'Who owns PM capability — you, the PMO director, or delivery leadership — and who signs the cohort?',
+            vp: 'Whose sign-off sits above you on the PMP plan, and can a pursuit-map carry it?',
+            all: 'Who decides PMP coverage — the PMO director, delivery leadership, or you — and is that the person?',
+            ic: 'Who approves your PMP path — your manager or the PMO — and is the lane clear?',
+            ldo: 'Who issues the PMP PO — the PMO, procurement, or per project — and does it need review?'
+          },
+          N: {
+            cx: 'Is the gap pursuit-certified PMs or delivery overruns — and which one is the live pain?',
+            vp: 'Is the gap certified PMs for pursuits or delivery quality — and which one costs more?',
+            all: 'Between pursuit certification and delivery quality, which one is your team behind on?',
+            ic: 'Is the PMP the move for your project career — and is now the window?',
+            ldo: 'Which project lane has no certified coverage, and which one does the staffing review check?'
+          },
+          T: {
+            cx: 'Is there a pursuit deadline or a delivery push that makes PMP readiness date-stamped?',
+            vp: 'What deadline would more PMPs unblock — a pursuit or a delivery push — and how near is it?',
+            all: 'Is there a pursuit season or a push that pins when the cohort has to be certified?',
+            ic: 'Is there an exam window that fits your schedule — and should we anchor the prep to it?',
+            ldo: 'Does the pursuit calendar or PDU cycle set when the spend lands?'
+          }
         },
         byLevel: {
           cx: 'Pursuit win-rate is the metric; PMP coverage is the staffing-page line that moves it.',
@@ -575,10 +1227,34 @@ window.SDR_PROGRAMS = {
         bridge: 'How many coordinators and junior project staff could carry a real project plan if they had the credential?',
         stake: 'Uncertified coordinators stretch the PMPs thin; CAPM is the buffer that keeps them mid-project.',
         bant: {
-          B: ['Is CAPM funded from project budgets or the L&D line?'],
-          A: ['Who decides the project career path — the PMO director or HR?'],
-          N: ['Which gap — coordinator capacity or plan quality — is the live pain?'],
-          T: ['Is there a hiring push, a project wave, or a budget cycle to attach it to?']
+          B: {
+            cx: 'Is entry project skilling for {field} a committed line in the PMO budget — or per-coordinator math nobody sized yet?',
+            vp: 'Is the entry project line committed — and does the per-head math make the cohort an easy yes?',
+            all: 'Where does CAPM training money sit for {field} — the PMO, project budgets, or L&D — and is the cohort real?',
+            ic: 'Do you have access to entry project certification funding — and is the request already with your manager?',
+            ldo: 'Where does CAPM spend flow — per head, the PMO line, or L&D — and is it compact enough to approve?'
+          },
+          A: {
+            cx: 'Who owns the project career ladder — you, the PMO director, or HR — and who signs the entry program?',
+            vp: 'Whose sign-off sits above you on the coordinator cohort, and can the per-head math carry it?',
+            all: 'Who decides the entry project path — the PMO director, HR, or the coordinators’ leads — and is that the person?',
+            ic: 'Who approves your CAPM — your manager or the PMO — and is the ask queued?',
+            ldo: 'Who issues the CAPM PO — the PMO, HR, or per project — and is one signature enough?'
+          },
+          N: {
+            cx: 'Is the gap coordinator capacity or plan quality — and what does stretched PMP time cost delivery?',
+            vp: 'Is the gap coordinator volume or planning depth — and which one is the pain?',
+            all: 'Between coordinator capacity and plan quality, which one is your team behind on?',
+            ic: 'Is CAPM the right on-ramp for your project path — and is the exam the next step?',
+            ldo: 'Which entry project track has no coverage, and which one does the staffing review check?'
+          },
+          T: {
+            cx: 'Is there a hiring push, a project wave, or a budget cycle that makes coordinator readiness date-stamped?',
+            vp: 'What deadline would certified coordinators unblock — a project wave or a hiring push — and how near is it?',
+            all: 'Is there a project wave or a push that pins when the coordinators have to be certified?',
+            ic: 'Is there an exam window or a project cycle that sets when you sit for it?',
+            ldo: 'Does the budget year or project wave set when the entry spend lands?'
+          }
         },
         byLevel: {
           cx: 'Project pipeline health starts at the coordinator level; CAPM raises the floor cheaply.',
@@ -596,10 +1272,34 @@ window.SDR_PROGRAMS = {
         bridge: 'How many of your certified PMs are renewing this year — and how many have already gone quiet?',
         stake: 'An expired PDU is a certified lead the next pursuit simply cannot staff.',
         bant: {
-          B: ['Is renewal training funded per head in the PMO or the L&D line?'],
-          A: ['Who tracks PDU status — the PMO, HR, or the individual PMs?'],
-          N: ['Which gap — expiring PDUs or lapsed certs — is already on the books?'],
-          T: ['Is there a renewal cycle or pursuit season that sets the deadline?']
+          B: {
+            cx: 'Is PDU renewal a budgeted line in the PMO — or is every renewal a last-quarter scramble?',
+            vp: 'Is the renewal line committed — and does the per-head renewal math make it an easy yes?',
+            all: 'Where does renewal training money sit for {field} — the PMO, per head, or L&D — and is the renewal cycle tracked?',
+            ic: 'Do you use your benefits for PDU renewal — and is the request already with your manager?',
+            ldo: 'Where does renewal spend flow — the PMO line or per head — and is it calendared against expiries?'
+          },
+          A: {
+            cx: 'Who owns certification currency — you, the PMO, or HR — and who signs the renewal program?',
+            vp: 'Whose sign-off sits above you on the renewal plan, and can an expiry-list carry it?',
+            all: 'Who tracks PDU status — the PMO, HR, or the individual PMs — and is that tracked or ad hoc?',
+            ic: 'Who watches your PDU clock — you or the PMO — and is the renewal already planned?',
+            ldo: 'Who issues the renewal PO — the PMO or procurement — and does the expiry list trigger it?'
+          },
+          N: {
+            cx: 'Is the gap expiring PDUs or already-lapsed certs — and what does that do to certified staffing?',
+            vp: 'Are letters about to lapse on your bench — and what does that cost the next pursuit?',
+            all: 'Between expiring PDUs and lapsed certs, which one is already on your books?',
+            ic: 'Is your PDU cycle the thing standing between you and keeping the letter — and is it planned?',
+            ldo: 'Which renewal track has unbooked capacity, and which expiries are coming first?'
+          },
+          T: {
+            cx: 'Is there a renewal cycle or pursuit season that makes certified staffing date-stamped?',
+            vp: 'What deadline would renewals unblock — a pursuit or a renewal cycle — and how near is it?',
+            all: 'Is there a renewal cycle or a pursuit season that pins when the letters have to be current?',
+            ic: 'Is there a renewal deadline on your calendar — and should we plan the PDUs against it?',
+            ldo: 'Does the PDU-expiry list set when the renewal spend lands?'
+          }
         },
         byLevel: {
           cx: 'Certified staffing is the pursuit asset; expiry is an avoidable shrinkage.',
@@ -622,10 +1322,34 @@ window.SDR_PROGRAMS = {
     bridge: 'Between A+, Network+ and Security+ — which track is the team pulling toward next?',
     stake: 'Uncertified fundamentals show up as slower tickets today and a weaker ladder for the team tomorrow.',
     bant: {
-      B: ['Is CompTIA certification covered under the IT training budget or per-department?'],
-      A: ['Who tracks cert coverage — the help-desk lead, the security team, or HR for role requirements?'],
-      N: ['Which CompTIA track is the gap — A+, Network+, or Security+ — and what in operations is stalling because of it?'],
-      T: ['Is there a renewal cycle, an audit of certified staff, or a hiring push that sets when coverage matters?']
+      B: {
+        cx: 'Is entry IT certification for {field} a committed line in the IT training budget — or per-hire math nobody sized yet?',
+        vp: 'Is the IT cert line committed — and does the per-head pricing make the cohort an easy yes?',
+        all: 'Where does CompTIA training money sit for {field} — the IT budget, per department, or L&D — and is the cohort real?',
+        ic: 'Do you have access to entry certification funding — and is the request already with your manager?',
+        ldo: 'Where does CompTIA spend flow — per head, the IT line, or L&D — and is it compact enough to approve?'
+      },
+      A: {
+        cx: 'Who owns the IT credential ladder — you, IT leadership, or HR — and who signs the program?',
+        vp: 'Whose sign-off sits above you on the cert cohort, and can the per-head math carry it?',
+        all: 'Who owns the credential standard for your team — the help-desk lead, IT, or HR — and is that the person?',
+        ic: 'Who approves your entry cert — your manager or the team lead — and is the ask queued?',
+        ldo: 'Who issues the CompTIA PO — HR, IT, or procurement — and is one signature enough?'
+      },
+      N: {
+        cx: 'Is the gap ticket speed or the career ladder — and what does an uncertified help desk cost the org?',
+        vp: 'Is the gap support quality or the pipeline into IT — and which one is the pain?',
+        all: 'Between A+, Network+ and Security+, which track is your team pulling toward next?',
+        ic: 'Which entry cert — A+, Network+, or Security+ — is the right first door for your path?',
+        ldo: 'Which entry track has no coverage on the books, and which one does the staffing review check?'
+      },
+      T: {
+        cx: 'Is there a hiring push, a service review, or an audit of certified staff that makes coverage date-stamped?',
+        vp: 'What deadline would certified staff unblock — a hiring push or a service review — and how near is it?',
+        all: 'Is there a hiring push or a season that pins when the team has to be certified?',
+        ic: 'Is there an exam window or a hiring cycle that sets when you sit for it?',
+        ldo: 'Does the budget year or the renewal cycle set when the spend lands?'
+      }
     },
     subsOrder: ['aplus', 'secplus'],
     subs: {
@@ -636,10 +1360,34 @@ window.SDR_PROGRAMS = {
         bridge: 'How many of your support staff hold A+ — and how many new hires are expected to walk in with it?',
         stake: 'Uncertified support fundamentals show up as slower tickets today and a weaker ladder tomorrow.',
         bant: {
-          B: ['Is A+ covered under the IT training budget or per-department?'],
-          A: ['Who owns the support-team credential standard — the help-desk lead or HR?'],
-          N: ['Which gap — ticket speed or career-path quality — matters more right now?'],
-          T: ['Is there a hiring push or a service-level review pinning the timing?']
+          B: {
+            cx: 'Is A+ coverage for {field} a committed line in the IT training budget — or per-hire math nobody sized yet?',
+            vp: 'Is the A+ line committed — and does the per-head pricing make the cohort an easy yes?',
+            all: 'Where does A+ training money sit for {field} — the IT budget, the help desk, or HR — and is the cohort real?',
+            ic: 'Do you have access to entry certification funding — and is the request already with your manager?',
+            ldo: 'Where does A+ spend flow — per head, the IT line, or HR — and is it compact enough to approve?'
+          },
+          A: {
+            cx: 'Who owns the support credential standard — you, IT leadership, or HR — and who signs it?',
+            vp: 'Whose sign-off sits above you on the cohort, and can the per-head math carry it?',
+            all: 'Who owns the help-desk credential standard — the help-desk lead, HR, or you?',
+            ic: 'Who approves your A+ — your manager or the help-desk lead — and is the ask queued?',
+            ldo: 'Who issues the A+ PO — HR, IT, or procurement — and is one signature enough?'
+          },
+          N: {
+            cx: 'Is the gap ticket speed or the IT career ladder — and what does support quality cost the org?',
+            vp: 'Is the gap support speed or the pipeline into IT — and which one matters more right now?',
+            all: 'Between ticket speed and career-path quality, which one is your team behind on?',
+            ic: 'Is A+ the right first rung for your IT path — and is now the window?',
+            ldo: 'Which entry track has no coverage on the books, and which one does the staffing review check?'
+          },
+          T: {
+            cx: 'Is there a hiring push or a service-level review that makes support readiness date-stamped?',
+            vp: 'What deadline would certified staff unblock — a hiring push or a service review — and how near is it?',
+            all: 'Is there a hiring push or a season that pins when the support team has to be certified?',
+            ic: 'Is there an exam window or a hiring cycle that sets when you sit for it?',
+            ldo: 'Does the budget year or the service review set when the spend lands?'
+          }
         },
         byLevel: {
           cx: 'Support quality is the customer front door; A+ coverage is the standard under it.',
@@ -657,10 +1405,34 @@ window.SDR_PROGRAMS = {
         bridge: 'How many of your security-adjacent staff hold Security+ — and how many should, per the audit list?',
         stake: 'Every role the audit expects to be Security+-certified and is not is a finding with your name on it.',
         bant: {
-          B: ['Is Security+ on the security training budget or the IT line?'],
-          A: ['Who sets the credential requirements — the security lead or HR role definitions?'],
-          N: ['Which gap — certified headcount or readiness for the next roles — is the pain?'],
-          T: ['Is there an audit, a hiring push, or a role-restructure pinning the window?']
+          B: {
+            cx: 'Is Security+ coverage for {field} a committed line in the security training budget — or a per-role checkbox nobody audited yet?',
+            vp: 'Is the Security+ line committed — and does the per-head pricing make the cohort an easy yes?',
+            all: 'Where does Security+ training money sit for {field} — the security budget, IT, or HR roles — and is the cohort real?',
+            ic: 'Do you have access to security certification funding — and is the request already with your manager?',
+            ldo: 'Where does Security+ spend flow — the security line, per role, or HR — and is it scoped to the roles?'
+          },
+          A: {
+            cx: 'Who owns the credential requirements — you, the security lead, or HR — and who signs the program?',
+            vp: 'Whose sign-off sits above you on the cohort, and can an audit-map carry it?',
+            all: 'Who sets the credential requirements for your team — the security lead, HR, or you?',
+            ic: 'Who approves your Security+ — your manager or the security lead — and is the ask queued?',
+            ldo: 'Who issues the Security+ PO — HR, the security office, or procurement — and does it need review?'
+          },
+          N: {
+            cx: 'Is the gap certified headcount or readiness for the next roles — and what does the audit finding cost?',
+            vp: 'Is the gap certified headcount or the entry bar — and which one is the pain?',
+            all: 'Between certified headcount and role readiness, which one is your team behind on?',
+            ic: 'Is Security+ the right first security door for your path — and is now the window?',
+            ldo: 'Which security track has no coverage on the books, and which one does the audit check?'
+          },
+          T: {
+            cx: 'Is there an audit, a hiring push, or a role restructure that makes Security+ coverage date-stamped?',
+            vp: 'What deadline would certified staff unblock — an audit or a hiring push — and how near is it?',
+            all: 'Is there an audit or role window that pins when the team has to be certified?',
+            ic: 'Is there an exam window or an audit that sets when you sit for it?',
+            ldo: 'Does the audit calendar or the role plan set when the spend lands?'
+          }
         },
         byLevel: {
           cx: 'Audit findings on staff credentials are the avoidable ones — close them before the list.',
