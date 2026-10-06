@@ -24,6 +24,7 @@
       <a href="voicemail-scripts.html">Voicemail Scripts</a>
       <a href="emails.html">Email Templates</a>
       <a href="stories.html">Stories</a>
+      <a href="linkedin.html">LinkedIn</a>
     </div>
   </div>
 </nav>
@@ -47,10 +48,22 @@
       <div class="pill-row" id="sel-industry"></div>
 
       <div class="cp-label">③ They're qualified · your playbook below</div>
-      <button type="button" id="copy-playbook" class="btn">Copy the full playbook</button>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button type="button" id="copy-playbook" class="btn">Copy the full playbook</button>
+        <button type="button" id="print-playbook" class="btn ghost">Print this playbook</button>
+      </div>
     </div>
 
     <div id="playbook" class="playbook"></div>
+
+    <div class="drill-box" id="drill-box">
+      <div class="cp-label">④ Drill mode — deal a random scenario and quiz yourself</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <button type="button" id="drill-deal" class="btn">Deal me a practice round</button>
+        <span class="drill-hint">Random level × industry. You get the opener and the scenario; the BANT, objections and meeting ask are hidden behind flip-to-reveal until you’ve thought through your answer.</span>
+      </div>
+      <div id="drill"></div>
+    </div>
   </section>
 
   <!-- personas -->
@@ -89,7 +102,7 @@
     <div class="container">
       <div class="section-head">
         <div class="eyebrow"><b>03</b> — Objection playbook</div>
-        <h2>The full library — <em>7 objections × 6 levels</em></h2>
+        <h2>The full library — <em>12 objections × 6 levels</em></h2>
         <p>Every objection has a mindset shift (how to think about it), a response per decision-maker level, and a recovery step. Click to expand.</p>
       </div>
       <div id="objection-library"></div>
@@ -97,7 +110,7 @@
   </section>
 
   <!-- placeholders -->
-  <section class="dark-black reveal">
+  <section class="dark-black reveal no-print">
     <div class="container">
       <div class="section-head">
         <div class="eyebrow"><b>04</b> — Before you deliver</div>
@@ -129,6 +142,7 @@
         <a href="voicemail-scripts.html">Voicemail Scripts</a>
         <a href="emails.html">Email Templates</a>
         <a href="stories.html">Stories</a>
+        <a href="linkedin.html">LinkedIn</a>
         <a href="index.html">Company Overview</a>
       </div>
     </div>

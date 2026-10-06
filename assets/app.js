@@ -62,6 +62,10 @@
   function industryPillItems() {
     return SDR.industryOrder.map(function (k) { return { key: k, label: SDR.industries[k].label }; });
   }
+  function storyIndPillItems() {
+    return SDR.industryOrder.filter(function (k) { return SDR.storyInd[k]; })
+      .map(function (k) { return { key: k, label: SDR.industries[k].label }; });
+  }
 
   /* =========================================================
      Accordion toggles (event delegation)
@@ -72,6 +76,12 @@
       var root = head.closest('.obj') || head.closest('.pb-section');
       if (root) root.classList.toggle('open');
     }
+  });
+
+  /* drill flip-to-reveal */
+  document.addEventListener('click', function (e) {
+    var row = e.target.closest('[data-drill]');
+    if (row && e.target.closest('.drill-reveal')) row.classList.toggle('open');
   });
 
   /* generic copy buttons */
@@ -159,7 +169,7 @@
         '<div class="pb-head" data-toggle><h3>Objection handling</h3><span class="chev">▾</span></div>' +
         '<div class="pb-body">' +
           objItems +
-          '<p class="small-note" style="margin-top:10px">Full library (7 objections × every level) lives lower on this page.</p>' +
+          '<p class="small-note" style="margin-top:10px">Full library (12 objections × every level) lives lower on this page.</p>' +
         '</div>' +
       '</div>' +
 
@@ -287,6 +297,49 @@
   }
 
   /* =========================================================
+     LinkedIn page (linkedin.html) — 10 per level:
+     conn = connection-request note (≤300 chars), msg = follow-up message
+     ========================================================= */
+  function renderLi() {
+    var lk = activePill('sel-li');
+    var set = SDR.li[lk];
+    if (!set) return;
+    var out = el('li-output'); if (!out) return;
+    var cards = set.map(function (x, idx) {
+      var cid = 'li-conn-' + idx, mid = 'li-msg-' + idx;
+      var clen = (x.conn || '').length;
+      var over = clen > 300 ? ' over' : '';
+      return '<div class="li-tile">' +
+        '<div class="li-tag">' + esc(x.tag) + '</div>' +
+        '<div class="li-label">Connection note<span class="li-count' + over + '">' + clen + ' chars · LinkedIn caps at 300</span></div>' +
+        '<div class="script-block" id="' + cid + '">' + nl(x.conn) + '</div>' +
+        '<button type="button" class="btn copy small" data-copy-target="' + cid + '">Copy note</button>' +
+        '<div class="li-label" style="margin-top:22px">Follow-up message<span class="li-count">send after they accept</span></div>' +
+        '<div class="script-block" id="' + mid + '">' + nl(x.msg) + '</div>' +
+        '<button type="button" class="btn copy small" data-copy-target="' + mid + '">Copy message</button>' +
+      '</div>';
+    }).join('');
+    out.innerHTML = '<div class="grid grid-2">' + cards + '</div>' +
+      '<div class="grid grid-2" style="margin-top:24px">' +
+        '<div class="card hover-none"><h3>The ten-set cadence</h3><ul class="feature-list" style="margin-top:12px">' +
+          '<li><span class="tic">›</span><b>01–03</b> — first touches: cold request, profile trigger, referral</li>' +
+          '<li><span class="tic">›</span><b>04–05</b> — replays of voicemail and email you already sent</li>' +
+          '<li><span class="tic">›</span><b>06</b> — engagement on their post, before any ask</li>' +
+          '<li><span class="tic">›</span><b>07–08</b> — second touch and the quarter-end nudge</li>' +
+          '<li><span class="tic">›</span><b>09–10</b> — the breakup and the windshield close</li>' +
+        '</ul></div>' +
+        '<div class="card hover-none"><h3>Do / Don’t</h3><ul class="feature-list" style="margin-top:12px">' +
+          '<li><span class="tic">›</span><b>Do</b> — send the follow-up message within 24 hours of the accept</li>' +
+          '<li><span class="tic">›</span><b>Do</b> — name one real detail from their profile or their news</li>' +
+          '<li><span class="tic">›</span><b>Do</b> — hand them an easy decline: “one reply either way”</li>' +
+          '<li><span class="tic">›</span><b>Don’t</b> — pitch inside the connection note; the message carries it</li>' +
+          '<li><span class="tic">›</span><b>Don’t</b> — comment-spam their posts to farm visibility</li>' +
+          '<li><span class="tic">›</span><b>Don’t</b> — stack three LinkedIn touches in a week; rotate with VM + email</li>' +
+        '</ul></div>' +
+      '</div>';
+  }
+
+  /* =========================================================
      Stories page (stories.html) — customer stories per level
      ========================================================= */
   function renderStories() {
@@ -305,6 +358,73 @@
       '</div>';
     }).join('');
     out.innerHTML = '<div class="grid grid-2">' + cards + '</div>';
+  }
+
+  /* =========================================================
+     Industry-tagged stories (stories.html) — one per level per industry
+     ========================================================= */
+  function renderStoryInd() {
+    var ik = activePill('sel-story-ind');
+    var set = SDR.storyInd[ik];
+    if (!set) return;
+    var out = el('story-ind-output'); if (!out) return;
+    var cards = SDR.levelOrder.map(function (k) {
+      var st = set[k]; if (!st) return '';
+      var lv = SDR.levels[k];
+      var rid = 'story-ind-' + ik + '-' + k;
+      return '<div class="story-tile">' +
+        '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="story-ind-level">' + esc(lv.label) + '</span><div class="story-tag" style="margin-bottom:0">' + esc(st.tag) + '</div></div>' +
+        '<h3>' + esc(st.title) + '</h3>' +
+        '<div class="script-block" id="' + rid + '">' + nl(st.story) + '</div>' +
+        '<div class="story-when"><span class="story-when-label">When to tell it</span>' + esc(st.when) + '</div>' +
+        '<button type="button" class="btn copy small" data-copy-target="' + rid + '">Copy story</button>' +
+      '</div>';
+    }).join('');
+    out.innerHTML = '<div class="grid grid-2">' + cards + '</div>';
+  }
+
+  /* =========================================================
+     Drill mode (sdr-qualifier.html) — random level × industry, flip-to-reveal
+     ========================================================= */
+  var drillState = null;
+  function dealDrill() {
+    var box = el('drill'); if (!box) return;
+    var lks = SDR.levelOrder, iks = SDR.industryOrder;
+    var lk = lks[Math.floor(Math.random() * lks.length)];
+    var ik = iks[Math.floor(Math.random() * iks.length)];
+    if (drillState && lk === drillState.lk && ik === drillState.ik) {
+      lk = lks[(lks.indexOf(lk) + 1 + Math.floor(Math.random() * (lks.length - 1))) % lks.length];
+    }
+    drillState = { lk: lk, ik: ik };
+    var lv = SDR.levels[lk], ind = SDR.industries[ik];
+    if (!lv || !ind) return;
+
+    var bant = SDR.bantOrder.map(function (L) {
+      var qs = (lv.bant[ik] && lv.bant[ik][L]) || [];
+      return qs.map(function (q) {
+        return '<div class="q-item"><span class="badge ' + L.toLowerCase() + '">' + L + '</span><div><span class="q-txt">' + esc(q) + '</span></div></div>';
+      }).join('');
+    }).join('');
+    var objItems = SDR.playbookObjections(ind, lk).map(function (o) {
+      return '<div class="obj">' +
+        '<div class="obj-head" data-toggle><b>' + esc(o.label) + '</b><span class="chev">▾</span></div>' +
+        '<div class="obj-body"><div class="reframe">Mindset: ' + esc(o.reframe) + '</div><div class="resp">' + nl(o.resp) + '</div></div></div>';
+    }).join('');
+    var indQs = (ind.qualifiers || []).map(function (q) {
+      return '<div class="q-item"><span class="badge grad">Industry</span><div><span class="q-txt">' + esc(q) + '</span></div></div>';
+    }).join('');
+    var bantCount = 0;
+    SDR.bantOrder.forEach(function (L) { bantCount += ((lv.bant[ik] && lv.bant[ik][L]) || []).length; });
+
+    box.innerHTML =
+      '<div class="drill-card">' +
+        '<div class="drill-head"><span class="badge grad">Scenario</span><h3>You’re calling the <b class="hl">' + esc(lv.label) + '</b> at a <b class="hl">' + esc(ind.label) + '</b> org</h3></div>' +
+        '<div class="script-block" id="drill-opener">' + nl(vmOpener(lv, ind)) + '</div>' +
+        '<button type="button" class="btn copy small" data-copy-target="drill-opener">Copy opener</button>' +
+        '<div class="drill-row" data-drill="bant"><button type="button" class="drill-reveal">Flip to reveal BANT · ' + bantCount + ' questions</button><div class="drill-body">' + bant + indQs + '</div></div>' +
+        '<div class="drill-row" data-drill="objs"><button type="button" class="drill-reveal">Flip to reveal objection handling</button><div class="drill-body">' + objItems + '</div></div>' +
+        '<div class="drill-row" data-drill="ask"><button type="button" class="drill-reveal">Flip to reveal the meeting ask</button><div class="drill-body"><div class="script-block">' + nl(lv.meeting()) + '</div></div></div>' +
+      '</div>';
   }
 
   /* =========================================================
@@ -369,6 +489,18 @@
       initPills('sel-story', levelPillItems(), renderStories);
       renderStories();
     }
+    if (el('sel-story-ind')) {
+      initPills('sel-story-ind', storyIndPillItems(), renderStoryInd);
+      renderStoryInd();
+    }
+    if (el('sel-li')) {
+      initPills('sel-li', levelPillItems(), renderLi);
+      renderLi();
+    }
+    var deal = el('drill-deal');
+    if (deal) { deal.addEventListener('click', dealDrill); dealDrill(); }
+    var printBtn = el('print-playbook');
+    if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
     renderObjections();
     renderPlaceholders();
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Email Templates | NetCom Learning</title>
+<title>LinkedIn Follow-ups | NetCom Learning</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@400;500;600;700&family=Inter:wght@600;700&display=swap" rel="stylesheet">
@@ -22,17 +22,17 @@
       <a href="index.html">Company Overview</a>
       <a href="sdr-qualifier.html">SDR Qualifier</a>
       <a href="voicemail-scripts.html">Voicemail Scripts</a>
-      <a href="emails.html" class="active">Email Templates</a>
+      <a href="emails.html">Email Templates</a>
       <a href="stories.html">Stories</a>
-      <a href="linkedin.html">LinkedIn</a>
+      <a href="linkedin.html" class="active">LinkedIn</a>
     </div>
   </div>
 </nav>
 
 <header class="hero" style="padding-bottom:44px">
   <div class="container">
-    <h1>Emails that earn <em>the reply</em> — ten templates per level, no filler.</h1>
-    <p class="lede">Pick the decision-maker level and get ten non-generic templates each — cold outreach, voicemail replay, referrals, news triggers, quarter-end, re-engagement and the graceful exit. Every one has a subject line tuned to how that buyer's inbox works and a single, easy-to-act-on call to action. Swap the <b class="hl">{placeholders}</b> below the set and they're ready to send.</p>
+    <h1>LinkedIn messages that <em>earn the reply</em> — ten per level, ≤300 characters.</h1>
+    <p class="lede">Pick the decision-maker level and get ten LinkedIn touches each — a connection-request note that fits the character limit, plus the follow-up message to send once they accept. Profile triggers, voicemail and email replays, engagement on their post, the graceful breakup and the windshield close. The <b class="hl">connection note</b> opens the room; the <b class="hl">message</b> earns the reply.</p>
   </div>
 </header>
 
@@ -40,12 +40,12 @@
 
   <section style="padding-top:8px" class="reveal">
     <div class="control-panel">
-      <div class="cp-label">① Who is the recipient?</div>
-      <div class="pill-row" id="sel-email"></div>
+      <div class="cp-label">① Who are you reaching out to?</div>
+      <div class="pill-row" id="sel-li"></div>
 
-      <div class="cp-label">② Their templates · ten below</div>
+      <div class="cp-label">② Their touches · ten below</div>
     </div>
-    <div id="email-output"></div>
+    <div id="li-output"></div>
   </section>
 
   <!-- etiquette -->
@@ -53,29 +53,29 @@
     <div class="container">
       <div class="section-head">
         <div class="eyebrow"><b>01</b> — Before you send</div>
-        <h2>Email etiquette that <em>protects your reply rate</em></h2>
-        <p>These templates do the heavy lifting, but sender behavior decides deliverability. Keep the list short and honest.</p>
+        <h2>Three rules of <em>the first note</em></h2>
+        <p>LinkedIn punishment is quick: notes that pitch get declined, people who pitch in comments get muted. The note opens a door; the message carries the value.</p>
       </div>
       <div class="grid grid-3">
-        <div class="card"><span class="badge grad">01</span><h3 style="margin-top:12px">Speed over volume</h3><p class="small-note">Send inside 24h of the touch that triggers the email — the voicemail is still warm. A perfect email tomorrow loses to a good one today.</p></div>
-        <div class="card"><span class="badge grad">02</span><h3 style="margin-top:12px">One ask per email</h3><p class="small-note">From addresses that sound like a human, a signature with a real phone number. "Reply and I'll take it from there" beats "visit our site."</p></div>
-        <div class="card"><span class="badge grad">03</span><h3 style="margin-top:12px">Send like a peer</h3><p class="small-note">Tuesday–Thursday, early morning or early afternoon, local time. Avoid Monday 9am inbox floods and Friday pre-weekend graveyards.</p></div>
+        <div class="card"><span class="badge grad">01</span><h3 style="margin-top:12px">Note &lt;&lt; pitch</h3><p class="small-note">≤300 characters, one reason to connect, zero asks. "Happy to connect" or "no pitch, just context" — the pitch lives in the message after they accept.</p></div>
+        <div class="card"><span class="badge grad">02</span><h3 style="margin-top:12px">Message within 24h</h3><p class="small-note">The accept is a window, not an open door. Send the follow-up message the same day — a warm accept that goes two weeks unanswered turns cold fast.</p></div>
+        <div class="card"><span class="badge grad">03</span><h3 style="margin-top:12px">One CTA, easy to decline</h3><p class="small-note">"Reply and it's yours" or "One reply either way and I'm out of your inbox" — a graceful exit is what makes a second touch feel respectful, not stalker-ish.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- subject line craft -->
+  <!-- craft -->
   <section class="bone reveal">
     <div class="container">
       <div class="section-head center">
-        <div class="eyebrow"><b>02</b> — Subject lines that survive the inbox</div>
-        <h2>Write like you're texting — <em>not announcing</em></h2>
+        <div class="eyebrow"><b>02</b> — Notes that get accepted</div>
+        <h2>Write like a peer, <em>not a connection farmer</em></h2>
       </div>
       <div class="grid grid-4">
-        <div class="card"><h3>≤ 8 words</h3><p class="small-note">Mobile and preview panes truncate around 30–50 characters. Lead with their interest, not your company name.</p></div>
-        <div class="card"><h3>One concrete thing</h3><p class="small-note">A number, a deadline, their news. "On {Company}'s AI rollout" beats "Training solutions intro."</p></div>
-        <div class="card"><h3>No spam words</h3><p class="small-note">Free, guarantee, 50% off, urgent — they poison deliverability and get skimmed as noise.</p></div>
-        <div class="card"><h3>Lowercase energy</h3><p class="small-note">Sentence case reads human. ALL CAPS reads invoice; "FW: FW: RE:" reads someone who never leaves.</p></div>
+        <div class="card"><h3>Named, not sprayed</h3><p class="small-note">Their name, their company, their trigger. A note with zero specifics reads like it went to 400 people — it gets declined at the same speed.</p></div>
+        <div class="card"><h3>Say what's in it</h3><p class="small-note">"Sharing useful context" or "the reporting sample" — the recipient wants to know what accepting gets them before they tap.</p></div>
+        <div class="card"><h3>Respect the 300</h3><p class="small-note">LinkedIn truncates the connection note. Keep the hook and the promise in the first two lines; cut the adjectives.</p></div>
+        <div class="card"><h3>No pitch in comments</h3><p class="small-note">Engage on their post genuinely first. The DM comes after the comment is welcome — never "great post, let me tell you about our training."</p></div>
       </div>
     </div>
   </section>
@@ -94,7 +94,7 @@
         </table>
       </div>
       <div class="callout" style="margin-top:18px">
-        <b>Personalization is evidence, not decoration.</b> Reference something real — their recent post, a mutual connection, a live initiative — inside the first two lines. Templates open doors; specifics make the recipient feel seen enough to reply.
+        <b>One real detail beats three placeholders.</b> Their actual post, their real new role, the mutual connection's name — pick the detail that proves you looked, then the note writes itself.
       </div>
     </div>
   </section>
@@ -125,6 +125,8 @@
 <script src="assets/sdr-levels.js"></script>
 <script src="assets/sdr-vms.js"></script>
 <script src="assets/sdr-emails.js"></script>
+<script src="assets/sdr-stories.js"></script>
+<script src="assets/sdr-li.js"></script>
 <script src="assets/sdr-objections.js"></script>
 <script src="assets/sdr-bant-cxvp.js"></script>
 <script src="assets/sdr-bant-dirmgr.js"></script>

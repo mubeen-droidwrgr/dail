@@ -377,3 +377,48 @@ footer{border-top:1px solid var(--stroke);margin-top:70px;padding:52px 0 56px;ba
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- LinkedIn page ---------- */
+.li-tile{border:1px solid var(--stroke);border-radius:var(--radius-organic);background:rgba(255,255,255,.03);padding:26px;display:flex;flex-direction:column}
+.li-tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--emerald);font-weight:700;margin-bottom:14px}
+.li-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);font-weight:700;margin:6px 0 4px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.li-count{color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:none;font-weight:600}
+.li-count.over{color:#f87171}
+.li-tile .script-block{margin:6px 0 10px;flex:1}
+.li-tile .btn.copy{align-self:flex-start}
+
+/* ---------- drill mode (qualifier) ---------- */
+.drill-box{margin-top:26px;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.01));border:1px dashed var(--stroke-2);border-radius:var(--radius-organic);padding:26px}
+.drill-hint{font-size:13px;color:var(--faint);max-width:560px}
+.drill-card{margin-top:18px;border:1px solid var(--stroke);border-radius:var(--radius-organic);padding:24px;background:rgba(255,255,255,.03)}
+.drill-card .drill-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.drill-card .drill-head h3{font-size:1.3rem;margin:0}
+.drill-row{margin-top:16px;border-top:1px dashed var(--stroke);padding-top:16px}
+.drill-reveal{display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--stroke-2);color:var(--text);font-weight:600;font-size:13.5px;cursor:pointer;transition:.2s var(--ease);font-family:var(--font-body)}
+.drill-reveal:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
+.drill-body{display:none;margin-top:14px}
+.drill-row.open .drill-body{display:block;animation:fade-rise .35s var(--ease) both}
+
+/* ---------- industry story badge ---------- */
+.story-ind-level{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);background:var(--bone);font-weight:700;padding:5px 12px;border-radius:999px}
+
+/* ---------- print (qualifier playbook) ---------- */
+@media print{
+  body{background:#fff}
+  .orb,nav,footer,.toast,.drill-box,#personas-sec,#bant,#objections,.no-print{display:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+  body,.container,main,.playbook,.pb-body,.q-item,.q-txt,.obj-body,.obj-head,.small-note,.control-panel,.cp-label{background:#fff!important;color:#101418!important}
+  .pb-head h3,a,.obj-head b,.q-txt{color:#101418!important}
+  .pb-section{border:1px solid #cfc9bb;page-break-inside:avoid;background:#fff!important}
+  .pb-body{display:block!important;padding:14px 0!important;animation:none!important}
+  .pb-head{border-bottom:1px solid #cfc9bb;padding:10px 0}
+  .chev{display:none}
+  .script-block{border:1px solid #cfc9bb;background:#faf9f5!important;color:#101418!important;page-break-inside:avoid;border-radius:8px}
+  .script-block .who,.reframe,.small-note{color:#101418!important}
+  .obj{border:1px solid #cfc9bb;page-break-inside:avoid;background:#fff!important}
+  .obj-body .resp{border-left-color:#101418}
+  .playbook .btn,.control-panel .btn,.control-panel .cp-label{display:none!important}
+  .badge{border-color:#101418!important;color:#101418!important}
+  .badge.grad{background:#101418!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .q-item{border-bottom:1px dashed #cfc9bb}
+}

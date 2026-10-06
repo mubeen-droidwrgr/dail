@@ -5,6 +5,8 @@ window.SDR = {
   objections: window.SDR_OBJECTIONS,
   emails: window.SDR_EMAILS,
   stories: window.SDR_STORIES,
+  li: window.SDR_LI,
+  storyInd: window.SDR_STORY_IND || {},
   levelOrder: ['cx', 'vp', 'dir', 'mgr', 'ic', 'ldo'],
   industryOrder: ['tech', 'healthcare', 'banking', 'gov', 'manufacturing', 'retail', 'insurance', 'energy', 'education', 'profserv'],
   bantOrder: ['B', 'A', 'N', 'T'],

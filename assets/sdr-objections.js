@@ -76,5 +76,70 @@ window.SDR_OBJECTIONS = [
       mgr: 'Totally — and per head it’s usually under the price of a conference ticket, with a cert and exam included. What size group are we talking — I’ll compute the exact pilot price.'
     },
     follow: 'Always give a range + the cheapest legitimate entry (e-Learning/self-paced) even when the deal is bigger.'
+  },
+  {
+    q: 'We’ll revisit this next year',
+    reframe: '“Next year” is rarely a plan — it is usually a polite way to park a problem they already feel. Don’t fight it: agree, then attach a concrete trigger (an audit, an expiry, a launch) so the revisit has a date and owns an agenda.',
+    resp: {
+      cx: 'Completely fair — and a year of a stalled rollout is worth more than it looks. If I put a date on the calendar, would you want it flagged for when the quarter opens, or the moment your team misses its next milestone?',
+      vp: 'Understood. Can I ask when the next milestone is that the team might miss if a skill gap is real? If it’s sooner than next year, the 15-minute prep saves you the scramble. If not, I’ll set the reminder and go.',
+      dir: 'Fine by me. Most Directors who say next year mean “after the current program cycle” — so I’ll set the follow-up to the week your current cohort ends, and leave the comparison pack with you. Fair?',
+      mgr: 'Got it. One thing that forces the issue: cert expiries and go-lives don’t wait for a calendar year. If {CertName} or a go-live lands sooner, shoot me a message — the schedule stays saved.',
+      ic: 'No problem at all. If {CertName} is a next-year thing for now, the roadmap won’t change much — when you’re ready I’d just book the exam first and work backward. Mind if I check back around the new year?',
+      ldo: 'Makes sense — most vendors get re-reviewed once a year. I’ll put the renewal cycle on my calendar so the comparison pack lands on your desk, not your spam. One question: does your cycle run on the fiscal year or the calendar?'
+    },
+    follow: 'Lock the trigger, not just the date: “Reminder set for the week of your Q{Qtr} planning — either we meet then, or I send the one-pager and you decide from there.”'
+  },
+  {
+    q: 'Our people leave after we train them',
+    reframe: 'A real fear, and usually evidence the training was a perk, not a path. Sell the retention play: certs tied to role, growth ladder and role-level tracks — the point is you stop training the exit door.',
+    resp: {
+      cx: 'That’s the right fear to have — and it’s usually a design problem: training as a perk, not a path. We tie certs to role and promotion so the growth ladder is the retention program. Want the one-page on it?',
+      vp: 'If people leave because they trained up, they were getting career value — the fix is making it directionally useful: role-level tracks mapped to promotion and compensation. That flips attrition into a bench story. Worth comparing?',
+      dir: 'Then map the program to retention, not attendance: certs attached to role, completion built into performance reviews, a promotion-ready queue. Peers run it that way and attrition drops. Want the structure?',
+      mgr: 'You’re right to raise it — the fix is giving the training an anchor: certs tied to their role and their next step, so the team grows into the org instead of out of it. Want the role-map sample for your team?',
+      ic: 'Totally fair concern. The version that works is when the cert is tied to something at the company — a role, a pay band, a project. If the cert only benefits a future employer, the employer loses. We help anchor them.',
+      ldo: 'It’s the classic coordinator fear — and the data is on your side to design around it. Retention-built programs: cert tied to role, completion tied to review, usage tied to promotion. Want the reporting setup that proves it?'
+    },
+    follow: 'If they stay hooked on the fear: “Run one pilot cohort with the retention design and measure touches + attrition. If it doesn’t move, you’ve lost a pilot, not a program.”'
+  },
+  {
+    q: 'Send a proposal first',
+    reframe: 'A proposal before qualification is a price sheet, and price sheets get compared on price. Trade it: the proposal comes after the 15-minute brief so it lands as a plan, not a quote.',
+    resp: {
+      cx: 'Happy to — and I will, genuinely. The proposals that win are the ones aimed at the real gap and the real quarter. That’s what the 15 minutes are for; give me those two details and the proposal writes itself. Ready when you are.',
+      vp: 'On my list. Real talk: the fastest way to get you a proposal worth your board’s time is 15 minutes on scope and the metric you’d defend. Proposal first means it’ll be generic; brief first means it’ll be yours.',
+      dir: 'Absolutely — I’ll draft it today. One thing that separates a good proposal from a comparison doc: your completion target and the cohort size. If you can give me those in a 15-minute call, you’ll get a plan, not a quote sheet.',
+      mgr: 'Sure — and because the schedule is the make-or-break for your team, the proposal I send cold will miss it. 15 minutes on shift patterns and coverage and you get a schedule-proposal, not a price sheet.',
+      ic: 'I can do that. Before I draft it — two questions: which {CertName} path, and is there a window you’re aiming at? Answer those and the proposal is basically your roadmap. Want to knock those out in 10 minutes?',
+      ldo: 'Will do — but I’ll be honest: a proposal with no scope and no quarter is something finance will table. Give me 15 minutes on the program shape and I’ll hand your team a document they can actually route. Good trade?'
+    },
+    follow: 'Send a skeleton proposal immediately (so the brush-off isn’t punished) with a marked “Step 1” — one email, one line: “This fills itself in after a 15-minute brief.”'
+  },
+  {
+    q: 'Our LMS already has content',
+    reframe: 'An LMS is a shelf; the problem is usually the books on it, or the adoption around it. Separate the platform from the content — you bring vendor-certified, exam-mapped material plus the reporting that makes the shelf visible.',
+    resp: {
+      cx: 'Great — that means the infrastructure’s there and the real question is what’s sitting on it. If it’s shelf-ware, certification coverage is usually the gap. Can I benchmark the shelf against the certs your team needs?',
+      vp: 'Then you’re ahead of most. The thing LMS catalogs are usually missing: current vendor exam blueprints and cert readiness. We bring authorized tracks that plug in without replacing the shelf. Want the compatibility check?',
+      dir: 'Perfect, that’s not the hard part. The LMS is the delivery rail; we bring officially licensed content your catalog simply won’t have — Cisco, Microsoft, AI CERTs — plus usage data that makes the platform look good. Worth a side-by-side?',
+      mgr: 'Makes sense. Quick check: does the LMS content keep up with current {Tool} exam blueprints, with instructors and labs? If the shelf is six months behind the version, that’s where teams actually learn. Want a free gap check?',
+      ic: 'LMS content is where most self-studies stall — it’s dated, unlicensed, or dry. The difference is official vendor content and an exam-ready path. If that’s the gap, the roadmap is free to see.',
+      ldo: 'The LMS is usually the easy half — the hard half is which content is legitimately licensed and exam-mapped. We integrate with the platforms you run (SCORM, LTI) rather than replacing them. Want the integration list?'
+    },
+    follow: 'Offer the smallest proof: “Send a one-page gap check mapping your catalog against the three certs they care about — free, no call required.”'
+  },
+  {
+    q: 'We did this training last year',
+    reframe: 'Been-there is a fair objection, but it describes the past, not the gap. The tech and cert blueprints change quarterly; the question is what’s stale — plus the adoption evidence from last year’s program in the first place.',
+    resp: {
+      cx: 'Then you know the drill — which is exactly why it’s worth asking what changed since: exam blueprints update, {Tool} ships new features, and last year’s adoption was under 40% for most programs. Want the freshness benchmark?',
+      vp: 'Respect that. The question isn’t whether you trained — it’s whether the team is current. Cisco and Microsoft re-issue exams; AWS retires versions. The 15-minute check tells you which part of last year is still true. Fair?',
+      dir: 'Good — then you already know the biggest risk: content drift. Blueprints update quarterly and completion drops if the material’s stale. I’ll do a no-cost currency check against the current exam list. Want it?',
+      mgr: 'Sure — and did the team keep the certs current, or is the annual refresh already overdue? {CertName} expiries are on fixed cycles. If the renewal window is close, that’s not last year’s problem, it’s next quarter’s. Can I check?',
+      ic: 'Fair — and the version you trained on may be retired by now. {Tool} moves fast; the current {CertName} exam tests a different stack. If you want, I’ll verify which blueprint you’d take today. Free to run.',
+      ldo: 'Having the provider history is a real edge — it makes the re-engage conversation easier, not harder. The question is certification currency and renewal cycles, not “did you train.” Want the renewal calendar overlay?'
+    },
+    follow: 'When they agree it’s time: “Then this isn’t repeat training — it’s the refresh and renewal cycle. That’s the budget we slot next to {Qtr}, not next to last year.”'
   }
 ];
